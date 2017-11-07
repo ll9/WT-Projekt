@@ -3,3 +3,8 @@ Here are some sample pictures of a SQLite Database which might be interesting fo
 - IMDbPY instructions: https://imdbpy.sourceforge.io/docs/README.sqldb.txt
 
 The table **'title'** is especially interesting. It contains the titles of the movies, tv series, episodes etc. Unfortunately it also contains a lot entries which don't appear to make a lot of sense (like "(#1.2)").
+
+### Title table example
+![title_image](title.PNG)
+![title_image](title2.PNG)
+![title_image](title3.PNG)
