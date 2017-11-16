@@ -1,6 +1,5 @@
-init mongodb: <mongod --dbpath <PATH TO DATA FOLDER>>
-restore monogo: <mongorestore <PATH TO DUMP FOLDER>
+# TMDB Dump containing ~ 50000 movies
 
-DB Name: 'tmp'
-Collection Name: 'minidump'
-Contains about 50000 movies from tmdb
+## Instructions to restore dump
+1. `mongod --dbpath PATH_TO_DATA_FOLDER`
+2. `mongorestore PATH_TO_DUMP_FOLDER`(still running 1.)
