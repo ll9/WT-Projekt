@@ -1,0 +1,3 @@
+tmp/mongo/data/*
+
+!tmp/mongo/data/dummy
