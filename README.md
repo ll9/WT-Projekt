@@ -177,7 +177,8 @@ url = https://image.tmdb.org/t/p/w500/gZCJZOn4l0Zj5hAxsMbxoS6CL0u.jpg
 
 ##### Trailer
 base url = https://www.youtube.com/watch?v=
-path = (f.e.) 7j8Ba9rWhUg
+path = (f.e.) 7j8Ba9rWhUg 
 url = https://www.youtube.com/watch?v=7j8Ba9rWhUg
+Note: Example above has no trailer 
 
 
