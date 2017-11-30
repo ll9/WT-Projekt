@@ -166,3 +166,11 @@ Simple Website to add your favorite movies and add them to your watchlist etc. T
                 ]
         }
 }```
+
+##### Get Picture:
+Path = base_url +  file_size + file_path
+base_url = https://image.tmdb.org/t/p/
+file_size = (for example) w500/ 
+file_path = (f.e.) gZCJZOn4l0Zj5hAxsMbxoS6CL0u.jpg
+url = https://image.tmdb.org/t/p/w500/gZCJZOn4l0Zj5hAxsMbxoS6CL0u.jpg
+
