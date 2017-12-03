@@ -165,7 +165,8 @@ Simple Website to add your favorite movies and add them to your watchlist etc. T
                         }
                 ]
         }
-}```
+}
+```
 
 #### Get Picture/Trailer:
 ##### Picture
