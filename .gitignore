@@ -1,3 +1,5 @@
 tmp/mongo/data/*
+node_modules
+
 
 !tmp/mongo/data/dummy
