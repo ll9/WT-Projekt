@@ -1,6 +1,6 @@
 
 new Vue({
-    el: '#select',
+    el: '#genre',
     data: {
         selected: '',
         genres: [
