@@ -10,6 +10,10 @@ var users = require('./routes/users');
 
 var app = express();
 
+const url = 'localhost:27017/tmpusr'; // Contains default mongo Port (27017) and name of the database (tmpusr)
+const db = require('monk')(url); // Get the Database with monk
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -21,6 +25,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Make the databse accessible to other files (f.e. index.js)
+app.use((req, res, next) => {
+  req.db = db; 
+});
 
 app.use('/', index);
 app.use('/users', users);
