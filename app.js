@@ -29,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Make the databse accessible to other files (f.e. index.js)
 app.use((req, res, next) => {
   req.db = db; 
+  next();
 });
 
 app.use('/', index);
