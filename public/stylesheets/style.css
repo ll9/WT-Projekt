@@ -1,8 +1,166 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.title {
+  position: relative;
+  margin: auto;
+  width: 50%;
+  margin-top: 30px;
 }
+.filter{
+  position: relative;
+  color: #455f70;
+  font-size: 15px;
+  margin-top: 20px;
+  margin: auto;
+  width: 70%;
+}
+.genre{
+  position: relative;
+  margin-top: 20px;
+  margin: auto;
+  width: 70%;
+}
+.range{
+  position: relative;
+  margin: auto;
+  margin-top: 5px;
+  width: 100%;
+}
+.container{
+  position: relative;
+  margin: auto;
+  width: 50%;
+  heigth: 20%;
+  border: 3px solid black;
+  border-radius: 6px;
+  padding: 10px;
+}
+input[type=search] {
+  width: 90%;
+}
+select {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+}
+body {
+  background-color: lightblue;
+}
+div{
+  background-color: lightgreen;
+}
+.icon1{
+  position:fixed;
+  left:80px;
+  top:15%;
+  font-size: 40px;
+}
+.icon2{
+  position:fixed;
+  left:80px;
+  top:25%;
+  font-size: 40px;
+}
+.icon3{
+  position:fixed;
+  left:80px;
+  top:35%;
+  font-size: 40px;
+}
+.login{
+  position:fixed;
+  left:90%;
+  top:15%;
+  font-size: 40px;
+}
+.main{
+  border: 3px solid black;
+  border-radius: 4px;
+  position: relative;
+  margin-top: 80px;
+  margin-bottom: 20px;
+  margin: auto;
+  width: 601px;
+  height: 301px;
+}
+.ov_rating{
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  margin-left:500px;
+  margin-right: -1px;
+  margin-top: -1px;
+  width: 100px;
+}
+.t_main{
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  margin-left: 150px;
+  margin-top: -1px;
+  width: 349px;
+}
+.g_main{
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  margin-left: 150px;
+  margin-top: 50px;
+  width: 450px;
+}
+.d_main{
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  margin-left: 150px;
+  margin-top: 101px;
+  width: 450px;
+}
+.a_main{
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  margin-left: 150px;
+  margin-top: 250px;
+  width: 450px;
+}
+.img{
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  display: block;
+  margin-left: -1px;
+  margin-top: -1px;
+  width: 150px;
+}
+.trailer{
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  margin-left: -1px;
+  margin-top: 251px;
+  width: 150px;
+}
+.add{
+  border: 3px solid black;
+  border-radius: 2px;
+  position: absolute;
+  margin-left: 80%;
+  margin-rigth: 20%;
+  margin-top: -100px;
+}
+.watched{
+  border: 3px solid black;
+  border-radius: 2px;
+  position: absolute;
+  margin-left: 80%;
+  margin-rigth: 20%;
+  margin-top: -50px;
+}
+.watchlist{
 
-a {
-  color: #00B7FF;
+}
+table, th, td {
+  border: 1px solid black;
 }
