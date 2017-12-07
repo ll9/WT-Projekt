@@ -39,28 +39,9 @@
     <div id="genre" class="genre">
         <select v-model="selected" id="select">
             <option disabled value="">Please select Genre</option>
-            <option>Action</option>
-            <option>Adventure</option>
-            <option>Animation</option>
-            <option>Biography</option>
-            <option>Comedy</option>
-            <option>Crime</option>
-            <option>Documentary</option>
-            <option>Drama</option>
-            <option>Family</option>
-            <option>Fantasy</option>
-            <option>History</option>
-            <option>Horror</option>
-            <option>Music</option>
-            <option>Mystery</option>
-            <option>Romance</option>
-            <option>Sci-Fi</option>
-            <option>Short</option>
-            <option>Sport</option>
-            <option>Thriller</option>
-            <option>War</option>
-            <option>Western</option>
+            <option v-for="genre in genres"> {{genre}} </option>
         </select>
+
         <span>Genre: {{ selected }}</span>
         <input type="range" class="range">
         <p>Year: {{ year }}</p>
