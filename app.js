@@ -15,7 +15,7 @@ const db = require('monk')(url); // Get the Database with monk
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
