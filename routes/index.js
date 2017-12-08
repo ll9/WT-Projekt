@@ -7,10 +7,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/search/:movieName', (req, res, next) => {
-  var search = req.params.movieName;
+  // get mongodb collection from app.js, Collection is called tmdb in mongo database
+  var movieCollection = req.db.get('tmdb'); 
+  var search = "\"" + req.params.movieName + "\""; //search whole phrase
 
-  res.send("\n In future versions this should return json objects of movies which match what the user has searched" +
-    "\n Currently searched: " + search).status(200).end();
+  movieCollection.find({ $text: {$search: search} }, {fields: {}, sort: 'popularity', limit: 5}, function (error, rows) {
+    res.json(rows).status(200).end();
+  });
 });
 
 module.exports = router;
