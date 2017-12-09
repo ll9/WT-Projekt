@@ -54,23 +54,25 @@
     <br>
 
     <!--Filmanzeige-->
-    <div class="main" style="position:relative;">
-        <div id="overall_rating" style="text-align:center;" class="ov_rating"><p>4,8</p></div>
-        <div class="t_main" style="text-align:center;"><p>Title</p></div>
-        <div class="g_main" style="text-align:center;"><p>Genre</p></div>
-        <div class="d_main" style="text-align:center;"><p>Descriptions</div>
-        <div class="a_main" style="text-align:center;"><p>Actors</p></div>
-        <div class="img" style="text-align:center;"><p>Image</p></div>
-        <div class="trailer" style="text-align:center;">Trailer</div>
-    </div>
-    <div class="add">
-        <span class="eye"><i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i></span>
-    </div>
-    <div class="watched">
-        <span class="check"><i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i></span>
-    </div>
-    <br>
-    <br>
+    <template v-for="movie of currentMovies">
+        <div class="main" style="position:relative;">
+            <div id="overall_rating" style="text-align:center;" class="ov_rating"><p> {{movie.getRating() }} </p></div>
+            <div class="t_main" style="text-align:center;"><p> {{movie.getTitle()}} </p></div>
+            <div class="g_main" style="text-align:center;"><p> {{movie.getGenres() }} </p></div>
+            <div class="d_main" style="text-align:center;"><p> {{movie.getDescription()}} </div>
+            <div class="a_main" style="text-align:center;"><p> {{movie.getActors() }} </p></div>
+            <div class="img" style="text-align:center;"><p> {{movie.getImage() }}</p></div>
+            <div class="trailer" style="text-align:center;"> {{movie.getTrailer() }}</div>
+        </div>
+        <div class="add">
+            <span class="eye"><i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i></span>
+        </div>
+        <div class="watched">
+            <span class="check"><i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i></span>
+        </div>
+        <br>
+        <br>
+    </template>
 
     <!--start der Watchlist, eigentlich andere Seite-->
     <div class="watchlist">
