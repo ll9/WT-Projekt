@@ -56,7 +56,6 @@ new Vue({
                             movie.credits.cast.slice(0, 4).map(obj => obj.name).join(", "))
                     );
                 }
-                console.log(this.$data.currentMovies);
             });
         }
     }

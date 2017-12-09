@@ -63,9 +63,10 @@
             <div class="a_main" style="text-align:center;"><p> {{movie.getActors() }} </p></div>
             <div class="img" style="text-align:center;">
                 <img v-bind:src="movie.getImage()">
+            </div>
             <div class="trailer" style="text-align:center;">
                  <a v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
-                </div>
+            </div>
         </div>
         <div class="add">
             <span class="eye"><i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i></span>
