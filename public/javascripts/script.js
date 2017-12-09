@@ -48,8 +48,12 @@ new Vue({
                     this.$data.currentMovies.push(
                         //new Movie(movie.title, movie.genres.map(obj => obj.name).join(", "), movie.overview,
                         //    movie.vote_average, movie.poster_path, movie.videos, movie.credits)
-                        new Movie(movie.title, movie.genres.map(obj => obj.name).join(", "), movie.overview,
-                            movie.vote_average, null, null, movie.credits.cast.slice(0, 4).map(obj => obj.name).join(", "))
+                        new Movie(movie.title, movie.genres.map(obj => obj.name).join(", "),
+                            movie.overview,
+                            movie.vote_average, 
+                            "https://image.tmdb.org/t/p/" + "w150/" + movie.poster_path, 
+                            null, 
+                            movie.credits.cast.slice(0, 4).map(obj => obj.name).join(", "))
                     );
                 }
                 console.log(this.$data.currentMovies);

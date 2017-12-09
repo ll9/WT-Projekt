@@ -61,7 +61,8 @@
             <div class="g_main" style="text-align:center;"><p> {{movie.getGenres() }} </p></div>
             <div class="d_main" style="text-align:center;"><p> {{movie.getDescription()}} </div>
             <div class="a_main" style="text-align:center;"><p> {{movie.getActors() }} </p></div>
-            <div class="img" style="text-align:center;"><p> {{movie.getImage() }}</p></div>
+            <div class="img" style="text-align:center;">
+                <img v-bind:src="movie.getImage()">
             <div class="trailer" style="text-align:center;"> {{movie.getTrailer() }}</div>
         </div>
         <div class="add">
