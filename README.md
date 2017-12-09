@@ -14,6 +14,13 @@ In order to run this Website locally you will ned node + mongodb which contains 
 4. Start the server: `npm start`
 5. Check out the website in your browser at http://localhost:3000/
 
+#### To-do
+- Think of a name for the Website
+- Implement Slider (Year, Rating)
+- Implement Login
+- Implement Watchlist
+- Append to-do list (still missing a lot)
+
 #### Sample movie data:
 ```{
         "_id" : ObjectId("5a1b980d8955471028d16343"),
