@@ -13,6 +13,7 @@ new Vue({
     el: '#app',
     data: {
         selected: '',
+        searchText: '',
         genres: [
             'Action',
             'Adventure',
@@ -36,5 +37,12 @@ new Vue({
             'War',
             'Western'
         ]
+    },
+    methods: {
+        searchMovies: function() {
+            this.$http.get('/search/' + this.$data.searchText).then(resp => {
+                console.log(resp.body);
+            });
+        }
     }
 });
