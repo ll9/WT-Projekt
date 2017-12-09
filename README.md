@@ -2,7 +2,19 @@
 
 Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
 
+### Setup
+In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
+1. start your mongo database (`mongod --dbpath <path_to_database`)
+2. If your db has no text index yet: In your mongo shell: 
+    ```
+    use <dbName>
+    db.<collectionName>.createIndex({ title: "text"})
+    ```
+3. Install modules (only once): `npm install`
+4. Start the server: `npm start`
+5. Check out the website in your browser at http://localhost:3000/
 
+#### Sample movie data:
 ```{
         "_id" : ObjectId("5a1b980d8955471028d16343"),
         "adult" : false,
@@ -181,5 +193,4 @@ base url = https://www.youtube.com/watch?v=
 path = (f.e.) 7j8Ba9rWhUg 
 url = https://www.youtube.com/watch?v=7j8Ba9rWhUg
 Note: Example above has no trailer 
-
 
