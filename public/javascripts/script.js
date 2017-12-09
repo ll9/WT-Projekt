@@ -51,8 +51,8 @@ new Vue({
                         new Movie(movie.title, movie.genres.map(obj => obj.name).join(", "),
                             movie.overview,
                             movie.vote_average, 
-                            "https://image.tmdb.org/t/p/" + "w150/" + movie.poster_path, 
-                            null, 
+                            "https://image.tmdb.org/t/p/" + "w150/" + movie.poster_path,
+                            "https://www.youtube.com/watch?v=" + movie.videos.results[0].key, 
                             movie.credits.cast.slice(0, 4).map(obj => obj.name).join(", "))
                     );
                 }
