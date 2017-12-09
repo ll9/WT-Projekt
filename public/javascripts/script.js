@@ -10,7 +10,7 @@ function Movie(title, genre, description, rating, image, trailer, actors) {
 }
 
 new Vue({
-    el: '#genre',
+    el: '#app',
     data: {
         selected: '',
         genres: [

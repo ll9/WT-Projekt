@@ -12,89 +12,94 @@
 </head>
 <body>
 
-<!--statische Elemente, können für Watchlist übernommen werden-->
-<div><h1 class="title" style="text-align:center">Title</h1></div>
-<div class="icon1">
-    <i class="fa fa-home" aria-hidden="true"></i>
-</div>
-<br>
-<div class="icon2">
-    <i class="fa fa-eye" aria-hidden="true"></i>
-</div>
-<br>
-<div class="icon3">
-    <i class="fa fa-check-square-o" aria-hidden="true"></i>
-</div>
-<div class="login">
-    <button style="font-size:40px;"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
-</div>
-<!--Suchfunktionen-->
-<div class="container">
-    <div id="filter" class="filter">
-        <input type="search" placeholder="Search">
-        <button>
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
+<div id="app">
+    <!--statische Elemente, können für Watchlist übernommen werden-->
+    <div><h1 class="title" style="text-align:center">Title</h1></div>
+    <div class="icon1">
+        <i class="fa fa-home" aria-hidden="true"></i>
     </div>
-    <div id="genre" class="genre">
-        <select v-model="selected" id="select">
-            <option disabled value="">Please select Genre</option>
-            <option v-for="genre in genres"> {{genre}} </option>
-        </select>
+    <br>
+    <div class="icon2">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+    </div>
+    <br>
+    <div class="icon3">
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+    </div>
+    <div class="login">
+        <button style="font-size:40px;"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+    </div>
 
-        <span>Genre: {{ selected }}</span>
-        <input type="range" class="range">
-        <p>Year: {{ year }}</p>
-        <input type="range" class="range">
-        <p>Rating: {{ rating }}</p>
+    <!--Suchfunktionen-->
+    <div class="container">
+        <div id="filter" class="filter">
+            <input type="search" placeholder="Search">
+            <button>
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div id="genre" class="genre">
+            <select v-model="selected" id="select">
+                <option disabled value="">Please select Genre</option>
+                <option v-for="genre in genres"> {{genre}} </option>
+            </select>
+
+            <span>Genre: {{ selected }}</span>
+            <input type="range" class="range">
+            <p>Year: {{ year }}</p>
+            <input type="range" class="range">
+            <p>Rating: {{ rating }}</p>
+        </div>
     </div>
-</div>
-<br>
-<!--Filmanzeige-->
-<div class="main" style="position:relative;">
-    <div id="overall_rating" style="text-align:center;" class="ov_rating"><p>4,8</p></div>
-    <div class="t_main" style="text-align:center;"><p>Title</p></div>
-    <div class="g_main" style="text-align:center;"><p>Genre</p></div>
-    <div class="d_main" style="text-align:center;"><p>Descriptions</div>
-    <div class="a_main" style="text-align:center;"><p>Actors</p></div>
-    <div class="img" style="text-align:center;"><p>Image</p></div>
-    <div class="trailer" style="text-align:center;">Trailer</div>
-</div>
-<div class="add">
-    <span class="eye"><i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i></span>
-</div>
-<div class="watched">
-    <span class="check"><i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i></span>
-</div>
-<br>
-<br>
-<!--start der Watchlist, eigentlich andere Seite-->
-<div class="watchlist">
-    <table id="table_1" align="center" width="100%">
-        <tbody>
-        <tr><th colspan="6">to watch</th></tr>
-        <tr align="left">
-            <th width="20%">Image</th>
-            <th width="20%">Title</th>
-            <th width="5%">Year</th>
-            <th width="15%">Genre</th>
-            <th width="15%">Actors</th>
-            <th width="12.5%">Rating</th>
-            <th width="12.5%">Personal Rating</th>
-        </tr>
-        <tr id="whatever">
-            <td>Image</td>
-            <td valign="top">
-                <a class="tip" title="whatever">Title</a>
-            </td>
-            <td valign="top">Year</td>
-            <td valign="top">Genre</td>
-            <td valign="top">Actors</td>
-            <td valign="top">4,8</td>
-            <td valign="top">Sterne</td>
-        </tr>
-        </tbody>
-    </table>
+    <br>
+
+    <!--Filmanzeige-->
+    <div class="main" style="position:relative;">
+        <div id="overall_rating" style="text-align:center;" class="ov_rating"><p>4,8</p></div>
+        <div class="t_main" style="text-align:center;"><p>Title</p></div>
+        <div class="g_main" style="text-align:center;"><p>Genre</p></div>
+        <div class="d_main" style="text-align:center;"><p>Descriptions</div>
+        <div class="a_main" style="text-align:center;"><p>Actors</p></div>
+        <div class="img" style="text-align:center;"><p>Image</p></div>
+        <div class="trailer" style="text-align:center;">Trailer</div>
+    </div>
+    <div class="add">
+        <span class="eye"><i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i></span>
+    </div>
+    <div class="watched">
+        <span class="check"><i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i></span>
+    </div>
+    <br>
+    <br>
+    
+    <!--start der Watchlist, eigentlich andere Seite-->
+    <div class="watchlist">
+        <table id="table_1" align="center" width="100%">
+            <tbody>
+            <tr><th colspan="6">to watch</th></tr>
+            <tr align="left">
+                <th width="20%">Image</th>
+                <th width="20%">Title</th>
+                <th width="5%">Year</th>
+                <th width="15%">Genre</th>
+                <th width="15%">Actors</th>
+                <th width="12.5%">Rating</th>
+                <th width="12.5%">Personal Rating</th>
+            </tr>
+            <tr id="whatever">
+                <td>Image</td>
+                <td valign="top">
+                    <a class="tip" title="whatever">Title</a>
+                </td>
+                <td valign="top">Year</td>
+                <td valign="top">Genre</td>
+                <td valign="top">Actors</td>
+                <td valign="top">4,8</td>
+                <td valign="top">Sterne</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
