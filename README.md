@@ -18,7 +18,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 
 #### To-do
 - Think of a name for the Website
-- Implement Slider (Year, Rating)
+- Implement Slider (Year, ~~Rating~~)
+- Integrate Slider to Filter
 - Implement Login
 - Implement Watchlist
 - Append to-do list (still missing a lot)
