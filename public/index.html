@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vue-resource"></script>
@@ -10,106 +28,128 @@
 
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
+
 <body>
-
-<div id="app">
-    <!--statische Elemente, können für Watchlist übernommen werden-->
-    <div><h1 class="title" style="text-align:center">Title</h1></div>
-    <div class="icon1">
-        <i class="fa fa-home" aria-hidden="true"></i>
-    </div>
-    <br>
-    <div class="icon2">
-        <i class="fa fa-eye" aria-hidden="true"></i>
-    </div>
-    <br>
-    <div class="icon3">
-        <i class="fa fa-check-square-o" aria-hidden="true"></i>
-    </div>
-    <div class="login">
-        <button style="font-size:40px;"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
-    </div>
-
-    <!--Suchfunktionen-->
-    <div class="container">
-        <div id="filter" class="filter">
-            <input type="search" placeholder="Search" v-model="searchText">
-            <button v-on:click="searchMovies">
-                <i class="fa fa-search" aria-hidden="true"></i>
+    <div id="app">
+        <!--statische Elemente, können für Watchlist übernommen werden-->
+        <div>
+            <h1 class="title" style="text-align:center">Title</h1>
+        </div>
+        <div class="icon1">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <br>
+        <div class="icon2">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+        </div>
+        <br>
+        <div class="icon3">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        </div>
+        <div class="login">
+            <button style="font-size:40px;">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
             </button>
         </div>
-        <div id="genre" class="genre">
-            <select v-model="selected" id="select">
-                <option disabled value="">Please select Genre</option>
-                <option v-for="genre in genres"> {{genre}} </option>
-            </select>
 
-            <span>Genre: {{ selected }}</span>
-            <input type="range" min="1900" max="2017" v-model="year" class="range">
-            <p>Year: {{ year }}</p>
-            <input type="range" min="0" max="100" v-model="rating" class="range">
-            <p>Rating > {{ rating / 10.0 }}</p>
-        </div>
-    </div>
-    <br>
-
-    <!--Filmanzeige-->
-    <template v-for="movie of currentMovies">
-        <div class="main" style="position:relative;">
-            <div id="overall_rating" style="text-align:center;" class="ov_rating"><p> {{movie.getRating() }} </p></div>
-            <div class="t_main" style="text-align:center;"><p> {{movie.getTitle()}} </p></div>
-            <div class="g_main" style="text-align:center;"><p> {{movie.getGenres() }} </p></div>
-            <div class="d_main" style="text-align:center;"><p> {{movie.getDescription()}} </div>
-            <div class="a_main" style="text-align:center;"><p> {{movie.getActors() }} </p></div>
-            <div class="img" style="text-align:center;">
-                <img v-bind:src="movie.getImage()">
+        <!--Suchfunktionen-->
+        <div class="container">
+            <div id="filter" class="filter">
+                <input type="search" placeholder="Search" v-model="searchText">
+                <button v-on:click="searchMovies">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
             </div>
-            <div class="trailer" style="text-align:center;">
-                 <a v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
+              
+
+            <div id="genre" class="genre">
+                <select class="selectpicker" v-model="selected" id="select" multiple>
+                    <option disabled value="">Please select Genre</option>
+                    <option v-for="genre in genres"> {{genre}} </option>
+                </select>
+
+                <span>Genre: {{ selected }}</span>
+                <input type="range" min="1900" max="2017" v-model="year" class="range">
+                <p>Year: {{ year }}</p>
+                <input type="range" min="0" max="100" v-model="rating" class="range">
+                <p>Rating > {{ rating / 10.0 }}</p>
             </div>
         </div>
-        <div class="add">
-            <span class="eye"><i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i></span>
-        </div>
-        <div class="watched">
-            <span class="check"><i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i></span>
-        </div>
         <br>
-        <br>
-    </template>
 
-    <!--start der Watchlist, eigentlich andere Seite-->
-    <div class="watchlist">
-        <table id="table_1" align="center" width="100%">
-            <tbody>
-            <tr><th colspan="6">to watch</th></tr>
-            <tr align="left">
-                <th width="20%">Image</th>
-                <th width="20%">Title</th>
-                <th width="5%">Year</th>
-                <th width="15%">Genre</th>
-                <th width="15%">Actors</th>
-                <th width="12.5%">Rating</th>
-                <th width="12.5%">Personal Rating</th>
-            </tr>
-            <tr id="whatever">
-                <td>Image</td>
-                <td valign="top">
-                    <a class="tip" title="whatever">Title</a>
-                </td>
-                <td valign="top">Year</td>
-                <td valign="top">Genre</td>
-                <td valign="top">Actors</td>
-                <td valign="top">4,8</td>
-                <td valign="top">Sterne</td>
-            </tr>
-            </tbody>
-        </table>
+        <!--Filmanzeige-->
+        <template v-for="movie of currentMovies">
+            <div class="main" style="position:relative;">
+                <div id="overall_rating" style="text-align:center;" class="ov_rating">
+                    <p> {{movie.getRating() }} </p>
+                </div>
+                <div class="t_main" style="text-align:center;">
+                    <p> {{movie.getTitle()}} </p>
+                </div>
+                <div class="g_main" style="text-align:center;">
+                    <p> {{movie.getGenres() }} </p>
+                </div>
+                <div class="d_main" style="text-align:center;">
+                    <p> {{movie.getDescription()}} </div>
+                <div class="a_main" style="text-align:center;">
+                    <p> {{movie.getActors() }} </p>
+                </div>
+                <div class="img" style="text-align:center;">
+                    <img v-bind:src="movie.getImage()">
+                </div>
+                <div class="trailer" style="text-align:center;">
+                    <a v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
+                </div>
+            </div>
+            <div class="add">
+                <span class="eye">
+                    <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
+                </span>
+            </div>
+            <div class="watched">
+                <span class="check">
+                    <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
+                </span>
+            </div>
+            <br>
+            <br>
+        </template>
+
+        <!--start der Watchlist, eigentlich andere Seite-->
+        <div class="watchlist">
+            <table id="table_1" align="center" width="100%">
+                <tbody>
+                    <tr>
+                        <th colspan="6">to watch</th>
+                    </tr>
+                    <tr align="left">
+                        <th width="20%">Image</th>
+                        <th width="20%">Title</th>
+                        <th width="5%">Year</th>
+                        <th width="15%">Genre</th>
+                        <th width="15%">Actors</th>
+                        <th width="12.5%">Rating</th>
+                        <th width="12.5%">Personal Rating</th>
+                    </tr>
+                    <tr id="whatever">
+                        <td>Image</td>
+                        <td valign="top">
+                            <a class="tip" title="whatever">Title</a>
+                        </td>
+                        <td valign="top">Year</td>
+                        <td valign="top">Genre</td>
+                        <td valign="top">Actors</td>
+                        <td valign="top">4,8</td>
+                        <td valign="top">Sterne</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 
-<script type="text/javascript" src="javascripts/script.js"></script>
+    <script type="text/javascript" src="javascripts/script.js"></script>
 
 </body>
+
 </html>
