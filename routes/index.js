@@ -11,7 +11,7 @@ router.get('/search/:movieName', (req, res, next) => {
   var movieCollection = req.db.get('tmdb'); 
   var search = "\"" + req.params.movieName + "\""; //search whole phrase
 
-  movieCollection.find({ $text: {$search: search} }, {fields: {}, sort: {'popularity': -1}, limit: 5}, function (error, rows) {
+  movieCollection.find({ $text: {$search: search} }, {fields: {}, sort: {'popularity': -1}, limit: 50}, function (error, rows) {
     res.json(rows).status(200).end();
   });
 });
