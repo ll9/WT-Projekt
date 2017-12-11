@@ -9,11 +9,12 @@ function Movie(title, genres, description, rating, image, trailer, actors) {
     this.getActors = () => {return actors;}
 }
 
-new Vue({
+var mv = new Vue({
     el: '#app',
     data: {
         selected: '',
         searchText: '',
+        year: 1950,
         rating: 50,
         genres: [
             'Action',

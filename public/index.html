@@ -45,7 +45,7 @@
             </select>
 
             <span>Genre: {{ selected }}</span>
-            <input type="range" class="range">
+            <input type="range" min="1900" max="2017" v-model="year" class="range">
             <p>Year: {{ year }}</p>
             <input type="range" min="0" max="100" v-model="rating" class="range">
             <p>Rating > {{ rating / 10.0 }}</p>
