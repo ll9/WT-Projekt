@@ -42,15 +42,16 @@ var mv = new Vue({
         currentMovies: []
     },
     methods: {
+        // gets Movie from the database and inserts them into current movie
+        // take a look at index.js to see how the db provides the data
         searchMovies: function() {
             this.$http.get('/search/' + this.$data.searchText).then(resp => {
                 this.$data.currentMovies = [];
                 
                 for (movie of resp.body) {
                     this.$data.currentMovies.push(
-                        //new Movie(movie.title, movie.genres.map(obj => obj.name).join(", "), movie.overview,
-                        //    movie.vote_average, movie.poster_path, movie.videos, movie.credits)
-                        new Movie(movie.title, movie.genres.map(obj => obj.name).join(", "),
+                        new Movie(movie.title,
+                            movie.genres.map(obj => obj.name).join(", "),
                             movie.overview,
                             movie.vote_average, 
                             "https://image.tmdb.org/t/p/" + "w150/" + movie.poster_path,
