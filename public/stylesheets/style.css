@@ -18,6 +18,11 @@
   margin: auto;
   width: 70%;
 }
+.genrebox {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+}
 .range{
   position: relative;
   margin: auto;

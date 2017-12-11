@@ -12,7 +12,7 @@ function Movie(title, genres, description, rating, image, trailer, actors) {
 var mv = new Vue({
     el: '#app',
     data: {
-        selected: '',
+        selected: [],
         searchText: '',
         year: 1950,
         rating: 50,
