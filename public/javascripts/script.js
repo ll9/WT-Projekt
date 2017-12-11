@@ -14,7 +14,7 @@ new Vue({
     data: {
         selected: '',
         searchText: '',
-        rating: 5,
+        rating: 50,
         genres: [
             'Action',
             'Adventure',
