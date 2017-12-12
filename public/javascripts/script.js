@@ -1,3 +1,11 @@
+$(document).ready(function () {
+    $(".bs-select-all").on('click', function(event) {
+        $('.selectpicker').selectpicker('toggle');        
+        // Don't use the regular event (select all)
+        event.stopPropagation();  
+    });  
+})
+
 
 function Movie(title, genres, description, rating, image, trailer, actors) {
     this.getTitle = () => {return title;}
