@@ -21,10 +21,14 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - Implement Watchlist
 - Implement Login
 - ~~Implement Slider (Year, Rating)~~
+- Fix Movie Description (Some Descriptions are too long and overflow)
 - Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders
-- Implement Mulit-Genre-Selection
+- Implement Mulit-Genre-Selection __=> Working on it (ll9)__
 - Implement filters (Rating, Year, Genre)
 - Implement search by actor (might be a difficult)
+- Load some movies when you visit the page for the first time (most popular?)
+- Fix Error when there is no picture (template picture?)
+- Implement dynamic loading (endless scrolling?)
 - *Make Website prettier*
 - Append to-do list (still missing a lot)
 
