@@ -11,7 +11,26 @@ router.get('/search/:movieName', (req, res, next) => {
   var movieCollection = req.db.get('tmdb'); 
   var search = "\"" + req.params.movieName + "\""; //search whole phrase
 
-  movieCollection.find({ $text: {$search: search} }, {fields: {}, sort: {'popularity': -1}, limit: 50}, function (error, rows) {
+
+  var query = {
+    $text: {$search: search},
+    // if genres in req.query create genre filter, else do nothing
+    ...('genres' in req.query) && 
+    {
+      genres: 
+      {
+        $all: req.query.genres.split(',').map( genre => ( {$elemMatch: {name: genre}} ) )
+      }
+    } 
+  }
+
+  var options = {
+    fields: {},
+    sort: {'popularity': -1},
+    limit: 50
+  };
+
+  movieCollection.find( query, options, function (error, rows) {
     res.json(rows).status(200).end();
   });
 });

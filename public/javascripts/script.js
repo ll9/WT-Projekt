@@ -53,7 +53,11 @@ var mv = new Vue({
         // gets Movie from the database and inserts them into current movie
         // take a look at index.js to see how the db provides the data
         searchMovies: function() {
-            this.$http.get('/search/' + this.$data.searchText).then(resp => {
+            var query = '?' +
+                (this.selected.length != 0 ? "genres="+this.selected : '');
+
+
+            this.$http.get('/search/' + this.$data.searchText + query).then(resp => {
                 this.$data.currentMovies = [];
                 
                 for (movie of resp.body) {

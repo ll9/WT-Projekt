@@ -24,7 +24,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - Fix Movie Description (Some Descriptions are too long and overflow)
 - Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)
 - ~~Implement Mulit-Genre-Selection~~
-- Implement filters (Rating, Year, Genre) (Wierer)
+- Implement filters (Rating, Year, ~~Genre~~) (Wierer)
 - Implement search by person (might be difficult)
 - Load some movies when you visit the page for the first time (most popular?)
 - Fix Error when there is no picture (template picture?)

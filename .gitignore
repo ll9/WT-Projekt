@@ -1,6 +1,7 @@
 tmp/mongo/data/*
 node_modules/
 .idea/
-
+.vscode/
+npm-debug.log
 
 !tmp/mongo/data/dummy
