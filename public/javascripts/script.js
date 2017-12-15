@@ -20,6 +20,17 @@ function Movie(title, genres, description, rating, image, trailer, actors) {
 var mv = new Vue({
     el: '#app',
     data: {
+        yearValue: [1900, 2018],
+        yearOptions: {
+            min: 1900,
+            max: 2018
+        },
+        ratingValue: 0,
+        ratingOptions: {
+            min: 0,
+            max: 10,
+            interval: 0.1
+        },
         selected: [],
         searchText: '',
         year: 1950,
@@ -73,5 +84,8 @@ var mv = new Vue({
                 }
             });
         }
-    }
+    },
+    components: {
+    'vueSlider': window[ 'vue-slider-component' ],
+  }
 });

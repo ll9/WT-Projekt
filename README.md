@@ -22,7 +22,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - Implement Login
 - ~~Implement Slider (Year, Rating)~~
 - Fix Movie Description (Some Descriptions are too long and overflow)
-- Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)
+- ~~Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)~~
 - ~~Implement Mulit-Genre-Selection~~
 - Implement filters (Rating, Year, ~~Genre~~) (Wierer)
 - Implement search by person (might be difficult)
@@ -31,6 +31,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - Implement dynamic loading (endless scrolling?)
 - *Make Website prettier*
 - Cast links to their tmdb page
+- Fix Rating of upcoming movies (rating: 0 to 'tbd')
+- Optional: In the future it might be a good idea to refactore the project (multiple vue files etc.)
 - Append to-do list (still missing a lot)
 
 

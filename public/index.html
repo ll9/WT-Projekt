@@ -74,10 +74,10 @@
                 </div>
 
                 <span>Genre: {{ selected }}</span>
-                <input type="range" min="1900" max="2017" v-model="year" class="range">
-                <p>Year: {{ year }}</p>
-                <input type="range" min="0" max="100" v-model="rating" class="range">
-                <p>Rating > {{ rating / 10.0 }}</p>
+                <vue-slider v-model="yearValue" v-bind="yearOptions"></vue-slider>
+                <span>Year: {{ yearValue }}</span>
+                <vue-slider v-model="ratingValue" v-bind="ratingOptions"></vue-slider>
+                <p>Rating > {{ ratingValue }}</p>
             </div>
         </div>
         <br>
@@ -152,7 +152,7 @@
         </div>
     </div>
 
-
+    <script src="https://nightcatsama.github.io/vue-slider-component/dist/index.js"></script>
     <script type="text/javascript" src="javascripts/script.js"></script>
 </body>
 
