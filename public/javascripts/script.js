@@ -60,15 +60,17 @@ var mv = new Vue({
         ],
         currentMovies: []
     },
+
+    mounted: function() {
+        this.getMovieByURL('/search/popular')
+    },
+    
     methods: {
         // gets Movie from the database and inserts them into current movie
         // take a look at index.js to see how the db provides the data
-        searchMovies: function() {
-            var query = '?' +
-                (this.selected.length != 0 ? "genres="+this.selected : '');
+        getMovieByURL: function(url) {
 
-
-            this.$http.get('/search/' + this.$data.searchText + query).then(resp => {
+            this.$http.get(url).then(resp => {
                 this.$data.currentMovies = [];
                 
                 for (movie of resp.body) {
@@ -83,6 +85,13 @@ var mv = new Vue({
                     );
                 }
             });
+        },
+        searchMovies: function() {
+            var baseURL = '/search/movies/' + this.searchText;
+            var query = '?' +
+                (this.selected.length != 0 ? "genres="+this.selected : '');
+
+            this.getMovieByURL(baseURL + query);
         }
     },
     components: {

@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.sendFile('index.html').status(200).end();
 });
 
-router.get('/search/:movieName', (req, res, next) => {
+router.get('/search/movies/:movieName', (req, res, next) => {
   // get mongodb collection from app.js, Collection is called tmdb in mongo database
   var movieCollection = req.db.get('tmdb'); 
   var search = "\"" + req.params.movieName + "\""; //search whole phrase
@@ -26,6 +26,24 @@ router.get('/search/:movieName', (req, res, next) => {
 
   var options = {
     fields: {},
+    sort: {'popularity': -1},
+    limit: 50
+  };
+
+  movieCollection.find( query, options, function (error, rows) {
+    res.json(rows).status(200).end();
+  });
+});
+
+router.get('/search/popular', (req, res, next) => {
+  // get mongodb collection from app.js, Collection is called tmdb in mongo database
+  var movieCollection = req.db.get('tmdb'); 
+
+  var query = {
+
+  };
+
+  var options = {
     sort: {'popularity': -1},
     limit: 50
   };

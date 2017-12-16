@@ -26,7 +26,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - ~~Implement Mulit-Genre-Selection~~
 - Implement filters (Rating, Year, ~~Genre~~) (Wierer)
 - Implement search by person (might be difficult)
-- Load some movies when you visit the page for the first time (most popular?) (Wierer)
+- ~~Load some movies when you visit the page for the first time (most popular?) (Wierer)~~
+- When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
 - Fix Error when there is no picture (template picture?)
 - Implement dynamic loading (endless scrolling?)
 - *Make Website prettier*
