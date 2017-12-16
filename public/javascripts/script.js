@@ -89,7 +89,10 @@ var mv = new Vue({
         searchMovies: function() {
             var baseURL = '/search/movies/' + this.searchText;
             var query = '?' +
-                (this.selected.length != 0 ? "genres="+this.selected : '');
+                (this.selected.length != 0 ? "&genres="+this.selected : '') + 
+                (this.ratingValue > 0 ? "&rating="+this.ratingValue : '') +
+                (this.yearValue[0] != 1900 || this.yearValue[1] != 2018 ? 
+                    "&years="+this.yearValue : '');
 
             this.getMovieByURL(baseURL + query);
         }

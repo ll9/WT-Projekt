@@ -21,7 +21,17 @@ router.get('/search/movies/:movieName', (req, res, next) => {
       {
         $all: req.query.genres.split(',').map( genre => ( {$elemMatch: {name: genre}} ) )
       }
-    } 
+    } ,
+    // if rating in req.query create rating filter, else do nothing
+    ...('rating' in req.query) && 
+    { vote_average: { $gt: parseFloat(req.query.rating)} } ,
+    // if year in req.query create rating filter, else do nothing
+    ...('years' in req.query) && 
+    { release_date: { 
+        $gt: req.query.years.split(',')[0],
+        $lt: (req.query.years.split(',')[1] + '-31-12') 
+      } 
+    }
   }
 
   var options = {

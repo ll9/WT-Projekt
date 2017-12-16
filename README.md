@@ -24,7 +24,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - Fix Movie Description (Some Descriptions are too long and overflow)
 - ~~Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)~~
 - ~~Implement Mulit-Genre-Selection~~
-- Implement filters (Rating, Year, ~~Genre~~) (Wierer)
+- ~~Implement filters (Rating, Year, Genre) (Wierer)~~
+- Fix Sci-Fi Genre filter (doesn't filter correctly because 'Sci-Fi' is not the same as 'Science Fiction' (or was it the other way around?))
 - Implement search by person (might be difficult)
 - ~~Load some movies when you visit the page for the first time (most popular?) (Wierer)~~
 - When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
