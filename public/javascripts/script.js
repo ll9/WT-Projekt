@@ -28,11 +28,10 @@ function Movie(movie) {
             return baseURL + movie.videos.results[0].key
     };
     this.getActors = () => {
-        return 
-            movie.credits.cast
-                .slice(0, 4)
-                .map(obj => obj.name)
-                .join(", ")
+        return movie.credits.cast
+            .slice(0, 4)
+            .map(obj => obj.name)
+            .join(", ");
     }
 }
 
