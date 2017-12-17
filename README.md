@@ -20,9 +20,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Think of a name for the Website
 - [ ] Implement Watchlist
 - [ ] Implement Login
-- [ ] Add year next to title (Wierer)
 - [ ] Let Home Button Return to homepage (Wierer)
-- [ ] Add year next to title (Wierer)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow)
 - [ ] Implement search by person (might be difficult)
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
@@ -31,7 +29,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] *Make Website prettier*
 - [ ] Cast links to their tmdb page (Wierer)
 - [ ] Fix Rating of upcoming movies (rating: 0 to 'tbd')
-- [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc.)
+- [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
 - [x] Implement Slider (Year, Rating)
@@ -40,6 +38,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Implement Mulit-Genre-Selection
 - [x] Implement filters (Rating, Year, Genre) (Wierer)
 - [x] Fix Sci-Fi Genre filter (doesn't filter correctly because 'Sci-Fi' is not the same as 'Science Fiction' (or was it the other way around?)) (Wierer)
+- [x] Add year next to title (Wierer)
 
 
 

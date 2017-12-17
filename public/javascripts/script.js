@@ -7,14 +7,31 @@ $(document).ready(function () {
 })
 
 
-function Movie(title, genres, description, rating, image, trailer, actors) {
-    this.getTitle = () => {return title;}
-    this.getGenres = () => {return genres;}
-    this.getDescription = () => {return description;}
-    this.getRating = () => {return rating;}
-    this.getImage = () => {return image;}
-    this.getTrailer = () => {return trailer;}
-    this.getActors = () => {return actors;}
+function Movie(movie) {
+    this.getYear = () => movie.release_date.split('-')[0];
+    this.getTitle = () => `${movie.title} (${this.getYear()})`;
+    this.getGenres = () => movie.genres.map(obj => obj.name).join(", ");
+    this.getDescription = () => movie.overview;
+    this.getRating = () => movie.vote_average;
+    this.getImage = () => {
+        const baseURL = "https://image.tmdb.org/t/p/";
+        const picutreSize = "w150/";
+        return baseURL + picutreSize + movie.poster_path;
+    };
+    this.getTrailer = () => {
+        const baseURL = "https://www.youtube.com/watch?v=";
+        if (movie.videos.results.length === 0) 
+            return null;
+        else
+            return baseURL + movie.videos.results[0].key
+    };
+    this.getActors = () => {
+        return 
+            movie.credits.cast
+                .slice(0, 4)
+                .map(obj => obj.name)
+                .join(", ")
+    }
 }
 
 var mv = new Vue({
@@ -75,13 +92,7 @@ var mv = new Vue({
                 
                 for (movie of resp.body) {
                     this.$data.currentMovies.push(
-                        new Movie(movie.title,
-                            movie.genres.map(obj => obj.name).join(", "),
-                            movie.overview,
-                            movie.vote_average, 
-                            "https://image.tmdb.org/t/p/" + "w150/" + movie.poster_path,
-                            movie.videos.results.length === 0 ? null: "https://www.youtube.com/watch?v=" + movie.videos.results[0].key,           
-                            movie.credits.cast.slice(0, 4).map(obj => obj.name).join(", "))
+                        new Movie(movie)
                     );
                 }
             });
