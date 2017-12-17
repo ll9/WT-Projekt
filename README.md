@@ -40,6 +40,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Add year next to title (Wierer)
 - [x] Let Home Button Return to homepage (Wierer)
 - [x] Fix Error when there is no picture (template picture?) (Wierer)
+- [x] Remove Trailer Button if there is no Trailer (Wierer)
 
 
 

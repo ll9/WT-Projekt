@@ -107,7 +107,7 @@
                     <img v-bind:src="movie.getImage()">
                 </div>
                 <div class="trailer" style="text-align:center;">
-                    <a v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
+                    <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
                 </div>
             </div>
             <div class="add">
