@@ -51,7 +51,7 @@ var mv = new Vue({
             'Music',
             'Mystery',
             'Romance',
-            'Sci-Fi',
+            'Science Fiction',
             'Short',
             'Sport',
             'Thriller',

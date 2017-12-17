@@ -2,7 +2,7 @@
 
 Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
 
-[![webpage](docs/assets/example-webpage.PNG)](docs/assets/webpage-demonstration.mp4)
+[![webpage](docs/assets/example-webpage-v2.PNG)](docs/assets/webpage-demonstration.mp4)
 
 ### Setup
 In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
@@ -17,26 +17,30 @@ In order to run this Website locally you will ned node + mongodb which contains 
 5. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
-- Think of a name for the Website
-- Implement Watchlist
-- Implement Login
-- Add year next to title
-- ~~Implement Slider (Year, Rating)~~
-- Fix Movie Description (Some Descriptions are too long and overflow)
-- ~~Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)~~
-- ~~Implement Mulit-Genre-Selection~~
-- ~~Implement filters (Rating, Year, Genre) (Wierer)~~
-- Fix Sci-Fi Genre filter (doesn't filter correctly because 'Sci-Fi' is not the same as 'Science Fiction' (or was it the other way around?))
-- Implement search by person (might be difficult)
-- ~~Load some movies when you visit the page for the first time (most popular?) (Wierer)~~
-- When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
-- Fix Error when there is no picture (template picture?)
-- Implement dynamic loading (endless scrolling?)
-- *Make Website prettier*
-- Cast links to their tmdb page
-- Fix Rating of upcoming movies (rating: 0 to 'tbd')
-- Optional: In the future it might be a good idea to refactore the project (multiple vue files etc.)
-- Append to-do list (still missing a lot)
+- [ ] Think of a name for the Website
+- [ ] Implement Watchlist
+- [ ] Implement Login
+- [ ] Add year next to title (Wierer)
+- [ ] Let Home Button Return to homepage (Wierer)
+- [ ] Add year next to title (Wierer)
+- [ ] Fix Movie Description (Some Descriptions are too long and overflow)
+- [ ] Implement search by person (might be difficult)
+- [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
+- [ ] Fix Error when there is no picture (template picture?) (Wierer)
+- [ ] Implement dynamic loading (endless scrolling?)
+- [ ] *Make Website prettier*
+- [ ] Cast links to their tmdb page (Wierer)
+- [ ] Fix Rating of upcoming movies (rating: 0 to 'tbd')
+- [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc.)
+- [ ] Append to-do list (still missing a lot)
+---
+- [x] Implement Slider (Year, Rating)
+- [x] Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)
+- [x] Load some movies when you visit the page for the first time (most popular?) (Wierer)
+- [x] Implement Mulit-Genre-Selection
+- [x] Implement filters (Rating, Year, Genre) (Wierer)
+- [x] Fix Sci-Fi Genre filter (doesn't filter correctly because 'Sci-Fi' is not the same as 'Science Fiction' (or was it the other way around?)) (Wierer)
+
 
 
 #### Sample movie data:
