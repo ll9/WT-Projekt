@@ -22,8 +22,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Implement Login
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow)
 - [ ] Implement search by person (might be difficult)
+- [ ] Find better template picture
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
-- [ ] Fix Error when there is no picture (template picture?) (Wierer)
 - [ ] Implement dynamic loading (endless scrolling?)
 - [ ] *Make Website prettier*
 - [ ] Cast links to their tmdb page (Wierer)
@@ -39,6 +39,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Fix Sci-Fi Genre filter (doesn't filter correctly because 'Sci-Fi' is not the same as 'Science Fiction' (or was it the other way around?)) (Wierer)
 - [x] Add year next to title (Wierer)
 - [x] Let Home Button Return to homepage (Wierer)
+- [x] Fix Error when there is no picture (template picture?) (Wierer)
 
 
 
