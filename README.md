@@ -20,7 +20,6 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Think of a name for the Website
 - [ ] Implement Watchlist
 - [ ] Implement Login
-- [ ] Let Home Button Return to homepage (Wierer)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow)
 - [ ] Implement search by person (might be difficult)
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
@@ -39,6 +38,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Implement filters (Rating, Year, Genre) (Wierer)
 - [x] Fix Sci-Fi Genre filter (doesn't filter correctly because 'Sci-Fi' is not the same as 'Science Fiction' (or was it the other way around?)) (Wierer)
 - [x] Add year next to title (Wierer)
+- [x] Let Home Button Return to homepage (Wierer)
 
 
 
