@@ -18,15 +18,17 @@ In order to run this Website locally you will ned node + mongodb which contains 
 
 #### To-do
 - [ ] Think of a name for the Website
-- [ ] Implement Watchlist
 - [ ] Implement Login
+- [ ] __Design Watchlist__
+- [ ] Implement Adding to watchlist
+- [ ] Implement Personal Rating
+- [ ] create database which stores user information (watching, rating etc.)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow)
 - [ ] Implement search by person (might be difficult)
 - [ ] Find better template picture
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
-- [ ] Implement dynamic loading (endless scrolling?)
+- [ ] Implement dynamic loading (endless scrolling?) (Wierer)
 - [ ] *Make Website prettier*
-- [ ] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
@@ -41,6 +43,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Fix Error when there is no picture (template picture?) (Wierer)
 - [x] Remove Trailer Button if there is no Trailer (Wierer)
 - [x] Cast links to their tmdb page (Wierer)
+- [x] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)
 
 
 

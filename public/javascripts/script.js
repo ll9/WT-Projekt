@@ -11,9 +11,14 @@ function Movie(movie) {
     this.getYear = () => movie.release_date.split('-')[0];
     this.getTitle = () => movie.title;
     this.getTitleYear = () => `${this.getTitle()} (${this.getYear()})`;
+    this.isReleased = () => {
+        let today = new Date();
+        let release = new Date(movie.release_date)
+        return today > release;
+    }
     this.getGenres = () => movie.genres.map(obj => obj.name).join(", ");
     this.getDescription = () => movie.overview;
-    this.getRating = () => movie.vote_average;
+    this.getRating = () => this.isReleased() ? movie.vote_average: 'tbd';
     this.getImage = () => {
         const baseURL = "https://image.tmdb.org/t/p/";
         const picutreSize = "w150/";
