@@ -26,8 +26,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
 - [ ] Implement dynamic loading (endless scrolling?)
 - [ ] *Make Website prettier*
-- [ ] Cast links to their tmdb page (Wierer)
-- [ ] Fix Rating of upcoming movies (rating: 0 to 'tbd')
+- [ ] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
@@ -41,6 +40,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Let Home Button Return to homepage (Wierer)
 - [x] Fix Error when there is no picture (template picture?) (Wierer)
 - [x] Remove Trailer Button if there is no Trailer (Wierer)
+- [x] Cast links to their tmdb page (Wierer)
 
 
 

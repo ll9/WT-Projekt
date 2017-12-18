@@ -27,11 +27,10 @@ function Movie(movie) {
         else
             return baseURL + movie.videos.results[0].key
     };
-    this.getActors = () => {
-        return movie.credits.cast
-            .slice(0, 4)
-            .map(obj => obj.name)
-            .join(", ");
+    this.getActors = () => movie.credits.cast.slice(0, 4);
+    this.getActorLink = (actor) => {
+        const baseURL="https://www.themoviedb.org/person/";
+        return baseURL+actor.id+'-'+actor.name.replace(' ', '-');
     }
 }
 

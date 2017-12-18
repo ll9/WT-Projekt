@@ -101,7 +101,10 @@
                 <div class="d_main" style="text-align:center;">
                     <p> {{movie.getDescription()}} </div>
                 <div class="a_main" style="text-align:center;">
-                    <p> {{movie.getActors() }} </p>
+                    <template v-for="(actor,index) of movie.getActors()">
+                        <a target="_blank" v-bind:href="movie.getActorLink(actor)">
+                            {{actor.name}}</a><span v-if="(index+1)!==movie.getActors().length">, </span>
+                    </template>
                 </div>
                 <div class="img" style="text-align:center;">
                     <img v-bind:src="movie.getImage()">
