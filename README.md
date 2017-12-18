@@ -17,11 +17,11 @@ In order to run this Website locally you will ned node + mongodb which contains 
 5. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
-- [ ] Think of a name for the Website
-- [ ] Implement Login
-- [ ] __Design Watchlist__
-- [ ] Implement Adding to watchlist
-- [ ] Implement Personal Rating
+- [ ] Think of a name for the Website (Hofmann)
+- [ ] Implement Login (Hofmann)
+- [ ] __Design Watchlist__ (Hofmann)
+- [ ] Implement Adding to watchlist (Hofmann)
+- [ ] Implement Personal Rating (Hofmann)
 - [ ] create database which stores user information (watching, rating etc.)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow)
 - [ ] Implement search by person (might be difficult)
