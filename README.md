@@ -28,7 +28,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Find better template picture
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation
 - [ ] Implement dynamic loading (endless scrolling?) (Wierer)
-- [ ] *Make Website prettier*
+- [ ] *Make Website prettier* (Hofmann, later)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
