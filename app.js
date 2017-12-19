@@ -11,7 +11,8 @@ var users = require('./routes/users');
 var app = express();
 
 const url = 'localhost:27017/tmpusr'; // Contains default mongo Port (27017) and name of the database (tmpusr)
-const db = require('monk')(url); // Get the Database with monk
+// Get database remotely with environment variable or locally with local mongodb
+const db = require('monk')(process.env._MONGODB_URI || url); // Get the Database with monk
 
 
 // view engine setup
