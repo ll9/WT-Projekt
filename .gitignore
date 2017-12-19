@@ -4,5 +4,6 @@ node_modules/
 .vscode/
 npm-debug.log
 package-lock.json
+data/
 
 !tmp/mongo/data/dummy
