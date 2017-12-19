@@ -23,7 +23,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Implement Adding to watchlist (Hofmann) !
 - [ ] Implement Personal Rating (Hofmann)
 - [ ] create database which stores user information (watching, rating etc.)
-- [ ] Fix Movie Description (Some Descriptions are too long and overflow) !
+- [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
 - [ ] Implement search by person (might be difficult)
 - [ ] Find better template picture 
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation !
