@@ -18,7 +18,6 @@ In order to run this Website locally you will ned node + mongodb which contains 
 5. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
-- [ ] Think of a name for the Website (Hofmann) !
 - [ ] Implement Login (Hofmann) !
 - [ ] __Design Watchlist__ (Hofmann) !
 - [ ] Implement Adding to watchlist (Hofmann) !
@@ -33,6 +32,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] Think of a name for the Website (Hofmann)
 - [x] Implement Slider (Year, Rating)
 - [x] Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)
 - [x] Load some movies when you visit the page for the first time (most popular?) (Wierer)
