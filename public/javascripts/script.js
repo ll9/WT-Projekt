@@ -118,3 +118,42 @@ var mv = new Vue({
     'vueSlider': window[ 'vue-slider-component' ],
   }
 });
+/*
+// Google backend Authentication with XHR
+function onSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+}
+
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'https://yourbackend.example.com/tokensignin');
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.onload = function() {
+    console.log('Signed in as: ' + xhr.responseText);
+};
+xhr.send('idtoken=' + id_token);
+
+
+// Using Google API Client Libary
+// Node.js: $ npm install google-auth-libary --save
+// https://developers.google.com/identity/sign-in/web/backend-auth
+var GoogleAuth = require('google-auth-library');
+var auth = new GoogleAuth;
+var client = new auth.OAuth2(CLIENT_ID, '', '');
+client.verifyIdToken(
+    token,
+    CLIENT_ID,
+    // Or, if multiple clients access the backend:
+    //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3],
+    function(e, login) {
+        var payload = login.getPayload();
+        var userid = payload['sub'];
+        // If request specified a G Suite domain:
+        //var domain = payload['hd'];
+    });
+
+// auth2 load
+gapi.load('auth2', function()){
+    gapi.auth2.init();
+}
+*/
+// https://github.com/GoogleChromeLabs/google-sign-in?utm_campaign=identity_series_samplecode_030916&utm_source=gdev&utm_medium=yt-annt
