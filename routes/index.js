@@ -1,9 +1,20 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
-/* GET home page. */
+
+
+//GET home page. 
 router.get('/', function(req, res, next) {
-  res.sendFile('index.html').status(200).end();
+  res.sendFile(path.join(__dirname,'../public/index.html'));
+});
+
+router.get('/watching', function(req, res, next) {
+  res.sendFile(path.join(__dirname,'../public/watching.html'));
+});
+
+router.get('/watched', function(req, res, next) {
+  res.sendFile(path.join(__dirname,'../public/watched.html'));
 });
 
 router.get('/search/movies/:movieName', (req, res, next) => {
