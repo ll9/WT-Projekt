@@ -28,14 +28,14 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Find better template picture 
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation !
 - [ ] Move Watchlist to seperate Page !
-- [ ] Remove 'no more data' text, when endless scrolling is finished/ still loading (Wierer)
-- [ ] Fix Endless Scrolling Bug (Scrolling Animation even though there is nothing more to scroll) (Wierer) !
 - [ ] Add Animation when you are searching for a movie (might be possible with endless scrolling Animation)
 - [ ] Provide a Database with ~ 50.000 movies which also can handle user information (Wierer) !
+- [ ] Fix Endless Scrolling Bug (Scrolling Animation even though there is nothing more to scroll) 
 - [ ] *Make Website prettier* (Hofmann, later) !
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] Remove 'no more data' text, when endless scrolling is finished/ still loading (Wierer)
 - [x] Implement dynamic loading (endless scrolling?) (Wierer) !
 - [x] Think of a name for the Website (Hofmann)
 - [x] Implement Slider (Year, Rating)

@@ -165,7 +165,9 @@
             <br>
             <br>
         </template>
-        <infinite-loading spinner="waveDots" v-on:infinite="infiniteHandler"></infinite-loading>
+        <infinite-loading spinner="waveDots" v-on:infinite="infiniteHandler">
+            <span slot="no-more"></span>
+        </infinite-loading>
 
         <!--start der Watchlist, eigentlich andere Seite-->
         <div class="watchlist">
