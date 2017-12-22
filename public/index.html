@@ -7,6 +7,7 @@
 
     <!-- IMPORTANT DO NOT MOVE THIS SCRIPT AFTER JQUERY IMPORT -->
     <script src="https://nightcatsama.github.io/vue-slider-component/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-infinite-loading@2.2.3/dist/vue-infinite-loading.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
@@ -125,7 +126,7 @@
         <br>
 
         <!--Filmanzeige-->
-        <template v-for="movie of currentMovies">
+        <template v-for="movie of displayedMovies">
             <div class="main" style="position:relative;">
                 <div id="overall_rating" style="text-align:center;" class="ov_rating">
                     <p> {{movie.getRating() }} </p>
@@ -164,6 +165,7 @@
             <br>
             <br>
         </template>
+        <infinite-loading spinner="waveDots" v-on:infinite="infiniteHandler"></infinite-loading>
 
         <!--start der Watchlist, eigentlich andere Seite-->
         <div class="watchlist">

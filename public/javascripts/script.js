@@ -81,7 +81,8 @@ var mv = new Vue({
             'War',
             'Western'
         ],
-        currentMovies: []
+        currentMovies: [],  // All movies found by the db
+        displayedMovies: [], // Movies which are displayed on the website (endless scrolling)
     },
 
     mounted: function() {
@@ -94,13 +95,14 @@ var mv = new Vue({
         getMovieByURL: function(url) {
 
             this.$http.get(url).then(resp => {
-                this.$data.currentMovies = [];
+                this.currentMovies = [];
                 
                 for (movie of resp.body) {
                     this.$data.currentMovies.push(
                         new Movie(movie)
                     );
                 }
+                this.displayedMovies = this.currentMovies.slice(0, 10);
             });
         },
         searchMovies: function() {
@@ -112,10 +114,22 @@ var mv = new Vue({
                     "&years="+this.yearValue : '');
 
             this.getMovieByURL(baseURL + query);
-        }
+        },
+        infiniteHandler($state) {
+            console.log("infinite Handler");
+            setTimeout(() => {
+                let len = this.displayedMovies.length + 5;
+                for (let i = this.displayedMovies.length; i < len && i < this.currentMovies.length; i++) {
+                    this.displayedMovies.push(this.currentMovies[i]);
+                    console.log(`i: ${i} displaylength: ${this.displayedMovies.length} curlen: ${this.currentMovies.length}`);
+                }
+                $state.loaded();
+            }, 1000);
+        },
     },
     components: {
     'vueSlider': window[ 'vue-slider-component' ],
+    'infinite-loading': window.VueInfiniteLoading.default,
   }
 });
 /*
