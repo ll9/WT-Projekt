@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(window).on('load', function() {
     $(".bs-select-all").on('click', function(event) {
-        $('.selectpicker').selectpicker('toggle');        
+        $('.selectpicker').selectpicker('toggle');
         // Don't use the regular event (select all)
-        event.stopPropagation();  
-    });  
-})
+        event.stopPropagation();
+    });
+});
 
 
 function Movie(movie) {
@@ -86,7 +86,7 @@ var mv = new Vue({
     },
 
     mounted: function() {
-        this.getMovieByURL('/search/popular')
+        this.getMovieByURL('/search/popular');
     },
     
     methods: {
