@@ -94,6 +94,7 @@ var mv = new Vue({
         // take a look at index.js to see how the db provides the data
         getMovieByURL: function(url) {
             this.currentMovies = [];
+            // needs to be reseted (can be already completed by previous search)
             this.$refs.infiniteLoading.$emit('$InfiniteLoading:reset');
 
             this.$http.get(url).then(resp => {

@@ -101,7 +101,7 @@
         <!--Suchfunktionen-->
         <div class="container">
             <div id="filter" class="filter">
-                <input type="search" placeholder="Search" v-model="searchText">
+                <input type="search" placeholder="Search" v-model="searchText" v-on:keyup.enter="searchMovies">
                 <button v-on:click="searchMovies">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
