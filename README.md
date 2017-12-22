@@ -7,7 +7,7 @@ You can check out the heroku demo webpage [here](https://radiant-tor-61008.herok
 
 ### Setup
 In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
-1. start your mongo database (`mongod --dbpath <path_to_database`)
+1. start your mongo database (`mongod --dbpath <path_to_database>`)
 2. If your db has no text index yet: In your mongo shell: 
     ```
     use <dbName>
@@ -22,15 +22,14 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] __Design Watchlist__ (Hofmann) !
 - [ ] Implement Adding to watchlist (Hofmann) !
 - [ ] Implement Personal Rating (Hofmann)
-- [ ] create database which stores user information (watching, rating etc.)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
-- [ ] Implement search by person (might be difficult)
 - [ ] Find better template picture 
 - [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation !
-- [ ] Provie a proper respone when nothing is found
+- [ ] Provide a proper respone when nothing is found
 - [ ] Move Watchlist to seperate Page !
-- [ ] Provide a Database with ~ 50.000 movies which also can handle user information (Wierer) !
+- [ ] Provide a Database with ~ 50.000 movies which also can handle user information (watching, rating etc.) (Wierer) !
 - [ ] *Make Website prettier* (Hofmann, later) !
+- [ ] Implement search by person (might be difficult)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
