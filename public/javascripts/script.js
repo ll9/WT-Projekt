@@ -116,14 +116,14 @@ var mv = new Vue({
             this.getMovieByURL(baseURL + query);
         },
         infiniteHandler($state) {
-            console.log("infinite Handler");
             setTimeout(() => {
                 let len = this.displayedMovies.length + 5;
                 for (let i = this.displayedMovies.length; i < len && i < this.currentMovies.length; i++) {
                     this.displayedMovies.push(this.currentMovies[i]);
-                    console.log(`i: ${i} displaylength: ${this.displayedMovies.length} curlen: ${this.currentMovies.length}`);
                 }
                 $state.loaded();
+                if (this.displayedMovies.length === this.currentMovies.length)
+                    $state.complete();
             }, 1000);
         },
     },
