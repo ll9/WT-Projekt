@@ -93,10 +93,10 @@ var mv = new Vue({
         // gets Movie from the database and inserts them into current movie
         // take a look at index.js to see how the db provides the data
         getMovieByURL: function(url) {
+            this.currentMovies = [];
+            this.$refs.infiniteLoading.$emit('$InfiniteLoading:reset');
 
             this.$http.get(url).then(resp => {
-                this.currentMovies = [];
-                
                 for (movie of resp.body) {
                     this.$data.currentMovies.push(
                         new Movie(movie)
@@ -122,7 +122,8 @@ var mv = new Vue({
                     this.displayedMovies.push(this.currentMovies[i]);
                 }
                 $state.loaded();
-                if (this.displayedMovies.length === this.currentMovies.length)
+                console.log(`displen: ${this.displayedMovies.length} curlen: ${this.currentMovies.length}`)
+                if (this.displayedMovies.length === this.currentMovies.length && this.currentMovies !== 0)
                     $state.complete();
             }, 1000);
         },

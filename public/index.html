@@ -165,7 +165,7 @@
             <br>
             <br>
         </template>
-        <infinite-loading spinner="waveDots" v-on:infinite="infiniteHandler">
+        <infinite-loading ref="infiniteLoading" spinner="waveDots" v-on:infinite="infiniteHandler">
             <span slot="no-more"></span>
         </infinite-loading>
 
