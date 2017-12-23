@@ -125,9 +125,7 @@ var mv = new Vue({
                 }
                 $state.loaded();
                 console.log(`displen: ${this.displayedMovies.length} curlen: ${this.currentMovies.length}`)
-                if (this.displayedMovies.length === this.currentMovies.length && this.currentMovies !== 0)
-                    $state.complete();
-            }, 1000);
+            }, 2000);
         },
     },
     components: {

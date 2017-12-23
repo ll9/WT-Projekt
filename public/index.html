@@ -126,6 +126,7 @@
         <br>
 
         <!--Filmanzeige-->
+        <div>
         <template v-for="movie of displayedMovies">
             <div class="main" style="position:relative;">
                 <div id="overall_rating" style="text-align:center;" class="ov_rating">
@@ -162,14 +163,14 @@
                     <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
                 </span>
             </div>
-            <br>
-            <br>
         </template>
-        <infinite-loading ref="infiniteLoading" spinner="waveDots" v-on:infinite="infiniteHandler">
+        <infinite-loading ref="infiniteLoading" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more"></span>
         </infinite-loading>
+    </div>
 
-        <!--start der Watchlist, eigentlich andere Seite-->
+        <!-- Auskommentiert, da störend bei endless scrolling tests. => Auf andere Seite packen
+        start der Watchlist, eigentlich andere Seite
         <div class="watchlist">
             <table id="table_1" align="center" width="70%">
                 <tbody>
@@ -203,7 +204,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div>-->
     </div>
 
     <script type="text/javascript" src="javascripts/script.js"></script>
