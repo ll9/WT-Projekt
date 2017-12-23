@@ -6,7 +6,6 @@ $(window).on('load', function() {
     });
 });
 
-
 function Movie(movie) {
     this.getYear = () => movie.release_date.split('-')[0];
     this.getTitle = () => movie.title;
@@ -81,51 +80,38 @@ var mv = new Vue({
             'War',
             'Western'
         ],
-        currentMovies: [],  // All movies found by the db
-        displayedMovies: [], // Movies which are displayed on the website (endless scrolling)
+        currentMovies: [],
+        url: '/search/popular?'
+    },
+    mounted: function() {
+        this.$refs.infiniteLoading.debounceDuration = 5;
     },
 
-    mounted: function() {
-        this.getMovieByURL('/search/popular');
-    },
-    
     methods: {
+        setURL: function() {
+                this.url = '/search/' + 
+                (this.searchText? `movies/${this.searchText}`: 'popular') +
+                 '?' +
+                (this.selected.length ? `&genres=${this.selected}` : '') +
+                (this.ratingValue ? `&rating=${this.ratingValue}` : '') +
+                (this.yearValue ? `&years=${this.yearValue}` : '');
+        },
+        loadMovies: function() {
+            this.currentMovies = [];
+            this.setURL()
+            this.$refs.infiniteLoading.$emit('$InfiniteLoading:reset');
+        },
         // gets Movie from the database and inserts them into current movie
         // take a look at index.js to see how the db provides the data
-        getMovieByURL: function(url) {
-            this.currentMovies = [];
-            this.displayedMovies = [];
-            // needs to be reseted (can be already completed by previous search)
-            this.$refs.infiniteLoading.$emit('$InfiniteLoading:reset');
-
-            this.$http.get(url).then(resp => {
-                for (movie of resp.body) {
-                    this.$data.currentMovies.push(
-                        new Movie(movie)
-                    );
-                }
-                this.displayedMovies = this.currentMovies.slice(0, 10);
-            });
-        },
-        searchMovies: function() {
-            var baseURL = '/search/movies/' + this.searchText;
-            var query = '?' +
-                (this.selected.length != 0 ? "&genres="+this.selected : '') + 
-                (this.ratingValue > 0 ? "&rating="+this.ratingValue : '') +
-                (this.yearValue[0] != 1900 || this.yearValue[1] != 2018 ? 
-                    "&years="+this.yearValue : '');
-
-            this.getMovieByURL(baseURL + query);
-        },
         infiniteHandler($state) {
-            setTimeout(() => {
-                let len = this.displayedMovies.length + 5;
-                for (let i = this.displayedMovies.length; i < len && i < this.currentMovies.length; i++) {
-                    this.displayedMovies.push(this.currentMovies[i]);
+            this.$http.get(this.url, {headers: {'page': (this.currentMovies.length/20).toString()}}).then(resp => {
+                if (resp.body.length === 0)
+                    $state.complete();
+                for (movie of resp.body) {
+                    this.currentMovies.push(new Movie(movie));
                 }
                 $state.loaded();
-                console.log(`displen: ${this.displayedMovies.length} curlen: ${this.currentMovies.length}`)
-            }, 2000);
+            })
         },
     },
     components: {

@@ -48,7 +48,8 @@ router.get('/search/movies/:movieName', (req, res, next) => {
   var options = {
     fields: {},
     sort: {'popularity': -1},
-    limit: 50
+    skip: req.get('page') * 20,
+    limit: 20
   };
 
   movieCollection.find( query, options, function (error, rows) {
@@ -66,8 +67,10 @@ router.get('/search/popular', (req, res, next) => {
 
   var options = {
     sort: {'popularity': -1},
-    limit: 50
+    skip: req.get('page') * 20,
+    limit: 20
   };
+  console.log("skipping: " + options.skip + " pag " + req.query.page);
 
   movieCollection.find( query, options, function (error, rows) {
     res.json(rows).status(200).end();

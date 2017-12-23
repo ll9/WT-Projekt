@@ -101,8 +101,8 @@
         <!--Suchfunktionen-->
         <div class="container">
             <div id="filter" class="filter">
-                <input type="search" placeholder="Search" v-model="searchText" v-on:keyup.enter="searchMovies">
-                <button v-on:click="searchMovies">
+                <input type="search" placeholder="Search" v-model="searchText" v-on:keyup.enter="loadMovies">
+                <button v-on:click="loadMovies">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </div>
@@ -127,7 +127,7 @@
 
         <!--Filmanzeige-->
         <div>
-        <template v-for="movie of displayedMovies">
+        <template v-for="movie of currentMovies">
             <div class="main" style="position:relative;">
                 <div id="overall_rating" style="text-align:center;" class="ov_rating">
                     <p> {{movie.getRating() }} </p>
@@ -166,8 +166,8 @@
             <br>
             <br>
         </template>
-        <infinite-loading ref="infiniteLoading" spinner="waveDots" @infinite="infiniteHandler">
-            <span slot="no-more"></span>
+        <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
+            <span slot="no-more">{{currentMovies.length? "": "Nothing Found"}}</span>
         </infinite-loading>
     </div>
 
