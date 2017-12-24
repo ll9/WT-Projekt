@@ -1,9 +1,9 @@
 # Title tbd
 
 Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
-You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/)
+You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/).
 
-[![webpage](docs/assets/example-webpage-v2.PNG)](docs/assets/webpage-demonstration.mp4)
+[![webpage](docs/assets/example-webpage-v3.PNG)](docs/assets/webpage-demonstration.mp4)
 
 ### Setup
 In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
@@ -24,16 +24,16 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Implement Personal Rating (Hofmann)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
 - [ ] Find better template picture 
-- [ ] Provide a proper respone when nothing is found
 - [ ] Move Watchlist to seperate Page !
 - [ ] Provide a Database with ~ 50.000 movies which also can handle user information (watching, rating etc.) (Wierer) !
 - [ ] Provide filters for popular search (Wierer)
 - [ ] *Make Website prettier* (Hofmann, later) !
-- [ ] Implement search by person (might be difficult)
 - [ ] Add Reset all Button
+- [ ] Implement search by person (might be difficult)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] Provide a proper respone when nothing is found (Wierer)
 - [x] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation (Wierer)!
 - [x] Fix Endless Scrolling Bugs (Scrolling Animation even though there is nothing more to scroll, implement, etc.) (Wierer)
 - [x] Add Animation when you are searching for a movie (might be possible with endless scrolling Animation) (Wierer)
