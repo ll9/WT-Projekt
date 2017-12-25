@@ -43,29 +43,7 @@
 <body>
     <div id="app">
         <!--statische Elemente, können für Watchlist übernommen werden-->
-        <div>
-            <h1 class="title" style="text-align:center">MyML</h1>
-        </div>
-        <a href="/" style="color: black;">
-            <div class="icon1">
-                <i class="fa fa-home" aria-hidden="true"></i>
-            </div>
-        </a>
-        <br>
-        <a href="/watching" style="color: black;">
-            <div class="icon2">
-                <i class="fa fa-eye" aria-hidden="true"></i>
-            </div>
-        </a>
-        <br>
-        <a href="/watched" style="color: black;">
-        <div class="icon3">
-                <i class="fa fa-check-square-o" aria-hidden="true"></i>
-        </div>
-        </a>
-        <button class="login" style="font-size:40px;">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
-        </button>
+        <sidebar></sidebar>
 
         <!-- Google Authentication -->
         <!-- https://developers.google.com/identity/sign-in/web/sign-in -->
@@ -127,50 +105,10 @@
         <br>
 
         <!--Filmanzeige-->
-        <div>
-        <template v-for="movie of currentMovies">
-            <div class="main" style="position:relative;">
-                <div id="overall_rating" style="text-align:center;" class="ov_rating">
-                    <p> {{movie.getRating() }} </p>
-                </div>
-                <div class="t_main" style="text-align:center;">
-                    <p> {{movie.getTitleYear()}} </p>
-                </div>
-                <div class="g_main" style="text-align:center;">
-                    <p> {{movie.getGenres() }} </p>
-                </div>
-                <div class="d_main" style="text-align:center;">
-                    <p> {{movie.getDescription()}} </div>
-                <div class="a_main" style="text-align:center;">
-                    <template v-for="(actor,index) of movie.getActors()">
-                        <a target="_blank" v-bind:href="movie.getActorLink(actor)">
-                            {{actor.name}}</a><span v-if="(index+1)!==movie.getActors().length">, </span>
-                    </template>
-                </div>
-                <div class="img" style="text-align:center;">
-                    <img v-bind:src="movie.getImage()">
-                </div>
-                <div class="trailer" style="text-align:center;">
-                    <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
-                </div>
-            </div>
-            <div class="add">
-                <span class="eye">
-                    <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
-                </span>
-            </div>
-            <div class="watched">
-                <span class="check">
-                    <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
-                </span>
-            </div>
-            <br>
-            <br>
-        </template>
+        <movie-field v-for="(movie, index) of currentMovies" v-bind:movie="movie" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more">{{currentMovies.length? "": "Nothing Found"}}</span>
         </infinite-loading>
-    </div>
 
         <!-- Auskommentiert, da störend bei endless scrolling tests. => Auf andere Seite packen
         start der Watchlist, eigentlich andere Seite
@@ -210,7 +148,13 @@
         </div>-->
     </div>
 
-    <script type="text/javascript" src="javascripts/script.js"></script>
+    <!-- Movie Class -->
+    <script src="javascripts/Movie.js"></script>
+    <!-- Vue Components -->
+    <script src="javascripts/components/movieField.js"></script>
+    <script src="javascripts/components/sidebar.js"></script>
+    <!-- Vue Controller -->
+    <script src="javascripts/script.js"></script>
 </body>
 
 </html>
