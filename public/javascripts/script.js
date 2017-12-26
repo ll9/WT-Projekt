@@ -45,13 +45,15 @@ var mv = new Vue({
         yearValue: [1900, 2018],
         yearOptions: {
             min: 1900,
-            max: 2018
+            max: 2018,
+            tooltip: false
         },
         ratingValue: 0,
         ratingOptions: {
             min: 0,
             max: 10,
-            interval: 0.1
+            interval: 0.1,
+            tooltip: false
         },
         selected: [],
         searchText: '',
