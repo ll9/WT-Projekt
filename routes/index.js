@@ -19,7 +19,7 @@ router.get('/watched', function(req, res, next) {
 
 router.get('/search/movies/:movieName', (req, res, next) => {
   // get mongodb collection from app.js, Collection is called tmdb in mongo database
-  var movieCollection = req.db.get('tmdb'); 
+  var movieCollection = req.db.get('movies'); 
   var search = "\"" + req.params.movieName + "\""; //search whole phrase
 
 
@@ -59,7 +59,7 @@ router.get('/search/movies/:movieName', (req, res, next) => {
 
 router.get('/search/popular', (req, res, next) => {
   // get mongodb collection from app.js, Collection is called tmdb in mongo database
-  var movieCollection = req.db.get('tmdb'); 
+  var movieCollection = req.db.get('movies'); 
 
   var query = {
 

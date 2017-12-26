@@ -6,5 +6,6 @@ npm-debug.log
 package-lock.json
 data/
 db/
+dump/
 
 !tmp/mongo/data/dummy
