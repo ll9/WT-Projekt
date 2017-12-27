@@ -21,7 +21,7 @@ Vue.component('sidebar', {
                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
                 </div>
             </a>
-            <button class="login" style="font-size:40px;">
+            <button class="login" style="font-size:40px;" data-onsuccess="onSignIn" data-theme="dark" onclick="onSignIn();">
             <i class="fa fa-sign-in" aria-hidden="true"></i>
             </button>
         </div>
