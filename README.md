@@ -18,19 +18,19 @@ In order to run this Website locally you will ned node + mongodb which contains 
 5. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
-- [ ] Implement Login (Hofmann) !
-- [ ] __Design Watchlist__ (Hofmann) !
+- [ ] Implement Login !
 - [ ] Implement Adding to watchlist (Hofmann) !
-- [ ] Implement Personal Rating (Hofmann)
+- [ ] Implement Personal Rating
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
 - [ ] Find better template picture 
 - [ ] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
-- [ ] *Make Website prettier* (Hofmann, later) !
 - [ ] Add Reset all Button
 - [ ] Implement search by person (might be difficult)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] *Make Website prettier* (Hofmann) !
+- [x] __Design Watchlist__ (Hofmann) !
 - [x] Provide filters for popular search (Wierer)
 - [x] Provide a Database with ~ 50.000 movies (Wierer) !
 - [x] Move Watchlist to seperate Page ! (Wierer)
