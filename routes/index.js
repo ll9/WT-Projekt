@@ -62,15 +62,31 @@ router.get('/search/popular', (req, res, next) => {
   var movieCollection = req.db.get('movies'); 
 
   var query = {
-
-  };
+    // if genres in req.query create genre filter, else do nothing
+    ...('genres' in req.query) && 
+    {
+      genres: 
+      {
+        $all: req.query.genres.split(',').map( genre => ( {$elemMatch: {name: genre}} ) )
+      }
+    } ,
+    // if rating in req.query create rating filter, else do nothing
+    ...('rating' in req.query) && 
+    { vote_average: { $gt: parseFloat(req.query.rating)} } ,
+    // if year in req.query create rating filter, else do nothing
+    ...('years' in req.query) && 
+    { release_date: { 
+        $gt: req.query.years.split(',')[0],
+        $lt: (req.query.years.split(',')[1] + '-31-12') 
+      } 
+    }
+  }
 
   var options = {
     sort: {'popularity': -1},
     skip: req.get('page') * 20,
     limit: 20
   };
-  console.log("skipping: " + options.skip + " pag " + req.query.page);
 
   movieCollection.find( query, options, function (error, rows) {
     res.json(rows).status(200).end();

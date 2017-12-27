@@ -25,13 +25,13 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
 - [ ] Find better template picture 
 - [ ] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
-- [ ] Provide filters for popular search (Wierer)
 - [ ] *Make Website prettier* (Hofmann, later) !
 - [ ] Add Reset all Button
 - [ ] Implement search by person (might be difficult)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] Provide filters for popular search (Wierer)
 - [x] Provide a Database with ~ 50.000 movies (Wierer) !
 - [x] Move Watchlist to seperate Page ! (Wierer)
 - [x] Provide a proper respone when nothing is found (Wierer)
