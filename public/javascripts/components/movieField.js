@@ -28,7 +28,7 @@ Vue.component('movie-field', {
                         <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
                     </div>
                 </div>
-                <div class="add">
+                <div v-on:click="addToWatchlist(movie.getId())" class="add">
                     <span class="eye">
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
@@ -42,4 +42,20 @@ Vue.component('movie-field', {
                 <br>
             </div>
         `,
+    methods: {
+        addToWatchlist: function(id) {
+            if (!("google_id_token" in localStorage)) {
+                alert("You are not logged in");
+            }
+            else {
+                this.$http.post('/watchlist/add', {google_id_token: localStorage.getItem("google_id_token"), movie_id: id})
+                    .then(resp => {
+                        this.$emit('login')
+                        alert("Added Title to Watchlist");
+                }, 
+                  error => console.log(error)
+                )
+            }
+        }
+    }
 })

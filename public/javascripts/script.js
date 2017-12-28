@@ -51,10 +51,13 @@ var mv = new Vue({
             'Western'
         ],
         currentMovies: [],
-        url: '/search/popular?'
+        url: '/search/popular?',
+        isLoggedIn: false,
     },
     mounted: function() {
         this.$refs.infiniteLoading.debounceDuration = 5;
+        if ("google_id_token" in localStorage) 
+            this.isLoggedIn = true;
     },
 
     methods: {

@@ -29,4 +29,5 @@ function Movie (movie) {
         const baseURL = "https://www.themoviedb.org/person/";
         return baseURL + actor.id + '-' + actor.name.replace(' ', '-');
     }
+    this.getId = () => movie.id;
 }
