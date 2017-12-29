@@ -18,19 +18,24 @@ In order to run this Website locally you will ned node + mongodb which contains 
 5. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
-- [ ] Implement Login (Hofmann) !
+- [ ] Add Reset all Button
+- [ ] Fix Position/Design of Login Button
+- [ ] Position a button to delete movies from watchlist (let eye symbol on main page dissapear when it is on watchlist and display this new button instead)
+- [ ] Implement functionality to delete movies from watchlist
+- [ ] Do not allow user to go to watching/watched page when the user is not logged in
+- [ ] Find better template picture
+- [ ] Currently login only works on main page -> Make it work on every page (might require some refactoring)
+- [ ] Implement Login (Wierer) !
 - [ ] __Design Watchlist__ (Hofmann) !
 - [ ] Implement Adding to watchlist (Hofmann) !
+- [ ] Implement Removing from watchlist (Wierer) !
+- [ ] Backend does't create field to store personal rating -> change that (Wierer) 
 - [ ] Implement Personal Rating (Hofmann)
-- [ ] Fix several bugs which are related to login (Wierer)
 - [ ] Check if login expires (Wierer)
-- [ ] Do not allow user to go to watching/watched page when the user is not logged in
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
-- [ ] Find better template picture
 - [ ] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
 - [ ] *Make Website prettier* (Hofmann, later) !
-- [ ] Add Reset all Button
-- [ ] Implement search by person (might be difficult)
+- [ ] Fix several bugs which are related to login (Wierer)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
 - [ ] Similar to above: Project has become a bit of a mess since login. The structure should be improved significantly (Wierer)
 - [ ] Append to-do list (still missing a lot)
