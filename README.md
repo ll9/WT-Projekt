@@ -26,7 +26,6 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Find better template picture
 - [ ] Currently login only works on main page -> Make it work on every page (might require some refactoring)
 - [ ] Implement Login (Wierer) !
-- [ ] __Design Watchlist__ (Hofmann) !
 - [ ] Implement Adding to watchlist (Hofmann) !
 - [ ] Implement Removing from watchlist (Wierer) !
 - [ ] Backend does't create field to store personal rating -> change that (Wierer) 
@@ -34,12 +33,13 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Check if login expires (Wierer)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
 - [ ] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
-- [ ] *Make Website prettier* (Hofmann, later) !
 - [ ] Fix several bugs which are related to login (Wierer)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
 - [ ] Similar to above: Project has become a bit of a mess since login. The structure should be improved significantly (Wierer)
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] *Make Website prettier* (Hofmann, later) !
+- [x] __Design Watchlist__ (Hofmann) !
 - [x] Provide filters for popular search (Wierer)
 - [x] Provide a Database with ~ 50.000 movies (Wierer) !
 - [x] Move Watchlist to seperate Page ! (Wierer)
