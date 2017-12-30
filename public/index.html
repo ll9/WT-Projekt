@@ -46,7 +46,7 @@
 
     <div id="app">
         <!--statische Elemente, können für Watchlist übernommen werden-->
-        <sidebar></sidebar>
+        <sidebar :is-logged-in="isLoggedIn"></sidebar>
         <login v-bind:is-logged-in="isLoggedIn" v-on:success="isLoggedIn=!isLoggedIn"></login>
 
         <!-- Google Authentication -->
@@ -81,7 +81,7 @@
         <br>
 
         <!--Filmanzeige-->
-        <movie-field v-for="(movie, index) of currentMovies" v-bind:movie="movie" v-bind:key="index"></movie-field>
+        <movie-field v-for="(movie, index) of currentMovies" :movie="movie" :is-logged-in="isLoggedIn" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more">{{currentMovies.length? "": "Nothing Found"}}</span>
         </infinite-loading>

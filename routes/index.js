@@ -1,10 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var GoogleAuth = require('google-auth-library');
-
-var auth = new GoogleAuth;
-var client = new auth.OAuth2('521445391748-2usgjdl33k9k8beh2jkga4lglohkgeee.apps.googleusercontent.com', '', '');
 
 
 //GET home page. 
@@ -13,96 +9,46 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/watching', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../public/watching.html'));
+  // check if logged in
+  if (req.user)
+    res.sendFile(path.join(__dirname,'../public/watching.html'));
+  else
+    res.redirect('/');
 });
 
 router.get('/watched', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../public/watched.html'));
+  if (req.user)
+    res.sendFile(path.join(__dirname,'../public/watched.html'));
+  else
+    res.redirect('/');
 });
 
-router.post('/tokensignin', (req, res) => {
-    console.log("Start logging body");
-    console.log(req.body);
-    console.log("Logged body");
-    client.verifyIdToken(
-        // Token
-        req.body.body.split("=")[1],
-        // Client ID
-        '521445391748-2usgjdl33k9k8beh2jkga4lglohkgeee.apps.googleusercontent.com',
-        function(e, login) {
-            var payload = login.getPayload();
-            var userid = payload['sub'];
-            console.log("Userid is: " + userid);
-
-            // Insert User to db if he doesn't exists already
-            var userCollection = req.db.get('users');
-            userCollection.findOne({
-                user_id: userid
-            }).then(docs => {
-                console.log(docs);
-                if (docs == null) {
-                    userCollection.insert({
-                        user_id: userid,
-                        watching: [],
-                        watched: []
-                    })
-                }
-            })
-            res.end();
-        });
-})
 
 router.get('/user', (req, res) => {
-    console.log(req.get('google_id_token'));
+  var movieCollection = req.db.get('movies');
+  var userCollection = req.db.get('user');
 
-    client.verifyIdToken(
-        // Token
-        req.get('google_id_token'),
-        // Client ID
-        '521445391748-2usgjdl33k9k8beh2jkga4lglohkgeee.apps.googleusercontent.com',
-        function(e, login) {
-            //TODO Error will need to be handled later on when token expires
-            var payload = login.getPayload();
-            var userid = payload['sub'];
-            console.log("Userid is: " + userid);
-
-            // Insert User to db if he doesn't exists already
-            var userCollection = req.db.get('users');
-            var movieCollection = req.db.get('movies');
-
-            userCollection.findOne({
-                user_id: userid
-            }).then(docs => {
-                console.log(docs.watching);
-                movieCollection.find( { id: { $in: docs.watching}})
-                  .then(docs => {
-                    console.log(docs);
-                    res.json(docs).status(200).end();
-                  })
-                })
-            })
+  userCollection.findOne({_id: req.user}).then(user => {
+    console.log(user);
+    movieCollection.find( { id: { $in: user.watching}}).then(movies => {
+      res.json(movies).status(200).end();
+    })
+  })
 })
 
+//Add to Watchlist
 router.post('/watchlist/add', (req, res) => {
-    console.log("Start logging body");
-    console.log(req.body);
-    console.log("Logged body");
-    client.verifyIdToken(
-        // Token
-        req.body.google_id_token,
-        // Client ID
-        '521445391748-2usgjdl33k9k8beh2jkga4lglohkgeee.apps.googleusercontent.com',
-        function(e, login) {
-            var payload = login.getPayload();
-            var userid = payload['sub'];
-            console.log("Userid is: " + userid);
-            console.log("Movie ID is: " + req.body.movie_id);
-
-            var userCollection = req.db.get('users'); 
-            userCollection.update({user_id: userid}, { $addToSet: {watching: req.body.movie_id} })
-
-            res.end();
-        });
+    if (req.user) {
+        var userCollection = req.db.get('user');
+        userCollection.update({
+            _id: req.user
+        }, {
+            $addToSet: {
+                watching: req.body.movie_id
+            }
+        })
+        res.end();
+    }
 })
 
 

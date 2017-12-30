@@ -5,19 +5,23 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+const keys = require('./config/keys');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup');
+
 var index = require('./routes/index');
-var users = require('./routes/users');
+const authRoutes = require('./routes/auth')
 
 var app = express();
 
 const url = 'localhost:27017/tmdb'; // Contains default mongo Port (27017) and name of the database (tmpusr)
 // Get database remotely with environment variable or locally with local mongodb
-const db = require('monk')(process.env._MONGODB_URI || url); // Get the Database with monk
+const db = require('monk')(process.env._MONGODB_URI || keys.mongodb._MONGODB_URI || url); // Get the Database with monk
+// Monk seems to not have enough advanced functionality => replace if by mongoose later on
+const mongoose = require('mongoose');
 
-
-// view engine setup
-app.set('views', path.join(__dirname, 'public'));
-app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -27,31 +31,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 // Make the databse accessible to other files (f.e. index.js)
 app.use((req, res, next) => {
   req.db = db; 
   next();
 });
 
+// Cookie encryption, Lasts a Day
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+}))
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// connect mongoose to remote database
+mongoose.connect(keys.mongodb.dbURI, () => {
+  console.log('connected to mongodb');
+})
+
+//handle routes
+app.use('/auth', authRoutes);
 app.use('/', index);
-app.use('/users', users);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
 
 module.exports = app;

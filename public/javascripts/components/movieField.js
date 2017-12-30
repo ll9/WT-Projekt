@@ -1,6 +1,6 @@
 Vue.component('movie-field', {
-    props: ['movie'],
-    template:`
+    props: ['movie', 'isLoggedIn'],
+    template: `
         <div>
             <div class="main" style="position:relative;">
                 <div id="overall_rating" style="text-align:center;" class="ov_rating">
@@ -44,17 +44,16 @@ Vue.component('movie-field', {
         `,
     methods: {
         addToWatchlist: function(id) {
-            if (!("google_id_token" in localStorage)) {
+            if (!this.isLoggedIn) {
                 alert("You are not logged in");
-            }
-            else {
-                this.$http.post('/watchlist/add', {google_id_token: localStorage.getItem("google_id_token"), movie_id: id})
+            } else {
+                this.$http.post('/watchlist/add', {
+                        movie_id: id
+                    })
                     .then(resp => {
                         this.$emit('login')
                         alert("Added Title to Watchlist");
-                }, 
-                  error => console.log(error)
-                )
+                    })
             }
         }
     }

@@ -1,4 +1,5 @@
 Vue.component('sidebar', {
+    props: ['isLoggedIn'],
     template: `
         <div>
             <div>
@@ -10,20 +11,26 @@ Vue.component('sidebar', {
                 </div>
             </a>
             <br>
-            <a href="/watching" style="color: black;">
+            <a @click="redirectIfloggedIn('/watching')" style="color: black; cursor: pointer;">
                 <div class="icon2">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                 </div>
             </a>
             <br>
-            <a href="/watched" style="color: black;">
+            <a @click="redirectIfloggedIn('/watched')" style="color: black; cursor: pointer;">
                 <div class="icon3">
                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
                 </div>
             </a>
-            <button class="login" style="font-size:40px;">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-            </button>
         </div>
-        `
+        `,
+    methods: {
+        redirectIfloggedIn: function(url) {
+            if (this.isLoggedIn) {
+                window.location = url;
+            }
+            else 
+                alert("You are not logged in");
+        }
+    }
 })

@@ -54,10 +54,18 @@ var mv = new Vue({
         url: '/search/popular?',
         isLoggedIn: false,
     },
+
+    created: function() {
+        // check if user is logged in
+        this.$http.get('/auth/sessionStatus').then(resp => {
+            console.log(resp);
+            console.log(resp.body? true: false);
+            this.isLoggedIn = resp.body? true: false;
+        })
+    },
+
     mounted: function() {
         this.$refs.infiniteLoading.debounceDuration = 5;
-        if ("google_id_token" in localStorage) 
-            this.isLoggedIn = true;
     },
 
     methods: {
