@@ -9,7 +9,6 @@ var mv = new Vue({
                 this.movies.push(new Movie(movie));
             }
         })
-        console.log("Mounted");
     },
 
     methods: {

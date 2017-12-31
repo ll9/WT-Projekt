@@ -45,7 +45,7 @@
 	 and do not have the same dependencies as index.html has => Erros. Fix that later by for example giving the there own vue controller  -->
 <body>
 	<div id="watching">
-		<sidebar></sidebar>
+		<sidebar is-logged-in="true"></sidebar>
 		<h2 style="text-align:center">Watchinglist</h1>
         <watchlist :movies="movies"></watchlist>
 	</div>

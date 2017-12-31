@@ -53,32 +53,7 @@
         <!-- https://developers.google.com/identity/sign-in/web/sign-in -->
 
         <!--Suchfunktionen-->
-        <div class="container">
-            <div id="filter" class="filter">
-                <input type="search" placeholder="Search" v-model="searchText" v-on:keyup.enter="loadMovies">
-                <button v-on:click="loadMovies">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-            </div>
-
-
-            <div id="genre" class="genre">
-                <div class="genrebox">
-                    <div>Genre: </div>
-                    <select class="selectpicker" v-model="selected" data-actions-box="true" data-select-all-text="Done" data-width="fit" data-max-options="4" multiple>
-                        <option disabled value="">Please select Genre</option>
-                        <option v-for="genre in genres"> {{genre}} </option>
-                    </select>
-                </div>
-
-                <span>Year: {{ yearValue }}</span>
-                <vue-slider v-model="yearValue" v-bind="yearOptions"></vue-slider>
-                <span>Rating > {{ ratingValue }}</span>
-                <vue-slider v-model="ratingValue" v-bind="ratingOptions"></vue-slider>
-
-            </div>
-        </div>
-        <br>
+        <search v-on:search-request="loadMovies"></search>
 
         <!--Filmanzeige-->
         <movie-field v-for="(movie, index) of currentMovies" :movie="movie" :is-logged-in="isLoggedIn" v-bind:key="index"></movie-field>
@@ -93,6 +68,7 @@
     <script src="javascripts/components/movieField.js"></script>
     <script src="javascripts/components/sidebar.js"></script>
     <script src="javascripts/components/login.js"></script>
+    <script src="javascripts/components/search.js"></script>
     <!-- Vue Controller -->
     <script src="javascripts/script.js"></script>
 </body>
