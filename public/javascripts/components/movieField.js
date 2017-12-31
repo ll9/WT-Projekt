@@ -33,7 +33,7 @@ Vue.component('movie-field', {
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
                 </div>
-                <div class="watched">
+                <div v-on:click="addToWatchedlist(movie.getId())" class="watched">
                     <span class="check">
                         <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
@@ -44,15 +44,21 @@ Vue.component('movie-field', {
         `,
     methods: {
         addToWatchlist: function(id) {
+            this.addToList(id, 'watchlist')
+        },
+        addToWatchedlist: function(id) {
+            this.addToList(id, 'watchedlist');
+        },
+        addToList: function(id, list) {
             if (!this.isLoggedIn) {
                 alert("You are not logged in");
             } else {
-                this.$http.post('/watchlist/add', {
+                this.$http.post('/' + list + '/add', {
                         movie_id: id
                     })
                     .then(resp => {
                         this.$emit('login')
-                        alert("Added Title to Watchlist");
+                        alert("Added Title to " + list);
                     })
             }
         }

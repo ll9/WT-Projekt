@@ -101,6 +101,30 @@ router.post('/watchedlist/add', (req, res) => {
     }
 })
 
+router.post('/watchedlist/add', (req, res) => {
+    if (req.user) {
+        var userCollection = req.db.get(usercollectionName);
+        userCollection.findOne({
+            _id: req.user
+        }).then(user => {
+            // check if movie is not already in watchlist
+            if (!(user.watched.map(watched => watched.movie_id).includes(req.body.movie_id))) {
+                userCollection.update({
+                    _id: req.user
+                }, {
+                    $push: {
+                        watched: {
+                            movie_id: req.body.movie_id,
+                            rating: null
+                        }
+                    }
+                })
+            }
+        })
+        res.end();
+    }
+})
+
 
 router.get('/search/movies/:movieName', (req, res, next) => {
   // get mongodb collection from app.js, Collection is called tmdb in mongo database
