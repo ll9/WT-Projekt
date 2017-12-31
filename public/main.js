@@ -5,6 +5,9 @@ const router = new VueRouter({
     }, {
         path: '/watching',
         component: Watching
+    }, {
+        path: '/watched',
+        component: Watched
     }]
 })
 

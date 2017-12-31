@@ -26,13 +26,26 @@ router.get('/watched', function(req, res, next) {
 });
 
 
-router.get('/user', (req, res) => {
+router.get('/user/watching', (req, res) => {
   var movieCollection = req.db.get(moviecollectionName);
   var userCollection = req.db.get(usercollectionName);
 
   userCollection.findOne({_id: req.user}).then(user => {
     // create array which contains only the ids (without rating)
     var movielist = user.watching.map(watching => watching.movie_id);
+    movieCollection.find( { id: { $in: movielist }}).then(movies => {
+      res.json(movies).status(200).end();
+    })
+  })
+})
+
+router.get('/user/watched', (req, res) => {
+  var movieCollection = req.db.get(moviecollectionName);
+  var userCollection = req.db.get(usercollectionName);
+
+  userCollection.findOne({_id: req.user}).then(user => {
+    // create array which contains only the ids (without rating)
+    var movielist = user.watched.map(watched => watched.movie_id);
     movieCollection.find( { id: { $in: movielist }}).then(movies => {
       res.json(movies).status(200).end();
     })
