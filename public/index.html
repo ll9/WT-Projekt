@@ -32,6 +32,7 @@
     <script src="https://unpkg.com/vue"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-google-signin-button@1.0.2/dist/vue-google-signin-button.min.js"></script>
     <script src="https://unpkg.com/vue-resource"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://use.fontawesome.com/835208c6d0.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
@@ -45,21 +46,15 @@
     
 
     <div id="app">
-        <!--statische Elemente, können für Watchlist übernommen werden-->
-        <sidebar :is-logged-in="isLoggedIn"></sidebar>
-        <login v-bind:is-logged-in="isLoggedIn" v-on:success="isLoggedIn=!isLoggedIn"></login>
+         <p>
+    <!-- use v-link directive for navigation. -->
+    <router-link to="/"></router-link>
+    <router-link to="/watching"></router-link>
+  </p>
 
-        <!-- Google Authentication -->
-        <!-- https://developers.google.com/identity/sign-in/web/sign-in -->
-
-        <!--Suchfunktionen-->
-        <search v-on:search-request="loadMovies"></search>
-
-        <!--Filmanzeige-->
-        <movie-field v-for="(movie, index) of currentMovies" :movie="movie" :is-logged-in="isLoggedIn" v-bind:key="index"></movie-field>
-        <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
-            <span slot="no-more">{{currentMovies.length? "": "Nothing Found"}}</span>
-        </infinite-loading>
+  <!-- use router-view element as route outlet -->
+  <router-view>
+  </router-view>
     </div>
 
     <!-- Movie Class -->
@@ -71,6 +66,8 @@
     <script src="javascripts/components/search.js"></script>
     <!-- Vue Controller -->
     <script src="javascripts/script.js"></script>
+    <script src="javascripts/watching.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

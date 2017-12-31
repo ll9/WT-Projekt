@@ -22,6 +22,7 @@ Vue.component('sidebar', {
                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
                 </div>
             </a>
+            <login v-bind:is-logged-in="isLoggedIn" v-on:success="isLoggedIn=!isLoggedIn"></login>
         </div>
         `,
     methods: {
