@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <title>MyML</title>
 
+    <script src="https://apis.google.com/js/api:client.js"></script>
     <!-- IMPORTANT DO NOT MOVE THIS SCRIPT AFTER JQUERY IMPORT -->
     <script src="https://nightcatsama.github.io/vue-slider-component/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-infinite-loading@2.2.3/dist/vue-infinite-loading.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
@@ -28,80 +30,33 @@
 
 
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-google-signin-button@1.0.2/dist/vue-google-signin-button.min.js"></script>
     <script src="https://unpkg.com/vue-resource"></script>
     <script src="https://use.fontawesome.com/835208c6d0.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
     <!-- Google Login -->
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="75354868165-29fd3tsla7d8mjl47e8q8ffqa1b44eaf.apps.googleusercontent.com">
+
     <script src="https://apis.google.com/js/api.js"></script>
 </head>
 
 <body>
+    
+
     <div id="app">
         <!--statische Elemente, können für Watchlist übernommen werden-->
-        <div>
-            <h1 class="title" style="text-align:center">MyML</h1>
-        </div>
-        <div class="icon1">
-            <a href="/" style="color: black;">
-                <i class="fa fa-home" aria-hidden="true"></i>
-            </a>
-        </div>
-        <br>
-        <div class="icon2">
-            <a href="/watching" style="color: black;">
-                <i class="fa fa-eye" aria-hidden="true"></i>
-        </div>
-        <br>
-        <div class="icon3">
-            <a href="/watched" style="color: black;">
-                <i class="fa fa-check-square-o" aria-hidden="true"></i>
-        </div>
-        <div class="login">
-            <button style="font-size:40px;">
-                <i class="fa fa-sign-in" aria-hidden="true"></i>
-            </button>
-        </div>
+        <sidebar></sidebar>
+        <login v-bind:is-logged-in="isLoggedIn" v-on:success="isLoggedIn=!isLoggedIn"></login>
 
         <!-- Google Authentication -->
         <!-- https://developers.google.com/identity/sign-in/web/sign-in -->
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-        <script>
-            function onSignIn(googleUser) {
-                // Useful data for your client-side scripts:
-                var profile = googleUser.getBasicProfile();
-                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                console.log('Full Name: ' + profile.getName());
-                console.log('Given Name: ' + profile.getGivenName());
-                console.log('Family Name: ' + profile.getFamilyName());
-                console.log("Image URL: " + profile.getImageUrl());
-                console.log("Email: " + profile.getEmail());
-
-                // The ID token you need to pass to your backend:
-                var id_token = googleUser.getAuthResponse().id_token;
-                console.log("ID Token: " + id_token);
-            };
-        </script>
-
-        <!-- Google Logout -->
-        <a class="logout" href="#" onclick="signOut();">Sign out</a>
-        <script>
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
-        </script>
 
         <!--Suchfunktionen-->
         <div class="container">
             <div id="filter" class="filter">
-                <input type="search" placeholder="Search" v-model="searchText">
-                <button v-on:click="searchMovies">
+                <input type="search" placeholder="Search" v-model="searchText" v-on:keyup.enter="loadMovies">
+                <button v-on:click="loadMovies">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
             </div>
@@ -109,100 +64,37 @@
 
             <div id="genre" class="genre">
                 <div class="genrebox">
+                    <div>Genre: </div>
                     <select class="selectpicker" v-model="selected" data-actions-box="true" data-select-all-text="Done" data-width="fit" data-max-options="4" multiple>
                         <option disabled value="">Please select Genre</option>
                         <option v-for="genre in genres"> {{genre}} </option>
                     </select>
                 </div>
 
-                <span>Genre: {{ selected }}</span>
-                <vue-slider v-model="yearValue" v-bind="yearOptions"></vue-slider>
                 <span>Year: {{ yearValue }}</span>
+                <vue-slider v-model="yearValue" v-bind="yearOptions"></vue-slider>
+                <span>Rating > {{ ratingValue }}</span>
                 <vue-slider v-model="ratingValue" v-bind="ratingOptions"></vue-slider>
-                <p>Rating > {{ ratingValue }}</p>
+
             </div>
         </div>
         <br>
 
         <!--Filmanzeige-->
-        <template v-for="movie of currentMovies">
-            <div class="main" style="position:relative;">
-                <div id="overall_rating" style="text-align:center;" class="ov_rating">
-                    <p> {{movie.getRating() }} </p>
-                </div>
-                <div class="t_main" style="text-align:center;">
-                    <p> {{movie.getTitleYear()}} </p>
-                </div>
-                <div class="g_main" style="text-align:center;">
-                    <p> {{movie.getGenres() }} </p>
-                </div>
-                <div class="d_main" style="text-align:center;">
-                    <p> {{movie.getDescription()}} </div>
-                <div class="a_main" style="text-align:center;">
-                    <template v-for="(actor,index) of movie.getActors()">
-                        <a target="_blank" v-bind:href="movie.getActorLink(actor)">
-                            {{actor.name}}</a><span v-if="(index+1)!==movie.getActors().length">, </span>
-                    </template>
-                </div>
-                <div class="img" style="text-align:center;">
-                    <img v-bind:src="movie.getImage()">
-                </div>
-                <div class="trailer" style="text-align:center;">
-                    <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
-                </div>
-            </div>
-            <div class="add">
-                <span class="eye">
-                    <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
-                </span>
-            </div>
-            <div class="watched">
-                <span class="check">
-                    <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
-                </span>
-            </div>
-            <br>
-            <br>
-        </template>
-
-        <!--start der Watchlist, eigentlich andere Seite-->
-        <div class="watchlist">
-            <table id="table_1" align="center" width="70%">
-                <tbody>
-                    <tr>
-                        <th colspan="6">to watch</th>
-                    </tr>
-                    <tr align="left">
-                        <th width="10%">Image</th>
-                        <th width="30%">Title + Year</th>
-                        <th width="25%">Genres</th>
-                        <th width="25%">Actors</th>
-                        <th width="5%">Rating</th>
-                        <th width="5%">Personal Rating</th>
-                    </tr>
-                    <tr id="film1" v-for="movie of currentMovies">
-                        <td><img v-bind:src="movie.getImage()"></td>
-                        <td valign="top">
-                            <a class="tip" title="whatever">
-                                <p> {{movie.getTitleYear()}} </p>
-                            </a>
-                        </td>
-                        <td valign="top"><p> {{movie.getGenres() }} </p></td>
-                        <td valign="top">
-                            <template v-for="(actor,index) of movie.getActors()">
-                            <a target="_blank" v-bind:href="movie.getActorLink(actor)">
-                                {{actor.name}}</a><span v-if="(index+1)!==movie.getActors().length">, </span>
-                            </template>
-                        </td>
-                        <td valign="top"><p> {{movie.getRating() }} </p></td>
-                        <td valign="top">Stars</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <movie-field v-for="(movie, index) of currentMovies" v-bind:movie="movie" v-bind:key="index"></movie-field>
+        <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
+            <span slot="no-more">{{currentMovies.length? "": "Nothing Found"}}</span>
+        </infinite-loading>
     </div>
 
-    <script type="text/javascript" src="javascripts/script.js"></script>
+    <!-- Movie Class -->
+    <script src="javascripts/Movie.js"></script>
+    <!-- Vue Components -->
+    <script src="javascripts/components/movieField.js"></script>
+    <script src="javascripts/components/sidebar.js"></script>
+    <script src="javascripts/components/login.js"></script>
+    <!-- Vue Controller -->
+    <script src="javascripts/script.js"></script>
 </body>
 
 </html>

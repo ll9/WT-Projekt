@@ -34,7 +34,7 @@
   position: relative;
   margin: auto;
   width: 50%;
-  height: 20%;
+  heigth: 20%;
   border: 3px solid black;
   border-radius: 6px;
   padding: 10px;
@@ -54,6 +54,7 @@ select {
 body{
   background-color: lightblue;
   color: snow;
+  margin-bottom: 70px;
 }
 div{
 
@@ -101,7 +102,10 @@ div{
   height:50px;
   background-color:darkslateblue;
   text-align-last:  center;
-  font-size:15px
+  font-size:20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .t_main{
   border: 1px solid black;
@@ -113,6 +117,9 @@ div{
   height: 51px;
   background-color:darkslateblue;
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .g_main{
   border: 1px solid black;
@@ -123,17 +130,28 @@ div{
   width: 347px;
   height:50px;
   background-color:darkslateblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.d_main{
+.d_main {
   border: 1px solid black;
   border-radius: 4px;
   position: absolute;
   margin-left: 150px;
   margin-top: 100px;
   width: 446px;
-  height:125px;
-  background-color:darkslateblue;
+  height: 125px;
+  background-color: darkslateblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+  d_main:hover{
+    overflow: auto;
+  }
+
 .a_main{
   border: 1px solid black;
   border-radius: 4px;
@@ -168,7 +186,7 @@ div{
   border-radius: 2px;
   position: absolute;
   margin-left: 80%;
-  margin-rigth: 20%;
+  margin-right: 20%;
   margin-top: -100px;
   color:black;
 }
@@ -177,7 +195,7 @@ div{
   border-radius: 2px;
   position: absolute;
   margin-left: 80%;
-  margin-rigth: 20%;
+  margin-right: 20%;
   margin-top: -50px;
   color:black;
 }
@@ -202,4 +220,24 @@ table, th, td {
   left:90%;
   top:10%;
   font-size: 40px;
+}
+
+.fa {
+  color: black;
+}
+
+.g-signin-button {
+  /* This is where you control how the button looks. Be creative! */
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #3c82f7;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
+}
+
+.login-component{
+    position: fixed;
+    left: 85%;
+    top: 30%;
 }

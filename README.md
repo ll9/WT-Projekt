@@ -1,13 +1,13 @@
 # Title tbd
 
 Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
-You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/)
+You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/).
 
-[![webpage](docs/assets/example-webpage-v2.PNG)](docs/assets/webpage-demonstration.mp4)
+[![webpage](docs/assets/example-webpage-v3.PNG)](docs/assets/webpage-demonstration.mp4)
 
 ### Setup
 In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
-1. start your mongo database (`mongod --dbpath <path_to_database`)
+1. start your mongo database (`mongod --dbpath <path_to_database>`)
 2. If your db has no text index yet: In your mongo shell: 
     ```
     use <dbName>
@@ -18,20 +18,37 @@ In order to run this Website locally you will ned node + mongodb which contains 
 5. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
-- [ ] Implement Login (Hofmann) !
-- [ ] __Design Watchlist__ (Hofmann) !
+- [ ] Add Reset all Button
+- [ ] Fix Position/Design of Login Button
+- [ ] Position a button to delete movies from watchlist (let eye symbol on main page dissapear when it is on watchlist and display this new button instead)
+- [ ] Implement functionality to delete movies from watchlist
+- [ ] Do not allow user to go to watching/watched page when the user is not logged in
+- [ ] Find better template picture
+- [ ] Currently login only works on main page -> Make it work on every page (might require some refactoring)
+- [ ] Implement Login (Wierer) !
 - [ ] Implement Adding to watchlist (Hofmann) !
+- [ ] Implement Removing from watchlist (Wierer) !
+- [ ] Backend does't create field to store personal rating -> change that (Wierer) 
 - [ ] Implement Personal Rating (Hofmann)
-- [ ] create database which stores user information (watching, rating etc.)
+- [ ] Check if login expires (Wierer)
 - [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
-- [ ] Implement search by person (might be difficult)
-- [ ] Find better template picture 
-- [ ] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation !
-- [ ] Implement dynamic loading (endless scrolling?) (Wierer) !
-- [ ] *Make Website prettier* (Hofmann, later) !
-- [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.)
+- [ ] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
+- [ ] Fix several bugs which are related to login (Wierer)
+- [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
+- [ ] Similar to above: Project has become a bit of a mess since login. The structure should be improved significantly (Wierer)
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] *Make Website prettier* (Hofmann, later) !
+- [x] __Design Watchlist__ (Hofmann) !
+- [x] Provide filters for popular search (Wierer)
+- [x] Provide a Database with ~ 50.000 movies (Wierer) !
+- [x] Move Watchlist to seperate Page ! (Wierer)
+- [x] Provide a proper respone when nothing is found (Wierer)
+- [x] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation (Wierer)!
+- [x] Fix Endless Scrolling Bugs (Scrolling Animation even though there is nothing more to scroll, implement, etc.) (Wierer)
+- [x] Add Animation when you are searching for a movie (might be possible with endless scrolling Animation) (Wierer)
+- [x] Remove 'no more data' text, when endless scrolling is finished/ still loading (Wierer)
+- [x] Implement dynamic loading (endless scrolling?) (Wierer) !
 - [x] Think of a name for the Website (Hofmann)
 - [x] Implement Slider (Year, Rating)
 - [x] Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)

@@ -2,15 +2,57 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
 
-  <title>MyMl Watching</title>
+	<!-- IMPORTANT DO NOT MOVE THIS SCRIPT AFTER JQUERY IMPORT -->
+    <script src="https://nightcatsama.github.io/vue-slider-component/dist/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-infinite-loading@2.2.3/dist/vue-infinite-loading.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue-resource"></script>
+    <script src="https://use.fontawesome.com/835208c6d0.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
+    <!-- Google Login -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="75354868165-29fd3tsla7d8mjl47e8q8ffqa1b44eaf.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/api.js"></script>
+
+	<title>MyMl Watched</title>
 </head>
 
+<!-- IMPORTANT: currently index, watching and watched share the same vue controller. Wathced and Watching are different from index
+	 and do not have the same dependencies as index.html has => Erros. Fix that later by for example giving the there own vue controller  -->
 <body>
-  <h1>Watching</h1>
-  <p>
-  	To be continued
-  </p>
+	<div id="watching">
+		<sidebar></sidebar>
+		<h2 style="text-align:center">Watchinglist</h1>
+        <watchlist :movies="movies"></watchlist>
+	</div>
+
+<script src="javascripts/Movie.js"></script>
+<script src="javascripts/components/sidebar.js"></script>
+<script src="javascripts/components/watchlist.js"></script>
+<script src="javascripts/watching.js"></script>
 </body>
 </html>
