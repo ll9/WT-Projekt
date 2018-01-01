@@ -10,6 +10,7 @@ const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
+const history = require('connect-history-api-fallback');
 
 var index = require('./routes/index');
 const authRoutes = require('./routes/auth')
@@ -29,6 +30,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+/*
+app.use(history({
+  disableDotRule: true,
+  verbose: true
+}));
+*/
 app.use(express.static(path.join(__dirname, 'public')));
 
 
