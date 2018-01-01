@@ -1,5 +1,5 @@
 const router = new VueRouter({
-	mode: 'history',
+    mode: 'history',
     routes: [{
         path: '/',
         component: Home
@@ -9,7 +9,13 @@ const router = new VueRouter({
     }, {
         path: '/watched',
         component: Watched
-    }]
+    }, {
+        path: '/404',
+        component: NotFound
+    }, {
+        path: '*',
+        redirect: '/404'
+    }, ]
 })
 
 
