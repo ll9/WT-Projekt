@@ -30,15 +30,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-/*
-app.use(history({
-  disableDotRule: true,
-  verbose: true
-}));
-*/
+
+
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 // Make the databse accessible to other files (f.e. index.js)
 app.use((req, res, next) => {
@@ -63,6 +57,12 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 
 //handle routes
 app.use('/auth', authRoutes);
+app.use(history({
+  disableDotRule: true,
+  verbose: true
+}));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/', index);
 
 
