@@ -30,7 +30,6 @@
 
 
     <script src="https://unpkg.com/vue"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-google-signin-button@1.0.2/dist/vue-google-signin-button.min.js"></script>
     <script src="https://unpkg.com/vue-resource"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://use.fontawesome.com/835208c6d0.js"></script>
@@ -44,16 +43,10 @@
 
 <body>
     
-
     <div id="app">
-    <!-- use v-link directive for navigation. -->
-    <router-link to="/"></router-link>
-    <router-link to="/watching"></router-link>
-  <!-- use router-view element as route outlet -->
-  <router-view>
-  </router-view>
+        <router-view>
+        </router-view>
     </div>
-
     <!-- Movie Class -->
     <script src="javascripts/Movie.js"></script>
     <!-- Vue Components -->
@@ -66,7 +59,7 @@
     <script src="javascripts/home.js"></script>
     <script src="javascripts/watching.js"></script>
     <script src="javascripts/watched.js"></script>
-    
+
     <script src="main.js"></script>
 </body>
 

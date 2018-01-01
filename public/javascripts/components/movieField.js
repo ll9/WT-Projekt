@@ -57,7 +57,6 @@ Vue.component('movie-field', {
                         movie_id: id
                     })
                     .then(resp => {
-                        this.$emit('login')
                         alert("Added Title to " + list);
                     })
             }
