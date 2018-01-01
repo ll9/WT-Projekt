@@ -53,7 +53,7 @@ Vue.component('movie-field', {
             if (!this.isLoggedIn) {
                 alert("You are not logged in");
             } else {
-                this.$http.post('/' + list + '/add', {
+                this.$http.post('/api/' + list + '/add', {
                         movie_id: id
                     })
                     .then(resp => {

@@ -5,26 +5,6 @@ var path = require('path');
 const usercollectionName = 'users';
 const moviecollectionName = 'movies';
 
-//GET home page. 
-router.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname,'../public/index.html'));
-});
-
-router.get('/watching', function(req, res, next) {
-  // check if logged in
-  if (req.user)
-    res.sendFile(path.join(__dirname,'../public/watching.html'));
-  else
-    res.redirect('/');
-});
-
-router.get('/watched', function(req, res, next) {
-  if (req.user)
-    res.sendFile(path.join(__dirname,'../public/watched.html'));
-  else
-    res.redirect('/');
-});
-
 
 router.get('/user/watching', (req, res) => {
   var movieCollection = req.db.get(moviecollectionName);

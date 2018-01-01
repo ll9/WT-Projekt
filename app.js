@@ -12,8 +12,9 @@ const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 const history = require('connect-history-api-fallback');
 
-var index = require('./routes/index');
-const authRoutes = require('./routes/auth')
+var apiRoutes = require('./routes/api');
+const authRoutes = require('./routes/auth');
+const redirectRoutes = require('./routes/redirect')
 
 var app = express();
 
@@ -56,14 +57,14 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 })
 
 //handle routes
+app.use('/', redirectRoutes);
 app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
+// middleware takes care of reloading /watching, /watched etc
 app.use(history({
   disableDotRule: true,
   verbose: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-
 
 module.exports = app;

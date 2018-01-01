@@ -12,7 +12,7 @@
         }
     },
     mounted: function() {
-        this.$http.get('/user/watched').then(resp => {
+        this.$http.get('/api/user/watched').then(resp => {
             for (movie of resp.body) {
                 this.movies.push(new Movie(movie));
             }

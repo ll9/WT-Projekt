@@ -20,7 +20,7 @@
      data: function() {
          return {
              movies: [],
-             url: '/search/popular?',
+             url: '/api/search/popular?',
              isLoggedIn: false,
          }
      },
