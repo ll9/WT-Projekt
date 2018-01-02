@@ -241,3 +241,8 @@ table, th, td {
     left: 85%;
     top: 30%;
 }
+
+.notifications {
+  margin-bottom: 50px;
+  margin-left: 30px;
+}

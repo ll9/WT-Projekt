@@ -1,7 +1,9 @@
 Vue.component('movie-field', {
-    props: ['movie', 'isLoggedIn'],
+    props: ['movie'],
     template: `
         <div>
+            <notifications group="add" position="bottom left" />
+            <notifications group="error" position="bottom left" />
             <div class="main" style="position:relative;">
                 <div id="overall_rating" style="text-align:center;" class="ov_rating">
                     <p> {{movie.getRating() }} </p>
@@ -42,6 +44,20 @@ Vue.component('movie-field', {
                 <br>
             </div>
         `,
+    data: function() {
+        return {
+            state: {
+                isLoggedIn: null,
+                changedAuth: null
+            }
+        }
+    },
+    created: function() {
+        // check if user is logged in
+        this.$http.get('/auth/sessionStatus').then(resp => {
+            this.state = resp.body;
+        })
+    },
     methods: {
         addToWatchlist: function(id) {
             this.addToList(id, 'watchlist')
@@ -50,14 +66,22 @@ Vue.component('movie-field', {
             this.addToList(id, 'watchedlist');
         },
         addToList: function(id, list) {
-            if (!this.isLoggedIn) {
-                alert("You are not logged in");
+            if (!this.state.isLoggedIn) {
+                this.$notify({
+                    group: 'error',
+                    type: 'error',
+                    text: 'You are not logged in!'
+                });
             } else {
                 this.$http.post('/api/' + list + '/add', {
                         movie_id: id
                     })
                     .then(resp => {
-                        alert("Added Title to " + list);
+                        this.$notify({
+                            group: 'add',
+                            type: 'success',
+                            text: 'Added Title to Watchlist'
+                        });
                     })
             }
         }

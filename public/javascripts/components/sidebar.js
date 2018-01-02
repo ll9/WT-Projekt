@@ -1,7 +1,8 @@
 Vue.component('sidebar', {
-    props: ['isLoggedIn'],
     template: `
         <div>
+            <notifications group="auth" position="bottom left" />
+            <notifications group="error" position="bottom left" />
             <div>
                 <h1 class="title" style="text-align:center">MyML</h1>
             </div>
@@ -11,28 +12,57 @@ Vue.component('sidebar', {
                 </div>
             </router-link>
             <br>
-            <router-link to="watching">
+            <a v-on:click="redirect('/watching')" style="cursor:pointer;">
                 <div class="icon2">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                 </div>
-            </router-link>
+            </a>
             <br>
-            <router-link to="/watched">
+            <a v-on:click="redirect('/watched')" style="cursor:pointer;">
                 <div class="icon3">
                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
                 </div>
-            </router-link>
             </a>
-            <login v-bind:is-logged-in="isLoggedIn" v-on:success="isLoggedIn=!isLoggedIn"></login>
+            <login v-bind:is-logged-in="state.isLoggedIn" v-on:success="state.isLoggedIn=!state.isLoggedIn"></login>
         </div>
         `,
-    methods: {
-        redirectIfloggedIn: function(url) {
-            if (this.isLoggedIn) {
-                window.location = url;
+    data: function() {
+        return {
+            state: {
+                isLoggedIn: null,
+                changedAuth: null
             }
-            else 
-                alert("You are not logged in");
         }
-    }
+    },
+    created: function() {
+        // check if user is logged in
+        this.$http.get('/auth/sessionStatus').then(resp => {
+            this.state = resp.body;
+        })
+    },
+    methods: {
+        redirect: function(url) {
+            if (this.state.isLoggedIn) {
+                this.$router.push(url)
+            } else {
+                this.$notify({
+                    group: 'error',
+                    type: 'error',
+                    text: 'You have to be logged in to do that'
+                });
+            }
+        }
+    },
+    watch: {
+        state: function() {
+            if (this.state.changedAuth) {
+                this.state.changedAuth = false;
+                this.$notify({
+                    group: 'auth',
+                    type: 'success',
+                    text: 'You successfully logged ' + (this.state.isLoggedIn? 'in': 'out')
+                });
+            }
+        }
+    },
 })
