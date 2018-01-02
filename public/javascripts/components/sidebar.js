@@ -23,22 +23,13 @@ Vue.component('sidebar', {
                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
                 </div>
             </a>
-            <login v-bind:is-logged-in="state.isLoggedIn" v-on:success="state.isLoggedIn=!state.isLoggedIn"></login>
+            <login v-on:success="state.isLoggedIn=!state.isLoggedIn"></login>
         </div>
         `,
     data: function() {
         return {
-            state: {
-                isLoggedIn: null,
-                changedAuth: null
-            }
+            state: Store.state
         }
-    },
-    created: function() {
-        // check if user is logged in
-        this.$http.get('/auth/sessionStatus').then(resp => {
-            this.state = resp.body;
-        })
     },
     methods: {
         redirect: function(url) {
@@ -54,15 +45,19 @@ Vue.component('sidebar', {
         }
     },
     watch: {
-        state: function() {
-            if (this.state.changedAuth) {
-                this.state.changedAuth = false;
-                this.$notify({
-                    group: 'auth',
-                    type: 'success',
-                    text: 'You successfully logged ' + (this.state.isLoggedIn? 'in': 'out')
-                });
-            }
+        state: {
+            handler: function() {
+                console.log(this.state)
+                if (this.state.changedAuth) {
+                    this.state.changedAuth = false;
+                    this.$notify({
+                        group: 'auth',
+                        type: 'success',
+                        text: 'You successfully logged ' + (this.state.isLoggedIn ? 'in' : 'out')
+                    });
+                }
+            },
+            deep: true
         }
     },
 })

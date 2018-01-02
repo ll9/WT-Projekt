@@ -46,17 +46,8 @@ Vue.component('movie-field', {
         `,
     data: function() {
         return {
-            state: {
-                isLoggedIn: null,
-                changedAuth: null
-            }
+            state: Store.state
         }
-    },
-    created: function() {
-        // check if user is logged in
-        this.$http.get('/auth/sessionStatus').then(resp => {
-            this.state = resp.body;
-        })
     },
     methods: {
         addToWatchlist: function(id) {

@@ -21,5 +21,15 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
+    data: {
+        state: Store.state
+    },
+    created: function() {
+        // check if user is logged in
+        this.$http.get('/auth/sessionStatus').then(resp => {
+            this.state.isLoggedIn = resp.body.isLoggedIn;
+            this.state.changedAuth = resp.body.changedAuth;
+        })
+    },
     router
 });
