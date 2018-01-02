@@ -27,7 +27,7 @@ router.get('/sessionStatus', (req, res) => {
 	var tmp = changedAuth;
 	changedAuth = false;
     res.json({
-        isLoggedIn: req.user,
+        isLoggedIn: req.user? true: false,
         changedAuth: tmp
     });
     res.status(200).end();
