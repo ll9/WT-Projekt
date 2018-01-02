@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 
-const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
@@ -20,7 +19,7 @@ var app = express();
 
 const url = 'localhost:27017/tmdb'; // Contains default mongo Port (27017) and name of the database (tmpusr)
 // Get database remotely with environment variable or locally with local mongodb
-const db = require('monk')(process.env._MONGODB_URI || keys.mongodb._MONGODB_URI || url); // Get the Database with monk
+const db = require('monk')(process.env._MONGODB_URI || url); // Get the Database with monk
 // Monk seems to not have enough advanced functionality => replace if by mongoose later on
 const mongoose = require('mongoose');
 
@@ -44,7 +43,7 @@ app.use((req, res, next) => {
 // Cookie encryption, Lasts a Day
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
+  keys: [process.env._cookieKey]
 }))
 
 // initialize passport
@@ -52,7 +51,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // connect mongoose to remote database
-mongoose.connect(keys.mongodb.dbURI, () => {
+mongoose.connect(process.env._mongoose_URI, () => {
   console.log('connected to mongodb');
 })
 
