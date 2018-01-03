@@ -24,12 +24,15 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Implement functionality to delete movies from watchlist !
 - [ ] Implement Personal Rating (Hofmann)
 - [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
+- [ ] Design 404-page (See for example localhost:3000/abc, localhost:3000/nothing, etc.)
 - [ ] Add 'cursor=pointer' to Adding to Watch(ed) List Button
 - [ ] Make Login/Logout more distinct from each other
 - [ ] Find better template picture
 - [ ] Append to-do list (still missing a lot)
 ---
 - [x] Implement Vue Notifications (Wierer)
+- [x] Implement Vue Router + History Mode (Wierer)
+- [x] Implemented 404-page (Wierer)
 - [x] Implement Login (Hofmann, Wierer) !
 - [x] Implement Adding to watchlist (Wierer) !
 - [x] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
