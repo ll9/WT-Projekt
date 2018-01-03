@@ -3,7 +3,7 @@
 Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
 You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/).
 
-[![webpage](docs/assets/example-webpage-v3.PNG)](docs/assets/webpage-demonstration.mp4)
+[![webpage](docs/assets/example-webpage-v4.PNG)](docs/assets/webpage-demonstration.mp4)
 
 ### Setup
 In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
@@ -14,8 +14,9 @@ In order to run this Website locally you will ned node + mongodb which contains 
     db.<collectionName>.createIndex({ title: "text"})
     ```
 3. Install modules (only once): `npm install`
-4. Start the server: `npm start`
-5. Check out the website in your browser at http://localhost:3000/
+4. Setup Environment Variables (only once per session)
+5. Start the server: `npm start`
+6. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
 - [ ] Add Reset all Button
