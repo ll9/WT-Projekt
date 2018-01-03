@@ -23,9 +23,12 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Position a button to delete movies from watchlist (let eye symbol on main page dissapear when it is on watchlist and display this new button instead) !
 - [ ] Implement functionality to delete movies from watchlist !
 - [ ] Implement Personal Rating (Hofmann)
+- [ ] Text still overflows (For example search for 'ok' on website) => fix that
 - [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
 - [ ] Design 404-page (See for example localhost:3000/abc, localhost:3000/nothing, etc.)
 - [ ] Add 'cursor=pointer' to Adding to Watch(ed) List Button
+- [ ] Improve Notification Design (Larger, better Contrast, etc.)
+- [ ] Add prettier font to Website
 - [ ] Make Login/Logout more distinct from each other
 - [ ] Find better template picture
 - [ ] Append to-do list (still missing a lot)
