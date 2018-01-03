@@ -31,7 +31,6 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Backend does't create field to store personal rating -> change that (Wierer) 
 - [ ] Implement Personal Rating (Hofmann)
 - [ ] Check if login expires (Wierer)
-- [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
 - [ ] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
 - [ ] Fix several bugs which are related to login (Wierer)
 - [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
@@ -61,7 +60,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Fix Error when there is no picture (template picture?) (Wierer)
 - [x] Remove Trailer Button if there is no Trailer (Wierer)
 - [x] Cast links to their tmdb page (Wierer)
-- [x] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)
+- [x] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)-
+- [x] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) 
 
 
 
