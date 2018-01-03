@@ -11,7 +11,7 @@ Vue.component('search', {
 				<div id="genre" class="genre">
 					<div class="genrebox">
 						<div>Genre: </div>
-						<select class="selectpicker" v-model="selectedGenres" data-actions-box="true" data-select-all-text="Done" data-width="fit" data-max-options="4" multiple>
+						<select class="selectpicker" ref="select" v-model="selectedGenres" data-actions-box="true" data-select-all-text="Done" data-width="fit" data-max-options="4" multiple>
 							<option disabled value="">Please select Genre</option>
 							<option v-for="genre in genres"> {{genre}} </option>
 						</select>
@@ -26,13 +26,16 @@ Vue.component('search', {
 		</div>
 	`,
     mounted: function() {
-        $(window).on('load', function() {
+        // make sure that bootstrap-select behaves/reloads properly
+        this.$nextTick().then( () => {
+        console.log("loading window");
             $(".bs-select-all").on('click', function(event) {
                 $('.selectpicker').selectpicker('toggle');
                 // Don't use the regular event (select all)
                 event.stopPropagation();
             });
-        });
+        })
+        $(this.$refs.select).selectpicker('refresh');
     },
     data: function() {
         return {
