@@ -7,21 +7,14 @@ You can check out the heroku demo webpage [here](https://radiant-tor-61008.herok
 
 ### Setup
 In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
-1. start your mongo database (`mongod --dbpath <path_to_database>`)
-2. If your db has no text index yet: In your mongo shell: 
-    ```
-    use <dbName>
-    db.<collectionName>.createIndex({ title: "text"})
-    ```
-3. Install modules (only once): `npm install`
-4. Setup Environment Variables (only once per session)
-5. Start the server: `npm start`
-6. Check out the website in your browser at http://localhost:3000/
+
+1. Install modules (only once): `npm install`
+2. Setup Environment Variables (only once per session, (databaseURI, client secret, etc)
+3. Start the server: `npm start`
+4. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
 - [ ] Add Reset all Button
-- [ ] Position a button to delete movies from watchlist (let eye symbol on main page dissapear when it is on watchlist and display this new button instead) !
-- [ ] Implement functionality to delete movies from watchlist !
 - [ ] Implement Personal Rating (Hofmann)
 - [ ] Text still overflows (For example search for 'ok' on website) => fix that
 - [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
@@ -33,6 +26,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Find better template picture
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] Implement Tooltip for add/remove to watchlist button (Wierer)
+- [x] Remove from Watched(List) Backend + Main Page (Wierer)
 - [x] Implement Vue Notifications (Wierer)
 - [x] Implement Vue Router + History Mode (Wierer)
 - [x] Implemented 404-page (Wierer)
