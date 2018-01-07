@@ -46,8 +46,8 @@ Vue.component('sidebar', {
     },
     watch: {
         state: {
+            immediate: true,
             handler: function() {
-                console.log(this.state)
                 if (this.state.changedAuth) {
                     this.state.changedAuth = false;
                     this.$notify({

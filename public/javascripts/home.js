@@ -29,6 +29,7 @@
 
      watch: {
          state: {
+             immediate: true,
              handler: function() {
                  if (this.state.isLoggedIn) {
                      this.$http.get('/api/user/watching').then(resp => {
