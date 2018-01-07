@@ -30,13 +30,13 @@ const movieField = Vue.component('movie-field', {
                         <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
                     </div>
                 </div>
-                <button class="add" v-tooltip="isWatching">Button</button>
-                <!--<div v-on:click="addToWatchlist(movie.getId())" class="add">
+                <!-- <button class="add" v-tooltip="isWatching">Button</button> -->
+                <div v-on:click="addToWatchlist(movie.getId())" v-tooltip="isWatching" class="add">
                     <span class="eye">
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
-                </div> -->
-                <div v-on:click="addToWatchedlist(movie.getId())" class="watched">
+                </div>
+                <div v-on:click="addToWatchedlist(movie.getId())" v-tooltip="isWatched" class="watched">
                     <span class="check">
                         <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
