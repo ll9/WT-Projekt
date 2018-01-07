@@ -31,12 +31,12 @@ const movieField = Vue.component('movie-field', {
                     </div>
                 </div>
                 <!-- <button class="add" v-tooltip="isWatching">Button</button> -->
-                <div v-on:click="changeList(watching)" v-tooltip="isWatching" class="add">
+                <div v-on:click="changeList(watching)" v-tooltip.right="isWatching" class="add">
                     <span class="eye">
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
                 </div>
-                <div v-on:click="changeList(watched)" v-tooltip="isWatched" class="watched">
+                <div v-on:click="changeList(watched)" v-tooltip.right="isWatched" class="watched">
                     <span class="check">
                         <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
