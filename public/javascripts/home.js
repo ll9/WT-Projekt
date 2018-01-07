@@ -31,7 +31,7 @@
          state: {
              immediate: true,
              handler: function() {
-                 if (this.state.isLoggedIn) {
+                 if (this.state.isLoggedIn && !this.state.changedAuth) {
                      this.$http.get('/api/user/watching').then(resp => {
                          for (movie of resp.body) {
                              this.watching.push(movie.id);
