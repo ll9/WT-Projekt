@@ -1,4 +1,4 @@
-Vue.component('movie-field', {
+const movieField = Vue.component('movie-field', {
     props: ['movie'],
     template: `
         <div>
@@ -30,11 +30,12 @@ Vue.component('movie-field', {
                         <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
                     </div>
                 </div>
-                <div v-on:click="addToWatchlist(movie.getId())" class="add">
+                <button class="add" v-tooltip="isWatching">Button</button>
+                <!--<div v-on:click="addToWatchlist(movie.getId())" class="add">
                     <span class="eye">
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
-                </div>
+                </div> -->
                 <div v-on:click="addToWatchedlist(movie.getId())" class="watched">
                     <span class="check">
                         <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
@@ -44,9 +45,23 @@ Vue.component('movie-field', {
                 <br>
             </div>
         `,
+    created: function() {
+        setTimeout(() => {
+            console.log("Start")
+            this.watching.push('abc');
+        }, 4000);
+    },
     data: function() {
         return {
-            state: Store.state
+            state: Store.state,
+            watching: [],
+            watched: []
+        }
+    },
+    computed: {
+        isWatching: function() {
+            return this.watching.length == 0? 'empty': 'not empty';
+            //return this.watching.includes(this.movie.getId)? 'true': 'false';
         }
     },
     methods: {
