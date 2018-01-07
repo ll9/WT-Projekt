@@ -97,6 +97,7 @@ const movieField = Vue.component('movie-field', {
                         type: 'success',
                         text: 'Removed Title from List'
                     });
+                    list.splice( list.indexOf(this.movie.getId()), 1);
                 })
             }
             // Add to Watchlist
@@ -109,6 +110,7 @@ const movieField = Vue.component('movie-field', {
                         type: 'success',
                         text: 'Added Title to List'
                     });
+                    list.push(this.movie.getId())
                 })
             }
         }
