@@ -31,7 +31,7 @@ const movieField = Vue.component('movie-field', {
                     </div>
                 </div>
                 <!-- <button class="add" v-tooltip="isWatching">Button</button> -->
-                <div v-on:click="addToWatchlist(movie.getId())" v-tooltip="isWatching" class="add">
+                <div v-on:click="changeWatchlist" v-tooltip="isWatching" class="add">
                     <span class="eye">
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
@@ -99,6 +99,40 @@ const movieField = Vue.component('movie-field', {
                             text: 'Added Title to Watchlist'
                         });
                     })
+            }
+        },
+        changeWatchlist: function() {
+            if (!this.state.isLoggedIn) {
+                this.$notify({
+                    group: 'error',
+                    type: 'error',
+                    text: 'You are not logged in!'
+                });
+                return;
+            }
+            // Remove from Watchlist
+            if (this.watching.includes(this.movie.getId())) {
+                this.$http.delte('/api/' + 'watchlist' + '/remove', {
+                    movie_id: this.movie.getId()
+                }).then(resp => {
+                    this.$notify({
+                        group: 'add',
+                        type: 'success',
+                        text: 'Removed Title from Watchlist'
+                    });
+                })
+            }
+            // Add to Watchlist
+            else {
+                this.$http.post('/api/' + 'watchlist' + '/add', {
+                    movie_id: this.movie.getId()
+                }).then(resp => {
+                    this.$notify({
+                        group: 'add',
+                        type: 'success',
+                        text: 'Added Title to Watchlist'
+                    });
+                })
             }
         }
     }
