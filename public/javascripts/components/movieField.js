@@ -31,12 +31,12 @@ const movieField = Vue.component('movie-field', {
                     </div>
                 </div>
                 <!-- <button class="add" v-tooltip="isWatching">Button</button> -->
-                <div v-on:click="changeWatchlist" v-tooltip="isWatching" class="add">
+                <div v-on:click="changeList(watching)" v-tooltip="isWatching" class="add">
                     <span class="eye">
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
                 </div>
-                <div v-on:click="addToWatchedlist(movie.getId())" v-tooltip="isWatched" class="watched">
+                <div v-on:click="changeList(watched)" v-tooltip="isWatched" class="watched">
                     <span class="check">
                         <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
                     </span>
@@ -75,33 +75,8 @@ const movieField = Vue.component('movie-field', {
         }
     },
     methods: {
-        addToWatchlist: function(id) {
-            this.addToList(id, 'watchlist')
-        },
-        addToWatchedlist: function(id) {
-            this.addToList(id, 'watchedlist');
-        },
-        addToList: function(id, list) {
-            if (!this.state.isLoggedIn) {
-                this.$notify({
-                    group: 'error',
-                    type: 'error',
-                    text: 'You are not logged in!'
-                });
-            } else {
-                this.$http.post('/api/' + list + '/add', {
-                        movie_id: id
-                    })
-                    .then(resp => {
-                        this.$notify({
-                            group: 'add',
-                            type: 'success',
-                            text: 'Added Title to Watchlist'
-                        });
-                    })
-            }
-        },
-        changeWatchlist: function() {
+        changeList: function(list) {
+            const listname = (list == this.watching ? 'watchlist' : 'watchedlist');
             if (!this.state.isLoggedIn) {
                 this.$notify({
                     group: 'error',
@@ -111,26 +86,28 @@ const movieField = Vue.component('movie-field', {
                 return;
             }
             // Remove from Watchlist
-            if (this.watching.includes(this.movie.getId())) {
-                this.$http.delte('/api/' + 'watchlist' + '/remove', {
-                    movie_id: this.movie.getId()
+            if (list.includes(this.movie.getId())) {
+                this.$http.delete('/api/' + listname + '/remove', {
+                    body: {
+                        movie_id: this.movie.getId()
+                    }
                 }).then(resp => {
                     this.$notify({
                         group: 'add',
                         type: 'success',
-                        text: 'Removed Title from Watchlist'
+                        text: 'Removed Title from List'
                     });
                 })
             }
             // Add to Watchlist
             else {
-                this.$http.post('/api/' + 'watchlist' + '/add', {
+                this.$http.post('/api/' + listname + '/add', {
                     movie_id: this.movie.getId()
                 }).then(resp => {
                     this.$notify({
                         group: 'add',
                         type: 'success',
-                        text: 'Added Title to Watchlist'
+                        text: 'Added Title to List'
                     });
                 })
             }
