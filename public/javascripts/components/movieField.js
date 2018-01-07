@@ -79,7 +79,7 @@ const movieField = Vue.component('movie-field', {
                     this.$notify({
                         group: 'add',
                         type: 'success',
-                        text: 'Removed Title from List'
+                        text: 'Removed Title from ' + listname
                     });
                     list.splice( list.indexOf(this.movie.getId()), 1);
                 })
@@ -92,7 +92,7 @@ const movieField = Vue.component('movie-field', {
                     this.$notify({
                         group: 'add',
                         type: 'success',
-                        text: 'Added Title to List'
+                        text: 'Added Title to ' + listname
                     });
                     list.push(this.movie.getId())
                 })
