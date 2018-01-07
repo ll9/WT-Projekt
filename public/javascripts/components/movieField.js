@@ -1,5 +1,5 @@
 const movieField = Vue.component('movie-field', {
-    props: ['movie'],
+    props: ['movie', 'watching', 'watched'],
     template: `
         <div>
             <notifications group="add" position="bottom left" />
@@ -45,25 +45,9 @@ const movieField = Vue.component('movie-field', {
                 <br>
             </div>
         `,
-    created: function() {
-        if (this.state.isLoggedIn) {
-            this.$http.get('/api/user/watching').then(resp => {
-                for (movie of resp.body) {
-                    this.watching.push(movie.id);
-                }
-            })
-            this.$http.get('/api/user/watched').then(resp => {
-                for (movie of resp.body) {
-                    this.watched.push(movie.id);
-                }
-            })
-        }
-    },
     data: function() {
         return {
             state: Store.state,
-            watching: [],
-            watched: []
         }
     },
     computed: {

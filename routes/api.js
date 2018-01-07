@@ -96,14 +96,11 @@ router.post('/watchedlist/add', (req, res) => {
 router.delete('/watchlist/remove', (req, res) => {
     if (req.user) {
         var userCollection = req.db.get(usercollectionName);
-        console.log(req.body);
         userCollection.findOne({
             _id: req.user
         }).then(user => {
             // check if movie is already in watchlist
             if ((user.watching.map(watching => watching.movie_id).includes(req.body.movie_id))) {
-                console.log("It includes");
-                console.log(user);
                 userCollection.update({
                     _id: req.user
                 }, {
@@ -112,7 +109,7 @@ router.delete('/watchlist/remove', (req, res) => {
                             movie_id: req.body.movie_id
                         }
                     }
-                }).then( result => console.log(result));
+                })
             }
         })
         res.end();

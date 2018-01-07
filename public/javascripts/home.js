@@ -11,7 +11,7 @@
         <search v-on:search-request="loadMovies"></search>
 
         <!--Filmanzeige-->
-        <movie-field v-for="(movie, index) of movies" :movie="movie" v-bind:key="index"></movie-field>
+        <movie-field v-for="(movie, index) of movies" :movie="movie" :watching="watching" :watched="watched" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
         </infinite-loading>
@@ -21,6 +21,29 @@
          return {
              movies: [],
              url: '/api/search/popular?',
+             state: Store.state,
+             watching: [],
+             watched: []
+         }
+     },
+
+     watch: {
+         state: {
+             handler: function() {
+                 if (this.state.isLoggedIn) {
+                     this.$http.get('/api/user/watching').then(resp => {
+                         for (movie of resp.body) {
+                             this.watching.push(movie.id);
+                         }
+                     })
+                     this.$http.get('/api/user/watched').then(resp => {
+                         for (movie of resp.body) {
+                             this.watched.push(movie.id);
+                         }
+                     })
+                 }
+             },
+             deep: true
          }
      },
 
