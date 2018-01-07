@@ -46,10 +46,18 @@ const movieField = Vue.component('movie-field', {
             </div>
         `,
     created: function() {
-        setTimeout(() => {
-            console.log("Start")
-            this.watching.push('abc');
-        }, 4000);
+        if (this.state.isLoggedIn) {
+            this.$http.get('/api/user/watching').then(resp => {
+                for (movie of resp.body) {
+                    this.watching.push(movie.id);
+                }
+            })
+            this.$http.get('/api/user/watched').then(resp => {
+                for (movie of resp.body) {
+                    this.watched.push(movie.id);
+                }
+            })
+        }
     },
     data: function() {
         return {
@@ -60,8 +68,10 @@ const movieField = Vue.component('movie-field', {
     },
     computed: {
         isWatching: function() {
-            return this.watching.length == 0? 'empty': 'not empty';
-            //return this.watching.includes(this.movie.getId)? 'true': 'false';
+            return this.watching.includes(this.movie.getId()) ? 'Remove from Watchlist' : 'Add to Watchlist';
+        },
+        isWatched: function() {
+            return this.watched.includes(this.movie.getId()) ? 'Remove from Watchedlist' : 'Add to Watchedlist';
         }
     },
     methods: {
