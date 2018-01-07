@@ -146,6 +146,7 @@ div{
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 }
 
   d_main:hover{
@@ -161,6 +162,11 @@ div{
   width: 447px;
   height: 25px;
   background-color:darkslateblue;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
 }
 .img{
   border: 1px solid black;
