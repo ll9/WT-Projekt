@@ -126,29 +126,6 @@ router.delete('/watchedlist/remove', (req, res) => {
     }
 })
 
-router.post('/watchedlist/add', (req, res) => {
-    if (req.user) {
-        req.userCollection.findOne({
-            _id: req.user
-        }).then(user => {
-            // check if movie is not already in watchlist
-            if (!(user.watched.map(watched => watched.movie_id).includes(req.body.movie_id))) {
-                req.userCollection.update({
-                    _id: req.user
-                }, {
-                    $push: {
-                        watched: {
-                            movie_id: req.body.movie_id,
-                            rating: null
-                        }
-                    }
-                })
-            }
-        })
-        res.end();
-    }
-})
-
 
 router.get('/search/movies/:movieName', (req, res, next) => {
     var search = "\"" + req.params.movieName + "\""; //search whole phrase
