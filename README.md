@@ -14,18 +14,20 @@ In order to run this Website locally you will ned node + mongodb which contains 
 4. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
-- [ ] Add Reset all Button
-- [ ] Implement Personal Rating (Hofmann)
-- [ ] Text still overflows (For example search for 'ok' on website) => fix that
-- [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
+- [ ] __Improve Design of Watchlist__ (Bacher)
+- [ ] __On the watchlist page implement buttons to switch movies between lists, remove from lists__ (Wierer)
+- [ ] Implement Personal Rating (Wierer)
 - [ ] Design 404-page (See for example localhost:3000/abc, localhost:3000/nothing, etc.)
-- [ ] Add 'cursor=pointer' to Adding to Watch(ed) List Button
+- [ ] Add Reset all Button
+- [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
 - [ ] Improve Notification Design (Larger, better Contrast, etc.)
 - [ ] Add prettier font to Website
-- [ ] Make Login/Logout more distinct from each other
 - [ ] Find better template picture
+- [ ] Make Login/Logout more distinct from each other
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] Text still overflows (For example search for 'ok' on website) => fix that (Bacher)
+- [x] Add 'cursor=pointer' to Adding to Watch(ed) List Button (Bacher)
 - [x] Implement Tooltip for add/remove to watchlist button (Wierer)
 - [x] Remove from Watched(List) Backend + Main Page (Wierer)
 - [x] Implement Vue Notifications (Wierer)
