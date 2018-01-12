@@ -8,5 +8,6 @@ data/
 db/
 dump/
 config/keys.js
+notes
 
 !tmp/mongo/data/dummy

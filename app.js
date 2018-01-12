@@ -67,7 +67,7 @@ mongoose.connect(process.env._mongoose_URI, () => {
 app.use('/', redirectRoutes);
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
-// middleware takes care of reloading /watching, /watched etc
+// middleware takes care of reloading /watching, /watched etc (vue history mode)
 app.use(history({
     disableDotRule: true,
     verbose: true
