@@ -18,14 +18,18 @@ const redirectRoutes = require('./routes/redirect')
 var app = express();
 
 
+/* Using monk and mongoose for db connection */
 
-const url = 'localhost:27017/tmdb'; // Contains default mongo Port (27017) and name of the database (tmdb)
 const usercollectionName = 'users';
 const moviecollectionName = 'movies';
 // Get database remotely with environment variable or locally with local mongodb
-const db = require('monk')(process.env._MONGODB_URI || url); // Get the Database with monk
+const db = require('monk')(process.env._MONGODB_URI); // Get the Database with monk
 // Using mongoose for User registration (easier to handle)
 const mongoose = require('mongoose');
+// connect mongoose to remote database
+mongoose.connect(process.env._mongoose_URI, () => {
+    console.log('connected to mongodb');
+})
 
 
 // uncomment after placing your favicon in /public
@@ -58,15 +62,12 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// connect mongoose to remote database
-mongoose.connect(process.env._mongoose_URI, () => {
-    console.log('connected to mongodb');
-})
 
 //handle routes
 app.use('/', redirectRoutes);
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
+
 // middleware takes care of reloading /watching, /watched etc (vue history mode)
 app.use(history({
     disableDotRule: true,
