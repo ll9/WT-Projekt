@@ -1,6 +1,5 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path');
+const router = require('express').Router();
+
 
 const watching = "watching";
 const watched = "watched";

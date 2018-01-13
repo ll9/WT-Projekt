@@ -1,6 +1,4 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path');
+const router = require('express').Router();
 
 // redirects user to main page if not logged in
 function redirectUnauthorized(req, res, next) {

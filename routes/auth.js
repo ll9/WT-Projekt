@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const passport = require('passport');
-const path = require('path');
 
 var changedAuth = false;
 

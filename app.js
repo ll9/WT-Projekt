@@ -1,9 +1,9 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 
 const cookieSession = require('cookie-session');
@@ -11,18 +11,18 @@ const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 const history = require('connect-history-api-fallback');
 
-var apiRoutes = require('./routes/api');
+const apiRoutes = require('./routes/api');
 const authRoutes = require('./routes/auth');
 const redirectRoutes = require('./routes/redirect')
 
-var app = express();
+const app = express();
 
 
 /* Using monk and mongoose for db connection */
 
 const usercollectionName = 'users';
 const moviecollectionName = 'movies';
-// Get database remotely with environment variable or locally with local mongodb
+// Get database remotely with environment constiable or locally with local mongodb
 const db = require('monk')(process.env._MONGODB_URI); // Get the Database with monk
 // Using mongoose for User registration (easier to handle)
 const mongoose = require('mongoose');
