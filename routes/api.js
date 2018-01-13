@@ -84,14 +84,15 @@ router.delete('/watchlist/remove', checkAuth, removeMovieFromList(watching));
 
 router.delete('/watchedlist/remove', checkAuth, removeMovieFromList(watched));
 
+router.get('/search/movies/:movieName?', (req, res, next) => {
 
-router.get('/search/movies/:movieName', (req, res, next) => {
-    var search = "\"" + req.params.movieName + "\""; //search whole phrase
-
-
-    var query = {
-        $text: {
-            $search: search
+    // Build mongo query conditionally with the spread (...) operator
+    const query = {
+        // if movieName in req.params create serach by title
+        ...(req.params.movieName) && {
+            $text: {
+                $search: "\"" + req.params.movieName + "\"" //search whole phrase
+            }
         },
         // if genres in req.query create genre filter, else do nothing
         ...('genres' in req.query) && {
@@ -103,13 +104,11 @@ router.get('/search/movies/:movieName', (req, res, next) => {
                 }))
             }
         },
-        // if rating in req.query create rating filter, else do nothing
         ...('rating' in req.query) && {
             vote_average: {
                 $gt: parseFloat(req.query.rating)
             }
         },
-        // if year in req.query create rating filter, else do nothing
         ...('years' in req.query) && {
             release_date: {
                 $gt: req.query.years.split(',')[0],
@@ -118,8 +117,7 @@ router.get('/search/movies/:movieName', (req, res, next) => {
         }
     }
 
-    var options = {
-        fields: {},
+    const options = {
         sort: {
             'popularity': -1
         },
@@ -127,49 +125,9 @@ router.get('/search/movies/:movieName', (req, res, next) => {
         limit: 20
     };
 
-    req.movieCollection.find(query, options, function(error, rows) {
-        res.json(rows).status(200).end();
-    });
+    req.movieCollection.find(query, options)
+        .then(result => res.json(result).status(200).end());
 });
 
-router.get('/search/popular', (req, res, next) => {
-    var query = {
-        // if genres in req.query create genre filter, else do nothing
-        ...('genres' in req.query) && {
-            genres: {
-                $all: req.query.genres.split(',').map(genre => ({
-                    $elemMatch: {
-                        name: genre
-                    }
-                }))
-            }
-        },
-        // if rating in req.query create rating filter, else do nothing
-        ...('rating' in req.query) && {
-            vote_average: {
-                $gt: parseFloat(req.query.rating)
-            }
-        },
-        // if year in req.query create rating filter, else do nothing
-        ...('years' in req.query) && {
-            release_date: {
-                $gt: req.query.years.split(',')[0],
-                $lt: (req.query.years.split(',')[1] + '-31-12')
-            }
-        }
-    }
-
-    var options = {
-        sort: {
-            'popularity': -1
-        },
-        skip: req.get('page') * 20,
-        limit: 20
-    };
-
-    req.movieCollection.find(query, options, function(error, rows) {
-        res.json(rows).status(200).end();
-    });
-});
 
 module.exports = router;

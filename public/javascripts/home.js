@@ -20,7 +20,7 @@
      data: function() {
          return {
              movies: [],
-             url: '/api/search/popular?',
+             url: '/api/search/movies?',
              state: Store.state,
              watching: [],
              watched: []
