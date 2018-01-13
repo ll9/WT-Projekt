@@ -83,8 +83,7 @@ Vue.component('search', {
     },
     methods: {
         emitUrl: function() {
-            url = '/api/search/' +
-                (this.searchText ? `movies/${this.searchText}` : 'popular') +
+            url = '/api/search/movies/' +
                 '?' +
                 (this.selectedGenres.length ? `&genres=${this.selectedGenres}` : '') +
                 (this.ratingValue ? `&rating=${this.ratingValue}` : '') +
