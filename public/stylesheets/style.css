@@ -56,8 +56,11 @@ body{
   color: snow;
   margin-bottom: 70px;
 }
-div{
-
+div .notify{
+  color: black
+}
+button.btn.dropdown-toggle.bs-placeholder.btn-info {
+  color: white
 }
 .icon1{
   position:fixed;
