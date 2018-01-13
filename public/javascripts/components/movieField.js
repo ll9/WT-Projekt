@@ -5,7 +5,7 @@ const movieField = Vue.component('movie-field', {
             <notifications group="add" position="bottom left" />
             <notifications group="error" position="bottom left" />
             <div class="main" style="position:relative;">
-                <div id="overall_rating" style="text-align:center;" class="ov_rating">
+                <div style="text-align:center;" class="ov_rating">
                     <p> {{movie.getRating() }} </p>
                 </div>
                 <div class="t_main" style="text-align:center;">
@@ -24,7 +24,7 @@ const movieField = Vue.component('movie-field', {
                         </template>
                     </div>
                     <div class="img" style="text-align:center;">
-                        <img v-bind:src="movie.getImage()">
+                        <img v-bind:src="movie.getImage()" alt="movie image">
                     </div>
                     <div class="trailer" style="text-align:center;">
                         <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
