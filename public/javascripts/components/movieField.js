@@ -82,7 +82,7 @@ const movieField = Vue.component('movie-field', {
                         text: 'Removed Title from ' + listname
                     });
                     list.splice( list.indexOf(this.movie.getId()), 1);
-                })
+                }, error => location='/auth/google')
             }
             // Add to Watchlist
             else {
@@ -95,7 +95,7 @@ const movieField = Vue.component('movie-field', {
                         text: 'Added Title to ' + listname
                     });
                     list.push(this.movie.getId())
-                })
+                }, error => location='/auth/google')
             }
         }
     }

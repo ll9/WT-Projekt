@@ -16,7 +16,7 @@
             for (movie of resp.body) {
                 this.movies.push(new Movie(movie));
             }
-        })
+        }, error => location='/auth/google')
     },
 
     methods: {

@@ -71,9 +71,9 @@ function removeMovieFromList(list) {
 }
 
 
-router.get('/user/watching', getMoviesFromList(watching));
+router.get('/user/watching', checkAuth, getMoviesFromList(watching));
 
-router.get('/user/watched', getMoviesFromList(watched));
+router.get('/user/watched', checkAuth, getMoviesFromList(watched));
 
 router.post('/watchlist/add', checkAuth, addMovieToList(watching));
 
