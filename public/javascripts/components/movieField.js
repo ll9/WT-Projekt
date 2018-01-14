@@ -30,7 +30,6 @@ const movieField = Vue.component('movie-field', {
                         <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
                     </div>
                 </div>
-                <!-- <button class="add" v-tooltip="isWatching">Button</button> -->
                 <div v-on:click="changeList(watching)" v-tooltip.right="isWatching" class="add">
                     <span class="eye">
                         <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
@@ -64,34 +63,38 @@ const movieField = Vue.component('movie-field', {
                 });
                 return;
             }
-            // Remove from Watchlist
             if (list.includes(this.movie.getId())) {
-                this.$http.delete('/api/' + listname + '/remove', {
-                    body: {
-                        movie_id: this.movie.getId()
-                    }
-                }).then(resp => {
-                    this.$notify({
-                        group: 'add',
-                        type: 'success',
-                        text: 'Removed Title from ' + listname
-                    });
-                    list.splice( list.indexOf(this.movie.getId()), 1);
-                }, error => location='/auth/google')
+                this.removeFromList(list, listname)
             }
-            // Add to Watchlist
             else {
-                this.$http.post('/api/' + listname + '/add', {
-                    movie_id: this.movie.getId()
-                }).then(resp => {
-                    this.$notify({
-                        group: 'add',
-                        type: 'success',
-                        text: 'Added Title to ' + listname
-                    });
-                    list.push(this.movie.getId())
-                }, error => location='/auth/google')
+                this.addToList(list, listname)
             }
+        },
+        addToList: function(list, listname) {
+            this.$http.post('/api/' + listname + '/add', {
+                movie_id: this.movie.getId()
+            }).then(resp => {
+                this.$notify({
+                    group: 'add',
+                    type: 'success',
+                    text: 'Added Title to ' + listname
+                });
+                list.push(this.movie.getId())
+            }, error => location = '/auth/google')
+        },
+        removeFromList: function(list, listname) {
+            this.$http.delete('/api/' + listname + '/remove', {
+                body: {
+                    movie_id: this.movie.getId()
+                }
+            }).then(resp => {
+                this.$notify({
+                    group: 'add',
+                    type: 'success',
+                    text: 'Removed Title from ' + listname
+                });
+                list.splice(list.indexOf(this.movie.getId()), 1);
+            }, error => location = '/auth/google')
         }
     }
 })

@@ -10,7 +10,8 @@ Vue.component('search', {
 				</div>
 				<div id="genre" class="genre">
 					<div class="genrebox">
-						<select class="selectpicker" ref="select" v-model="selectedGenres" data-style="btn-info" title="Select Genre" data-actions-box="true" data-select-all-text="Done" data-width="fit" data-max-options="4" multiple>
+						<select class="selectpicker" ref="select" v-model="selectedGenres" data-style="btn-info" title="Select Genre" data-actions-box="true" 
+                            data-select-all-text="Done" data-width="fit" data-max-options="4" multiple>
 							<option v-for="genre in genres"> {{genre}} </option>
 						</select>
 					</div>
@@ -26,7 +27,6 @@ Vue.component('search', {
     mounted: function() {
         // make sure that bootstrap-select behaves/reloads properly
         this.$nextTick().then( () => {
-        console.log("loading window");
             $(".bs-select-all").on('click', function(event) {
                 $('.selectpicker').selectpicker('toggle');
                 // Don't use the regular event (select all)
@@ -75,8 +75,6 @@ Vue.component('search', {
             },
             selectedGenres: [],
             searchText: '',
-            year: 1950,
-            rating: 50,
         }
     },
     methods: {
