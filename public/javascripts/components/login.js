@@ -1,9 +1,5 @@
 const test = Vue.component('login', {
-    data: function() {
-        return {
-            state: Store.state
-        }
-    },
+    props: ['state'],
     template: `
   <div class="login-component">
     <a v-if="state.isLoggedIn==null? false: !state.isLoggedIn" class="login" href="/auth/google" style="font-size:40px;">

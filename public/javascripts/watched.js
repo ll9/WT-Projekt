@@ -1,14 +1,15 @@
  const Watched = Vue.component('Watched', {
     template: `
     <div>
-        <sidebar is-logged-in="true"></sidebar>
+        <sidebar :state="state"></sidebar>
         <h2 style="text-align:center">Watchedlist</h2>
         <watchlist :movies="movies"></watchlist>
     </div>
     `,
     data: function() {
         return {
-            movies: []
+            movies: [],
+            state: Store.state
         }
     },
     mounted: function() {

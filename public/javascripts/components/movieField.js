@@ -1,5 +1,5 @@
 const movieField = Vue.component('movie-field', {
-    props: ['movie', 'watching', 'watched'],
+    props: ['movie', 'watching', 'watched', 'state'],
     template: `
         <div>
             <notifications group="add" position="bottom left" />
@@ -45,11 +45,6 @@ const movieField = Vue.component('movie-field', {
                 <br>
             </div>
         `,
-    data: function() {
-        return {
-            state: Store.state,
-        }
-    },
     computed: {
         isWatching: function() {
             return this.watching.includes(this.movie.getId()) ? 'Remove from Watchlist' : 'Add to Watchlist';

@@ -1,4 +1,5 @@
 Vue.component('sidebar', {
+    props: ['state'],
     template: `
         <div>
             <notifications group="auth" position="bottom left" />
@@ -23,14 +24,9 @@ Vue.component('sidebar', {
                     <i class="fa fa-check-square-o" aria-hidden="true"></i>
                 </div>
             </a>
-            <login v-on:success="state.isLoggedIn=!state.isLoggedIn"></login>
+            <login :state="state" v-on:success="state.isLoggedIn=!state.isLoggedIn"></login>
         </div>
         `,
-    data: function() {
-        return {
-            state: Store.state
-        }
-    },
     methods: {
         redirect: function(url) {
             if (this.state.isLoggedIn) {
