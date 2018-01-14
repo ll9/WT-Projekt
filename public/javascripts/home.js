@@ -1,16 +1,8 @@
  const Home = Vue.component('Home', {
      template: `
     <div>
-        <!--statische Elemente, können für Watchlist übernommen werden-->
         <sidebar></sidebar>
-
-        <!-- Google Authentication -->
-        <!-- https://developers.google.com/identity/sign-in/web/sign-in -->
-
-        <!--Suchfunktionen-->
         <search v-on:search-request="loadMovies"></search>
-
-        <!--Filmanzeige-->
         <movie-field v-for="(movie, index) of movies" :movie="movie" :watching="watching" :watched="watched" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
@@ -30,6 +22,7 @@
      watch: {
          state: {
              immediate: true,
+             // when the user is confirmed to be logged in get watchlist info (to display tooltips etc)
              handler: function() {
                  if (this.state.isLoggedIn && !this.state.changedAuth) {
                      this.$http.get('/api/user/watching').then(resp => {
@@ -53,13 +46,13 @@
      },
 
      methods: {
+        // Triggers infiniteHandler with proper url
          loadMovies: function(url) {
              this.movies = [];
              this.url = url;
              this.$refs.infiniteLoading.$emit('$InfiniteLoading:reset');
          },
-         // gets Movie from the database and inserts them into current movie
-         // take a look at index.js to see how the db provides the data
+         // gets Movie from the database and inserts them into movies
          infiniteHandler($state) {
              this.$http.get(this.url, {
                  headers: {
