@@ -36,12 +36,12 @@
                          for (movie of resp.body) {
                              this.watching.push(movie.id);
                          }
-                     }, error => location='/')
+                     }, error => this.state.isLoggedIn = false)
                      this.$http.get('/api/user/watched').then(resp => {
                          for (movie of resp.body) {
                              this.watched.push(movie.id);
                          }
-                     }, error => location='/')
+                     }, error => this.state.isLoggedIn = false)
                  }
              },
              deep: true
