@@ -1,7 +1,6 @@
  const Watched = Vue.component('Watched', {
     template: `
     <div>
-        <sidebar :state="state"></sidebar>
         <h2 style="text-align:center">Watchedlist</h2>
         <watchlist :movies="movies"></watchlist>
     </div>

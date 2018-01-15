@@ -21,6 +21,13 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
+    template: `
+        <div>
+            <sidebar :state="state"></sidebar>
+            <router-view>
+            </router-view>
+        </div>
+    `,
     data: {
         state: Store.state
     },

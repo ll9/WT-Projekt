@@ -1,7 +1,6 @@
  const Home = Vue.component('Home', {
      template: `
     <div>
-        <sidebar :state="state"></sidebar>
         <search v-on:search-request="loadMovies"></search>
         <movie-field v-for="(movie, index) of movies" :movie="movie" :watching="watching" :watched="watched" :state="state" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
