@@ -2,6 +2,7 @@ function Movie (movie) {
     this.getYear = () => movie.release_date.split('-')[0];
     this.getTitle = () => movie.title;
     this.getTitleYear = () => `${this.getTitle()} (${this.getYear()})`;
+    this.getTitleLink = () => 'https://www.themoviedb.org/movie/' + movie.id;
     this.isReleased = () => {
         let today = new Date();
         let release = new Date(movie.release_date)
