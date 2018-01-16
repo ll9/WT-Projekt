@@ -16,7 +16,7 @@ Vue.component('watchlist', {
                         <th width="5%">Personal Rating</th>
                     </tr>
                     <tr id="film1" v-for="movie of movies">
-                        <td><img v-bind:src="movie.getImage()"></td>
+                        <td><img v-bind:src="movie.getImage()" alt="movie image"></td>
                         <td valign="top">
                             <a class="tip" title="whatever">
                                 <p> {{movie.getTitleYear()}} </p>

@@ -3,41 +3,46 @@
 Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
 You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/).
 
-[![webpage](docs/assets/example-webpage-v3.PNG)](docs/assets/webpage-demonstration.mp4)
+[![webpage](docs/assets/example-webpage-v4.PNG)](docs/assets/webpage-demonstration.mp4)
 
 ### Setup
 In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
-1. start your mongo database (`mongod --dbpath <path_to_database>`)
-2. If your db has no text index yet: In your mongo shell: 
-    ```
-    use <dbName>
-    db.<collectionName>.createIndex({ title: "text"})
-    ```
-3. Install modules (only once): `npm install`
-4. Start the server: `npm start`
-5. Check out the website in your browser at http://localhost:3000/
+
+1. Install modules (only once): `npm install`
+2. Setup Environment Variables (only once per session, (databaseURI, client secret, etc)
+3. Start the server: `npm start`
+4. Check out the website in your browser at http://localhost:3000/
 
 #### To-do
+- [ ] __Improve Design of Watchlist__ (Bacher)
+- [ ] __On the watchlist page implement buttons to switch movies between lists, remove from lists__ (Wierer)
+- [ ] Implement Personal Rating (Wierer)
+- [ ] Design 404-page (See for example localhost:3000/abc, localhost:3000/nothing, etc.)
 - [ ] Add Reset all Button
-- [ ] Fix Position/Design of Login Button
-- [ ] Position a button to delete movies from watchlist (let eye symbol on main page dissapear when it is on watchlist and display this new button instead)
-- [ ] Implement functionality to delete movies from watchlist
-- [ ] Do not allow user to go to watching/watched page when the user is not logged in
+- [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
+- [ ] Improve Notification Design (Larger, better Contrast, etc.)
+- [ ] Add prettier font to Website
 - [ ] Find better template picture
-- [ ] Currently login only works on main page -> Make it work on every page (might require some refactoring)
-- [ ] Implement Login (Wierer) !
-- [ ] Implement Adding to watchlist (Hofmann) !
-- [ ] Implement Removing from watchlist (Wierer) !
-- [ ] Backend does't create field to store personal rating -> change that (Wierer) 
-- [ ] Implement Personal Rating (Hofmann)
-- [ ] Check if login expires (Wierer)
-- [ ] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) !
-- [ ] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
-- [ ] Fix several bugs which are related to login (Wierer)
-- [ ] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
-- [ ] Similar to above: Project has become a bit of a mess since login. The structure should be improved significantly (Wierer)
+- [ ] Make Login/Logout more distinct from each other
 - [ ] Append to-do list (still missing a lot)
 ---
+- [x] Text still overflows (For example search for 'ok' on website) => fix that (Bacher)
+- [x] Add 'cursor=pointer' to Adding to Watch(ed) List Button (Bacher)
+- [x] Implement Tooltip for add/remove to watchlist button (Wierer)
+- [x] Remove from Watched(List) Backend + Main Page (Wierer)
+- [x] Implement Vue Notifications (Wierer)
+- [x] Implement Vue Router + History Mode (Wierer)
+- [x] Implemented 404-page (Wierer)
+- [x] Implement Login (Hofmann, Wierer) !
+- [x] Implement Adding to watchlist (Wierer) !
+- [x] Optional: In the future it might be a good idea to refactore the project (multiple vue files etc, put movies class in extra file etc.) (Wierer)
+- [x] Fix several bugs which are related to login (Wierer)
+- [x] Implement backend to store user information (what's on my watchlist, personal rating etc) (Wierer) !
+- [x] Check if login expires (Wierer)
+- [x] Backend does't create field to store personal rating -> change that (Wierer) 
+- [x] Currently logout only works on main page -> Make it work on every page (Wierer)
+- [x] Do not allow user to go to watching/watched page when the user is not logged in (Wierer)
+- [x] Fix Position/Design of Login Button (Wierer)
 - [x] *Make Website prettier* (Hofmann, later) !
 - [x] __Design Watchlist__ (Hofmann) !
 - [x] Provide filters for popular search (Wierer)
@@ -61,7 +66,8 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Fix Error when there is no picture (template picture?) (Wierer)
 - [x] Remove Trailer Button if there is no Trailer (Wierer)
 - [x] Cast links to their tmdb page (Wierer)
-- [x] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)
+- [x] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)-
+- [x] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) 
 
 
 

@@ -56,8 +56,11 @@ body{
   color: snow;
   margin-bottom: 70px;
 }
-div{
-
+div .notify{
+  color: black
+}
+button.btn.dropdown-toggle.bs-placeholder.btn-info {
+  color: white
 }
 .icon1{
   position:fixed;
@@ -143,9 +146,10 @@ div{
   width: 446px;
   height: 125px;
   background-color: darkslateblue;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 }
 
   d_main:hover{
@@ -161,6 +165,11 @@ div{
   width: 447px;
   height: 25px;
   background-color:darkslateblue;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
 }
 .img{
   border: 1px solid black;
@@ -190,6 +199,9 @@ div{
   margin-top: -100px;
   color:black;
 }
+.add:hover{
+  cursor: pointer;
+}
 .watched{
   border: 2px solid black;
   border-radius: 2px;
@@ -199,6 +211,9 @@ div{
   margin-top: -50px;
   color:black;
 }
+.watched:hover{
+  cursor: pointer;
+ }
 .watchlist{
 
 }
@@ -240,4 +255,9 @@ table, th, td {
     position: fixed;
     left: 85%;
     top: 30%;
+}
+
+.notifications {
+  margin-bottom: 50px;
+  margin-left: 30px;
 }

@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <title>MyML</title>
 
-    <script src="https://apis.google.com/js/api:client.js"></script>
-    <!-- IMPORTANT DO NOT MOVE THIS SCRIPT AFTER JQUERY IMPORT -->
     <script src="https://nightcatsama.github.io/vue-slider-component/dist/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-infinite-loading@2.2.3/dist/vue-infinite-loading.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -30,71 +28,46 @@
 
 
     <script src="https://unpkg.com/vue"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-google-signin-button@1.0.2/dist/vue-google-signin-button.min.js"></script>
     <script src="https://unpkg.com/vue-resource"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://use.fontawesome.com/835208c6d0.js"></script>
+    <script >
+        window.vue = window.Vue; // register vue-notification
+    </script>
+    <script  src="https://unpkg.com/vue-notification"></script>
+    <script >
+      window.vueNotification = window["vue-notification"].default;
+      Vue.use(vueNotification);
+    </script>
+    <script src="https://unpkg.com/popper.js"></script>
+    <script src="https://unpkg.com/v-tooltip"></script>
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/tooltip.css">
 
     <!-- Google Login -->
-
     <script src="https://apis.google.com/js/api.js"></script>
 </head>
 
 <body>
-    
-
     <div id="app">
-        <!--statische Elemente, können für Watchlist übernommen werden-->
-        <sidebar></sidebar>
-        <login v-bind:is-logged-in="isLoggedIn" v-on:success="isLoggedIn=!isLoggedIn"></login>
-
-        <!-- Google Authentication -->
-        <!-- https://developers.google.com/identity/sign-in/web/sign-in -->
-
-        <!--Suchfunktionen-->
-        <div class="container">
-            <div id="filter" class="filter">
-                <input type="search" placeholder="Search" v-model="searchText" v-on:keyup.enter="loadMovies">
-                <button v-on:click="loadMovies">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-            </div>
-
-
-            <div id="genre" class="genre">
-                <div class="genrebox">
-                    <div>Genre: </div>
-                    <select class="selectpicker" v-model="selected" data-actions-box="true" data-select-all-text="Done" data-width="fit" data-max-options="4" multiple>
-                        <option disabled value="">Please select Genre</option>
-                        <option v-for="genre in genres"> {{genre}} </option>
-                    </select>
-                </div>
-
-                <span>Year: {{ yearValue }}</span>
-                <vue-slider v-model="yearValue" v-bind="yearOptions"></vue-slider>
-                <span>Rating > {{ ratingValue }}</span>
-                <vue-slider v-model="ratingValue" v-bind="ratingOptions"></vue-slider>
-
-            </div>
-        </div>
-        <br>
-
-        <!--Filmanzeige-->
-        <movie-field v-for="(movie, index) of currentMovies" v-bind:movie="movie" v-bind:key="index"></movie-field>
-        <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
-            <span slot="no-more">{{currentMovies.length? "": "Nothing Found"}}</span>
-        </infinite-loading>
     </div>
-
-    <!-- Movie Class -->
-    <script src="javascripts/Movie.js"></script>
+    <!-- Classes -->
+    <script src="javascripts/classes/Movie.js"></script>
+    <script src="javascripts/classes/Store.js"></script>
     <!-- Vue Components -->
     <script src="javascripts/components/movieField.js"></script>
     <script src="javascripts/components/sidebar.js"></script>
     <script src="javascripts/components/login.js"></script>
+    <script src="javascripts/components/search.js"></script>
+    <script src="javascripts/components/watchlist.js"></script>
+    <!-- Vue Pages -->
+    <script src="javascripts/home.js"></script>
+    <script src="javascripts/watching.js"></script>
+    <script src="javascripts/watched.js"></script>
+    <script src="javascripts/404.js"></script>
     <!-- Vue Controller -->
-    <script src="javascripts/script.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
