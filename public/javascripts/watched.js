@@ -2,7 +2,7 @@
     template: `
     <div>
         <h2 style="text-align:center">Watchedlist</h2>
-        <watchlist :movies="movies"></watchlist>
+        <watchlist v-for="(movie, index) of movies" :movie="movie" :key="index"></watchlist>
     </div>
     `,
     data: function() {
