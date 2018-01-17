@@ -34,12 +34,20 @@
   position: relative;
   margin: auto;
   width: 50%;
-  heigth: 20%;
+  height: 20%;
   border: 3px solid black;
   border-radius: 6px;
   padding: 10px;
   background-color: darkslateblue;
 }
+.sortbox {
+  position: relative;
+  margin: auto;
+  width: 50%;
+  height: 20%;
+  padding: 10px;
+}
+
 input[type=search] {
   width: 90%;
 }
