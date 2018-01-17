@@ -20,7 +20,13 @@ Vue.component('watchlist', {
                 {{actor.name}}</a><span v-if="(index+1)!==movie.getActors().length">, </span>
                 </template>
             </div>
-            <div class="pr">PR hier einfügen</div>
+            <div class="pr">
+                <star-rating v-model="rating"
+                :increment="0.5"
+                :star-size="30"
+                :show-rating="false">
+                </star-rating>
+            </div>
             <div class="img" style="text-align:center;">
                 <img v-bind:src="movie.getImage()" alt="movie image">
             </div>
@@ -38,5 +44,15 @@ Vue.component('watchlist', {
         <br>
         <br>
     </div>
-    `
+    `,
+    data: function() {
+        return {
+            rating: this.movie.getPersonalRating()
+        }
+    },
+    watch: {
+        rating: function(nv, ov) {
+            this.$emit('rating-request', this.movie.getId(), this.rating);
+        }
+    }
 });
