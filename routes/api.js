@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const monk = require('monk');
 
 
 const watching = "watching";
@@ -15,15 +16,25 @@ function checkAuth(req, res, next) {
 
 function getMoviesFromList(list) {
     return (req, res) => {
-        req.userCollection.findOne({
-            _id: req.user
-        }).then(user => {
-            req.movieCollection.find({
-                id: {
-                    $in: user[list].map(entry => entry.movie_id) // create array which contains only the ids (without rating)
-                }
-            }).then(movies => res.json(movies).status(200).end());
-        })
+        console.log(req.user);
+        req.userCollection.aggregate([{
+            $match: {
+                _id: monk.id(req.user)
+            }
+        }, {
+            $unwind: "$" + list
+        }, {
+            $replaceRoot: {
+                newRoot: "$" + list
+            }
+        }, {
+            $lookup: {
+                from: "movies",
+                localField: "movie_id",
+                foreignField: "id",
+                as: "movie"
+            }
+        }]).then(movies => res.json(movies).status(200).end());
     }
 }
 
@@ -70,6 +81,20 @@ function removeMovieFromList(list) {
     }
 }
 
+function rateMovie(list) {
+    return (req, res) => {
+        req.userCollection.findOneAndUpdate({
+            _id: req.user,
+            [list+".movie_id"]: req.body.movie_id
+        }, {
+            $set: {
+                [list+".$.rating"]: req.body.rating
+            }
+        })
+        res.status(200).end();
+    }
+}
+
 
 router.get('/user/watching', checkAuth, getMoviesFromList(watching));
 
@@ -82,6 +107,10 @@ router.post('/watchedlist/add', checkAuth, addMovieToList(watched));
 router.delete('/watchlist/remove', checkAuth, removeMovieFromList(watching));
 
 router.delete('/watchedlist/remove', checkAuth, removeMovieFromList(watched));
+
+router.post('/watchlist/rate', checkAuth, rateMovie(watching));
+
+router.post('/watchedlist/rate', checkAuth, rateMovie(watched));
 
 router.get('/search/movies/:movieName?', (req, res, next) => {
 
