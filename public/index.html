@@ -39,6 +39,10 @@
       window.vueNotification = window["vue-notification"].default;
       Vue.use(vueNotification);
     </script>
+    <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
+    <script>
+        Vue.component('star-rating', VueStarRating.default);
+    </script>
     <script src="https://unpkg.com/popper.js"></script>
     <script src="https://unpkg.com/v-tooltip"></script>
 
