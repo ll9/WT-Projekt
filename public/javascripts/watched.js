@@ -1,8 +1,8 @@
- const Watched = Vue.component('Watched', {
+const Watched = Vue.component('Watched', {
     template: `
     <div>
         <h2 style="text-align:center">Watchedlist</h2>
-        <watchlist v-for="(movie, index) of movies" :movie="movie" :key="index"></watchlist>
+        <watchlist v-for="(movie, index) of movies" :movie="movie" :key="index" v-on:rating-request="saveRating"></watchlist>
     </div>
     `,
     data: function() {
@@ -14,8 +14,17 @@
     mounted: function() {
         this.$http.get('/api/user/watched').then(resp => {
             for (movie of resp.body) {
-                this.movies.push(new Movie(movie));
+                this.movies.push(new RatedMovie(movie));
             }
-        }, error => location='/auth/google')
+        }, error => location = '/auth/google')
+    },
+    methods: {
+        saveRating: function(id, rating) {
+            this.$http.post('/api/watchedlist/rate', {
+                movie_id: id,
+                rating: rating
+            }).then(resp => {},
+                error => location = '/auth/google')
+        }
     }
 });
