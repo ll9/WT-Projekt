@@ -1,4 +1,4 @@
-const test = Vue.component('sort', {
+const sort = Vue.component('sort', {
     template: `
 <div class="sortbox">
     <select class="selectpicker" ref="sortselect" v-model="orderBy" data-style="btn-primary" data-width="fit">

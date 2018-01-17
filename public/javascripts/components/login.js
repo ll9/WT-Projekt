@@ -1,4 +1,4 @@
-const test = Vue.component('login', {
+const login = Vue.component('login', {
     props: ['state'],
     template: `
   <div class="login-component">
