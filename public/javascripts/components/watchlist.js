@@ -57,12 +57,18 @@ Vue.component('watchlist', {
             this.$http.post('/api/' + this.listname + '/rate', {
                 movie_id: this.movie.getId(),
                 rating: this.rating
-            }).then(resp => {})
+            }).then(resp => {},
+                error => location = '/auth/google')
         }
     },
     methods: {
         deleteMovie: function() {
-            this.$emit('delete-movie', this.movie);
+            this.$http.delete('/api/' + this.listname + '/remove', {
+                body: {
+                    movie_id: this.movie.getId()
+                }
+            }).then(resp => this.$emit('delete-movie', this.movie),
+                error => location = '/auth/google')
         }
     }
 });
