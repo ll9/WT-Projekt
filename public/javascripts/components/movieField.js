@@ -30,12 +30,12 @@ const movieField = Vue.component('movie-field', {
                 <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
             </div>
         </div>
-        <div v-on:click="changeList(watching)" v-tooltip.right="isWatching" class="add">
+        <div v-if="!isWatched" v-on:click="changeList(watching)" v-tooltip.right="watchingMessage" class="add">
             <span class="eye">
                 <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
             </span>
         </div>
-        <div v-on:click="changeList(watched)" v-tooltip.right="isWatched" class="watched">
+        <div v-if="!isWatching" v-on:click="changeList(watched)" v-tooltip.right="watchedgMessage" class="watched">
             <span class="check">
                 <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
             </span>
@@ -46,10 +46,16 @@ const movieField = Vue.component('movie-field', {
     `,
     computed: {
         isWatching: function() {
-            return this.watching.includes(this.movie.getId()) ? 'Remove from Watchlist' : 'Add to Watchlist';
+            return this.watching.includes(this.movie.getId());
         },
         isWatched: function() {
-            return this.watched.includes(this.movie.getId()) ? 'Remove from Watchedlist' : 'Add to Watchedlist';
+            return this.watched.includes(this.movie.getId());
+        },
+        watchingMessage: function() {
+            return this.isWatching ? 'Remove from Watchlist' : 'Add to Watchlist';
+        },
+        watchedgMessage: function() {
+            return this.isWatched ? 'Remove from Watchedlist' : 'Add to Watchedlist';
         }
     },
     methods: {
