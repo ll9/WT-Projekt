@@ -246,6 +246,9 @@ button.btn.dropdown-toggle.bs-placeholder.btn-info {
   margin-top: 150px;
   width: 100px;
   height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .wl_remove {
   border: 1px solid black;
@@ -256,6 +259,9 @@ button.btn.dropdown-toggle.bs-placeholder.btn-info {
   width: 100px;
   height: 75px;
   background-color: darkslateblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .pr {
   border: 1px solid black;
