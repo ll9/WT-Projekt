@@ -324,3 +324,11 @@ table, th, td {
   margin-bottom: 50px;
   margin-left: 30px;
 }
+
+.inactive {
+  color: #636363;
+  transition: 0.3s;
+}
+.inactive:hover {
+  color: black;
+}

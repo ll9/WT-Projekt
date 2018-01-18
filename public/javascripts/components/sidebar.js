@@ -9,19 +9,19 @@ Vue.component('sidebar', {
             </div>
             <router-link to="/">
                 <div class="icon1">
-                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <i class="fa fa-home" :class="{inactive: !isAtHome}" aria-hidden="true"></i>
                 </div>
             </router-link>
             <br>
             <a v-on:click="redirect('/watching')" style="cursor:pointer;">
                 <div class="icon2">
-                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    <i class="fa fa-eye" :class="{inactive: !isAtWatching}" aria-hidden="true"></i>
                 </div>
             </a>
             <br>
             <a v-on:click="redirect('/watched')" style="cursor:pointer;">
                 <div class="icon3">
-                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    <i class="fa fa-check-square-o" :class="{inactive: !isAtWatched}" aria-hidden="true"></i>
                 </div>
             </a>
             <login :state="state" v-on:success="state.isLoggedIn=!state.isLoggedIn"></login>
@@ -39,6 +39,17 @@ Vue.component('sidebar', {
                 });
             }
         }
+    },
+    computed: {
+        isAtHome: function() {
+            return this.$route.path === '/';
+        },
+        isAtWatching: function() {
+            return this.$route.path === '/watching';
+        },
+        isAtWatched: function() {
+            return this.$route.path === '/watched';
+        },
     },
     watch: {
         state: {
