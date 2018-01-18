@@ -65,24 +65,18 @@ Vue.component('watchlist', {
                 error => location = '/auth/google')
         },
         swapList: function() {
-            console.log("working");
             this.$http.post('/api/' + this.swapname + '/add', {
-                movie_id: this.movie.getId()
+                movie_id: this.movie.getId(),
+                rating: this.rating
             }).then(resp => {
-                    this.$http.post('/api/' + this.swapname + '/rate', {
-                        movie_id: this.movie.getId(),
-                        rating: this.rating
-                    }).then(resp => {
-                            this.$http.delete('/api/' + this.listname + '/remove', {
-                                body: {
-                                    movie_id: this.movie.getId()
-                                }
-                            }).then(resp => this.$emit('delete-movie', this.movie),
-                                error => location = '/auth/google')
-                        },
+                    this.$http.delete('/api/' + this.listname + '/remove', {
+                        body: {
+                            movie_id: this.movie.getId()
+                        }
+                    }).then(resp => this.$emit('delete-movie', this.movie),
                         error => location = '/auth/google')
                 },
                 error => location = '/auth/google')
-        }
+        },
     }
 });

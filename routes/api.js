@@ -51,7 +51,7 @@ function addMovieToList(list) {
                     $push: {
                         [list]: {
                             movie_id: req.body.movie_id,
-                            rating: null
+                            rating: req.body.rating
                         }
                     }
                 }).then(() => res.status(201).end())
