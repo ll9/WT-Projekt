@@ -56,6 +56,7 @@ function addMovieToList(list) {
                     }
                 }).then(() => res.status(201).end())
             }
+            else return res.status(200).end()
         })
     }
 }
@@ -77,6 +78,7 @@ function removeMovieFromList(list) {
                     }
                 }).then(() => res.status(204).end())
             }
+            else return res.status(200).end();
         })
     }
 }
