@@ -2,7 +2,7 @@ const Watching = Vue.component('Watching', {
     template: `
     <div>
         <h2 style="text-align:center">Watchinglist</h2>
-        <watchlist v-for="movie of movies" :movie="movie" :key="movie.getId()" 
+        <watchlist v-for="movie of movies" :movie="movie" listname="watchlist" :key="movie.getId()" 
         v-on:rating-request="saveRating"
         v-on:delete-movie="deleteMovie">
         </watchlist>
@@ -22,13 +22,6 @@ const Watching = Vue.component('Watching', {
         }, error => location = '/auth/google')
     },
     methods: {
-        saveRating: function(id, rating) {
-            this.$http.post('/api/watchlist/rate', {
-                movie_id: id,
-                rating: rating
-            }).then(resp => {},
-                error => location = '/auth/google')
-        },
         deleteMovie: function(movie) {
             this.$http.delete('/api/watchlist/remove', {
                 body: {

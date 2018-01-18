@@ -1,5 +1,5 @@
 Vue.component('watchlist', {
-    props: ['movie'],
+    props: ['movie', 'listname'],
     template: `
 <div>
     <div class="wl_main" style="position:relative;">
@@ -53,8 +53,11 @@ Vue.component('watchlist', {
         }
     },
     watch: {
-        rating: function(nv, ov) {
-            this.$emit('rating-request', this.movie.getId(), this.rating);
+        rating: function() {
+            this.$http.post('/api/' + this.listname + '/rate', {
+                movie_id: this.movie.getId(),
+                rating: this.rating
+            }).then(resp => {})
         }
     },
     methods: {
