@@ -1,4 +1,4 @@
-# Title tbd
+# MyMl
 
 Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
 You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/).
@@ -13,10 +13,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 3. Start the server: `npm start`
 4. Check out the website in your browser at http://localhost:3000/
 
-#### To-do
-- [ ] __Improve Design of Watchlist__ (Bacher)
-- [ ] __On the watchlist page implement buttons to switch movies between lists, remove from lists__ (Wierer)
-- [ ] Implement Personal Rating (Wierer)
+#### Optional Improvements
 - [ ] Design 404-page (See for example localhost:3000/abc, localhost:3000/nothing, etc.)
 - [ ] Add Reset all Button
 - [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
@@ -24,8 +21,12 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Add prettier font to Website
 - [ ] Find better template picture
 - [ ] Make Login/Logout more distinct from each other
-- [ ] Append to-do list (still missing a lot)
+
+#### To-do
+- [ ] __Improve Design of Watchlist__ (Bacher)
+- [ ] __On the watchlist page implement buttons to switch movies between lists, remove from lists__ (Wierer)
 ---
+- [x] Implement Personal Rating (Wierer)
 - [x] Text still overflows (For example search for 'ok' on website) => fix that (Bacher)
 - [x] Add 'cursor=pointer' to Adding to Watch(ed) List Button (Bacher)
 - [x] Implement Tooltip for add/remove to watchlist button (Wierer)
