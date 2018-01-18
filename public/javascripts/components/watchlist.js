@@ -10,7 +10,9 @@ Vue.component('watchlist', {
             <a target="_blank" :href="movie.getTitleLink()" style="color: white; text-decoration: none;"> {{movie.getTitleYear()}} </a>
         </div>
         <div class="wl_watched">"Watched" button einfügen</div>
-        <div class="wl_remove">"Remove from WL" Button einfügen</div>
+        <div class="wl_remove">
+            <i class="fa fa-times" v-on:click="deleteMovie" aria-hidden="true" style="font-size:40px; cursor:pointer;"></i>
+        </div>
         <div class="g_main" style="text-align:center;">
             <p> {{movie.getGenres() }} </p>
         </div>
@@ -53,6 +55,11 @@ Vue.component('watchlist', {
     watch: {
         rating: function(nv, ov) {
             this.$emit('rating-request', this.movie.getId(), this.rating);
+        }
+    },
+    methods: {
+        deleteMovie: function() {
+            this.$emit('delete-movie', this.movie);
         }
     }
 });
