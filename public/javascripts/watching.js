@@ -30,7 +30,12 @@ const Watching = Vue.component('Watching', {
                 error => location = '/auth/google')
         },
         deleteMovie: function(movie) {
-            this.movies.splice(this.movies.indexOf(movie), 1);
+            this.$http.delete('/api/watchlist/remove', {
+                body: {
+                    movie_id: movie.getId()
+                }
+            }).then(resp => this.movies.splice(this.movies.indexOf(movie), 1),
+                error => location = '/auth/google')
         }
     }
 });
