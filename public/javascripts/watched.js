@@ -2,7 +2,7 @@ const Watched = Vue.component('Watched', {
     template: `
     <div>
         <h2 style="text-align:center">Watchedlist</h2>
-        <watchlist v-for="movie of movies" :movie="movie" listname="watchedlist" :key="movie.getId()" 
+        <watchlist v-for="movie of movies" :movie="movie" listname="watchedlist" swapname="watchlist" :key="movie.getId()" 
         v-on:delete-movie="deleteMovie">
             <i slot="swapicon" class="fa fa-eye" aria-hidden="true" style="font-size:40px; cursor:pointer;"></i>
         </watchlist>

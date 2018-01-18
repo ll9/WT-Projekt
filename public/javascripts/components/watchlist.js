@@ -1,5 +1,5 @@
 Vue.component('watchlist', {
-    props: ['movie', 'listname'],
+    props: ['movie', 'listname', 'swapname'],
     template: `
 <div>
     <div class="wl_main" style="position:relative;">
@@ -76,6 +76,23 @@ Vue.component('watchlist', {
         },
         swapList: function() {
             console.log("working");
+            this.$http.post('/api/' + this.swapname + '/add', {
+                movie_id: this.movie.getId()
+            }).then(resp => {
+                    this.$http.post('/api/' + this.swapname + '/rate', {
+                        movie_id: this.movie.getId(),
+                        rating: this.rating
+                    }).then(resp => {
+                            this.$http.delete('/api/' + this.listname + '/remove', {
+                                body: {
+                                    movie_id: this.movie.getId()
+                                }
+                            }).then(resp => this.$emit('delete-movie', this.movie),
+                                error => location = '/auth/google')
+                        },
+                        error => location = '/auth/google')
+                },
+                error => location = '/auth/google')
         }
     }
 });
