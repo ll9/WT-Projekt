@@ -37,16 +37,6 @@ Vue.component('watchlist', {
                 <img v-bind:src="movie.getImage()" alt="movie image">
             </div>
         </div>
-        <div class="add">
-            <span class="eye">
-                <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
-            </span>
-        </div>
-        <div class="watched">
-            <span class="check">
-                <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
-            </span>
-        </div>
         <br>
         <br>
     </div>
