@@ -2,7 +2,10 @@ const Watching = Vue.component('Watching', {
     template: `
     <div>
         <h2 style="text-align:center">Watchinglist</h2>
-        <watchlist v-for="(movie, index) of movies" :movie="movie" :key="index" v-on:rating-request="saveRating"></watchlist>
+        <watchlist v-for="(movie, index) of movies" :movie="movie" :key="index" 
+        v-on:rating-request="saveRating"
+        v-on:delete-movie="deleteMovie">
+        </watchlist>
     </div>
     `,
     data: function() {
@@ -25,6 +28,9 @@ const Watching = Vue.component('Watching', {
                 rating: rating
             }).then(resp => {},
                 error => location = '/auth/google')
+        },
+        deleteMovie: function(movie) {
+            this.movies.splice(this.movies.indexOf(movie), 1);
         }
     }
 });
