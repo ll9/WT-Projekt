@@ -3,8 +3,8 @@ const Watching = Vue.component('Watching', {
     <div>
         <h2 style="text-align:center">Watchinglist</h2>
         <watchlist v-for="movie of movies" :movie="movie" listname="watchlist" :key="movie.getId()" 
-        v-on:rating-request="saveRating"
         v-on:delete-movie="deleteMovie">
+            <i slot="swapicon" class="fa fa-check-square-o" aria-hidden="true" style="font-size:40px; cursor:pointer;"></i>
         </watchlist>
     </div>
     `,

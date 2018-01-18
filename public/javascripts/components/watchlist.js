@@ -9,7 +9,11 @@ Vue.component('watchlist', {
         <div class="t_main" style="text-align:center;">
             <a target="_blank" :href="movie.getTitleLink()" style="color: white; text-decoration: none;"> {{movie.getTitleYear()}} </a>
         </div>
-        <div class="wl_watched">"Watched" button einfügen</div>
+        <div class="wl_watched">
+            <div v-on:click="swapList">
+                <slot name="swapicon"></slot>
+            </div>
+        </div>
         <div class="wl_remove">
             <i class="fa fa-times" v-on:click="deleteMovie" aria-hidden="true" style="font-size:40px; cursor:pointer;"></i>
         </div>
@@ -69,6 +73,9 @@ Vue.component('watchlist', {
                 }
             }).then(resp => this.$emit('delete-movie', this.movie),
                 error => location = '/auth/google')
+        },
+        swapList: function() {
+            console.log("working");
         }
     }
 });
