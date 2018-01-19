@@ -34,6 +34,10 @@ function getMoviesFromList(list) {
                 foreignField: "id",
                 as: "movie"
             }
+        }, {
+            $unwind: "$movie"
+        }, {
+            $sort: {"movie.vote_average": -1} //{"movie.title": 1}
         }]).then(movies => res.json(movies).status(200).end());
     }
 }

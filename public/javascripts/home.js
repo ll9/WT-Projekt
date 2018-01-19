@@ -26,12 +26,12 @@
                  if (this.state.isLoggedIn && !this.state.changedAuth) {
                      this.$http.get('/api/user/watching').then(resp => {
                          for (ratedMovie of resp.body) {
-                             this.watching.push(ratedMovie.movie[0].id);
+                             this.watching.push(ratedMovie.movie.id);
                          }
                      }, error => this.state.isLoggedIn = false)
                      this.$http.get('/api/user/watched').then(resp => {
                          for (ratedMovie of resp.body) {
-                             this.watched.push(ratedMovie.movie[0].id);
+                             this.watched.push(ratedMovie.movie.id);
                          }
                      }, error => this.state.isLoggedIn = false)
                  }

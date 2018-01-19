@@ -1,5 +1,5 @@
 function RatedMovie(ratedMovie) {
-	Movie.call(this, ratedMovie.movie[0])
+	Movie.call(this, ratedMovie.movie)
 
 	this.getPersonalRating = () => ratedMovie.rating;
 }
