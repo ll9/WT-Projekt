@@ -341,3 +341,11 @@ table, th, td {
 .inactive:hover {
   color: black;
 }
+.animatable {
+  transition: 0.3s;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+.rotate {
+  transform: rotate(180deg);
+}

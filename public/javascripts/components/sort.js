@@ -1,13 +1,14 @@
 const sort = Vue.component('sort', {
     template: `
 <div class="sortbox">
-    <span style="color: black;">Order By </span>
-    <select class="selectpicker" ref="sortselect" v-model="orderBy" data-style="btn-primary" data-width="fit">
+    <select class="selectpicker" ref="sortselect" v-model="orderBy" data-style="btn-primary" data-width="20%">
       <option>Popularity</option>
       <option>Title</option>
       <option>Rating</option>
     </select>
-    <span><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+    <span v-on:click="rotateArrow=!rotateArrow">
+      <i class="fa fa-arrow-down animatable" :class="{rotate: rotateArrow}" aria-hidden="true" style="font-size:20px; cursor:pointer;"></i>
+    </span>
 </div>
   `,
     mounted: function() {
@@ -16,7 +17,8 @@ const sort = Vue.component('sort', {
     },
     data: function() {
         return {
-            orderBy: null
+            orderBy: null,
+            rotateArrow: false
         }
     }
 });
