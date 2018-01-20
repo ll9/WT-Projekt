@@ -18,6 +18,7 @@
              state: Store.state,
              watching: [],
              watched: [],
+             // convert selected text to text which the database can handle
              dictionary: {
                 "Popularity": "popularity",
                 "Title": "title",

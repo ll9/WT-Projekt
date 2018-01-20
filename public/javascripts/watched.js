@@ -7,6 +7,9 @@ const Watched = Vue.component('Watched', {
         v-on:delete-movie="deleteMovie">
             <i slot="swapicon" class="fa fa-eye" aria-hidden="true" style="font-size:40px; cursor:pointer;"></i>
         </watchlist>
+        <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" v-on:infinite="infiniteHandler">
+            <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
+        </infinite-loading>
     </div>
     `,
     data: function() {
@@ -29,13 +32,6 @@ const Watched = Vue.component('Watched', {
             }
         }
     },
-    mounted: function() {
-        this.$http.get('/api/user/watched').then(resp => {
-            for (movie of resp.body) {
-                this.movies.push(new RatedMovie(movie));
-            }
-        }, error => location = '/auth/google')
-    },
     methods: {
         deleteMovie: function(movie) {
             this.movies.splice(this.movies.indexOf(movie), 1);
@@ -43,6 +39,19 @@ const Watched = Vue.component('Watched', {
         sortMovies: function(by, arrangement) {
             this.sort = by;
             this.arrangement = arrangement;
+        },
+        infiniteHandler: function($state) {
+            this.$http.get('/api/user/watched').then(resp => {
+                for (movie of resp.body) {
+                    this.movies.push(new RatedMovie(movie));
+                    console.log(this.movies.length)
+                }
+                $state.loaded();
+                $state.complete();
+            }, error => location = '/auth/google')
         }
-    }
+    },
+    components: {
+         'infinite-loading': window.VueInfiniteLoading.default,
+     }
 });
