@@ -2,7 +2,7 @@
      template: `
     <div>
         <search v-on:search-request="loadMovies"></search>
-        <sort></sort>
+        <sort v-on:sort-request="sortMovies"></sort>
         <movie-field v-for="(movie, index) of movies" :movie="movie" :watching="watching" :watched="watched" :state="state" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
@@ -13,6 +13,8 @@
          return {
              movies: [],
              url: '/api/search/movies?',
+             sort: 'popularity',
+             arrangement: -1,
              state: Store.state,
              watching: [],
              watched: []
@@ -46,6 +48,13 @@
      },
 
      methods: {
+        // Triggers infiniteHandler to sort
+        sortMovies: function(by, arrangement) {
+            this.movies = [];
+            this.sort = by;
+            this.arrangement = arrangement;
+            this.$refs.infiniteLoading.$emit('$InfiniteLoading:reset');
+        },
         // Triggers infiniteHandler with proper url
          loadMovies: function(url) {
              this.movies = [];
@@ -54,9 +63,14 @@
          },
          // gets Movie from the database and inserts them into movies
          infiniteHandler($state) {
+            console.log(this.sort);
+            console.log(this.arrangement.toString());
              this.$http.get(this.url, {
                  headers: {
-                     'page': (this.movies.length / 20).toString()
+                     'page': (this.movies.length / 20).toString(),
+                     'sort': this.sort,
+                     'arrangement': this.arrangement.toString()
+                     //'sort': this.sort
                  }
              }).then(resp => {
                  if (resp.body.length === 0)
