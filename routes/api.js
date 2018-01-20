@@ -16,7 +16,7 @@ function checkAuth(req, res, next) {
 
 function getMoviesFromList(list) {
     return (req, res) => {
-        console.log(req.user);
+        // join user with data from movies
         req.userCollection.aggregate([{
             $match: {
                 _id: monk.id(req.user)
@@ -36,8 +36,6 @@ function getMoviesFromList(list) {
             }
         }, {
             $unwind: "$movie"
-        }, {
-            $sort: {"movie.vote_average": -1} //{"movie.title": 1}
         }]).then(movies => res.json(movies).status(200).end());
     }
 }
@@ -59,8 +57,7 @@ function addMovieToList(list) {
                         }
                     }
                 }).then(() => res.status(201).end())
-            }
-            else return res.status(200).end()
+            } else return res.status(200).end()
         })
     }
 }
@@ -81,8 +78,7 @@ function removeMovieFromList(list) {
                         }
                     }
                 }).then(() => res.status(204).end())
-            }
-            else return res.status(200).end();
+            } else return res.status(200).end();
         })
     }
 }
@@ -91,10 +87,10 @@ function rateMovie(list) {
     return (req, res) => {
         req.userCollection.findOneAndUpdate({
             _id: req.user,
-            [list+".movie_id"]: req.body.movie_id
+            [list + ".movie_id"]: req.body.movie_id
         }, {
             $set: {
-                [list+".$.rating"]: req.body.rating
+                [list + ".$.rating"]: req.body.rating
             }
         })
         res.status(200).end();
@@ -154,7 +150,7 @@ router.get('/search/movies/:movieName?', (req, res, next) => {
     const options = {
         sort: {
             [req.get('sort')]: Number(req.get('arrangement'))
-            //'popularity': -1
+                //'popularity': -1
         },
         skip: req.get('page') * 20,
         limit: 20
