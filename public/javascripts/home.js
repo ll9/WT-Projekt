@@ -2,7 +2,7 @@
      template: `
     <div>
         <search v-on:search-request="loadMovies"></search>
-        <sort v-on:sort-request="sortMovies"></sort>
+        <sort :options="Object.keys(dictionary)" v-on:sort-request="sortMovies"></sort>
         <movie-field v-for="(movie, index) of movies" :movie="movie" :watching="watching" :watched="watched" :state="state" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
@@ -17,7 +17,13 @@
              arrangement: -1,
              state: Store.state,
              watching: [],
-             watched: []
+             watched: [],
+             dictionary: {
+                "Popularity": "popularity",
+                "Title": "title",
+                "Rating": "vote_average",
+                "Date": "release_date"
+            }
          }
      },
 
@@ -51,7 +57,7 @@
         // Triggers infiniteHandler to sort
         sortMovies: function(by, arrangement) {
             this.movies = [];
-            this.sort = by;
+            this.sort = this.dictionary[by];
             this.arrangement = arrangement;
             this.$refs.infiniteLoading.$emit('$InfiniteLoading:reset');
         },
