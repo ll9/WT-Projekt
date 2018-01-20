@@ -23,9 +23,11 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [ ] Make Login/Logout more distinct from each other
 
 #### To-do
-- [ ] __Improve Design of Watchlist__ (Bacher)
-- [ ] __On the watchlist page implement buttons to switch movies between lists, remove from lists__ (Wierer)
+- [ ] Refactoring: Clean Javascript, CSS, improve structure, etc.
 ---
+- [x] Implement Functionality to sort by Title, Date, Rating, etc. (Wierer)
+- [x] __On the watchlist page implement buttons to switch movies between lists, remove from lists__ (Wierer)
+- [x] __Improve Design of Watchlist__ (Bacher)
 - [x] Implement Personal Rating (Wierer)
 - [x] Text still overflows (For example search for 'ok' on website) => fix that (Bacher)
 - [x] Add 'cursor=pointer' to Adding to Watch(ed) List Button (Bacher)
