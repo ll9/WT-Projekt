@@ -7,7 +7,7 @@ const Watching = Vue.component('Watching', {
         v-on:delete-movie="deleteMovie">
             <i slot="swapicon" class="fa fa-check-square-o" aria-hidden="true" style="font-size:40px; cursor:pointer; padding-top: 8px;"></i>
         </watchlist>
-        <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" v-on:infinite="infiniteHandler">
+        <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="spiral" v-on:infinite="infiniteHandler">
             <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
         </infinite-loading>
     </div>
