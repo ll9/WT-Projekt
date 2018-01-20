@@ -69,8 +69,6 @@
          },
          // gets Movie from the database and inserts them into movies
          infiniteHandler($state) {
-            console.log(this.sort);
-            console.log(this.arrangement.toString());
              this.$http.get(this.url, {
                  headers: {
                      'page': (this.movies.length / 20).toString(),

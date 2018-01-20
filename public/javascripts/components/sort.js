@@ -17,11 +17,10 @@ const sort = Vue.component('sort', {
     mounted: function() {
         // make sure that bootstrap-select behaves/reloads properly
         $(this.$refs.sortselect).selectpicker('refresh');
-        console.log(this.defaultOption);
     },
     data: function() {
         return {
-            orderBy: this.defaultOption || Object.keys(this.options)[0],
+            orderBy: this.defaultOption || this.options[0],
             rotate: false
         }
     },
