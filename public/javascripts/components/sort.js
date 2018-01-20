@@ -24,7 +24,8 @@ const sort = Vue.component('sort', {
             dictionary: {
                 "Popularity": "popularity",
                 "Title": "title",
-                "Rating": "vote_average"
+                "Rating": "vote_average",
+                "Date": "release_date"
             }
         }
     },
