@@ -2,7 +2,7 @@ const Watching = Vue.component('Watching', {
     template: `
     <div>
         <h2 style="text-align:center">Watchinglist</h2>
-        <sort v-on:sort-request="sortMovies"></sort>
+        <sort :options="sortOptions" v-on:sort-request="sortMovies"></sort>
         <watchlist v-for="movie of sortedMovies" :movie="movie" listname="watchlist" swapname="watchedlist" :key="movie.getId()" 
         v-on:delete-movie="deleteMovie">
             <i slot="swapicon" class="fa fa-check-square-o" aria-hidden="true" style="font-size:40px; cursor:pointer; padding-top: 8px;"></i>
@@ -13,26 +13,20 @@ const Watching = Vue.component('Watching', {
         return {
             movies: [],
             state: Store.state,
-            sort: 'popularity',
+            sort: 'Popularity',
+            sortOptions: ['Popularity', 'Date', 'Title', 'Rating', 'Personal Rating'],
             arrangement: -1,
         }
     },
     computed: {
         sortedMovies: function() {
-            sortedMovies = [];
             switch(this.sort) {
-                case 'release_date': sortedMovies = _.sortBy(this.movies, [(movie) => movie.getDate()]); break;
-                case 'popularity': sortedMovies = _.sortBy(this.movies, [(movie) => movie.getPopularity()]); break;
-                case 'title': sortedMovies = _.sortBy(this.movies, [(movie) => movie.getTitle()]); break;
-                case 'vote_average': sortedMovies = _.sortBy(this.movies, [(movie) => movie.getRating()]); break;
+                case 'Date': return _.orderBy(this.movies, [(movie) => movie.getDate()], [this.arrangement===-1? 'desc': 'asc']);
+                case 'Popularity': return _.orderBy(this.movies, [(movie) => movie.getPopularity()], [this.arrangement===-1? 'desc': 'asc']);
+                case 'Title': return _.orderBy(this.movies, [(movie) => movie.getTitle()], [this.arrangement===-1? 'desc': 'asc']);
+                case 'Rating': return _.orderBy(this.movies, [(movie) => movie.getRating()], [this.arrangement===-1? 'desc': 'asc']);
+                case 'Personal Rating': return _.orderBy(this.movies, [(movie) => movie.getPersonalRating() || 0], [this.arrangement===-1? 'desc': 'asc']);
             }
-            if (this.arrangement === -1)
-                sortedMovies.reverse();
-            return sortedMovies
-            /*
-            console.log(_.sortBy(this.movies, [(movie) => movie.getYear()]))
-            return _.sortBy(this.movies, [(movie) => movie.getTitle()])
-            */
         }
     },
     mounted: function() {
