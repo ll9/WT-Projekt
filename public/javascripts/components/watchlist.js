@@ -51,7 +51,7 @@ Vue.component('watchlist', {
             this.$http.post('/api/' + this.listname + '/rate', {
                 movie_id: this.movie.getId(),
                 rating: this.rating
-            }).then(resp => {},
+            }).then(resp => this.movie.setPersonalRating(this.rating),
                 error => location = '/auth/google')
         }
     },
