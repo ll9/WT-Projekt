@@ -3,11 +3,13 @@ function Movie (movie) {
     this.getTitle = () => movie.title;
     this.getTitleYear = () => `${this.getTitle()} (${this.getYear()})`;
     this.getTitleLink = () => 'https://www.themoviedb.org/movie/' + movie.id;
+    this.getDate = () => new Date(movie.release_date);
     this.isReleased = () => {
         let today = new Date();
         let release = new Date(movie.release_date)
         return today > release;
     }
+    this.getPopularity = () => movie.popularity
     this.getGenres = () => movie.genres.map(obj => obj.name).join(", ");
     this.getDescription = () => movie.overview;
     this.getRating = () => this.isReleased() ? movie.vote_average : 'tbd';
