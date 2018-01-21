@@ -23,7 +23,7 @@ const app = new Vue({
     el: '#app',
     template: `
         <div>
-            <notifications position="bottom left" />
+            <notifications classes="my-style" position="bottom left" />
             <sidebar :state="state"></sidebar>
             <router-view>
             </router-view>
