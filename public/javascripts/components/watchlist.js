@@ -61,7 +61,13 @@ Vue.component('watchlist', {
                 body: {
                     movie_id: this.movie.getId()
                 }
-            }).then(resp => this.$emit('delete-movie', this.movie),
+            }).then(resp => {
+                    this.$emit('delete-movie', this.movie)
+                    this.$notify({
+                        type: 'success',
+                        text: 'Removed Title from ' + this.listname
+                    });
+                },
                 error => location = '/auth/google')
         },
         swapList: function() {
@@ -73,7 +79,13 @@ Vue.component('watchlist', {
                         body: {
                             movie_id: this.movie.getId()
                         }
-                    }).then(resp => this.$emit('delete-movie', this.movie),
+                    }).then(resp => {
+                            this.$emit('delete-movie', this.movie)
+                            this.$notify({
+                                type: 'success',
+                                text: 'Pushed Title to ' + this.swapname
+                            });
+                        },
                         error => location = '/auth/google')
                 },
                 error => location = '/auth/google')

@@ -2,8 +2,6 @@ const movieField = Vue.component('movie-field', {
     props: ['movie', 'watching', 'watched', 'state'],
     template: `
     <div>
-        <notifications group="add" position="bottom left" />
-        <notifications group="error" position="bottom left" />
         <div class="main" style="position:relative;">
             <div style="text-align:center;" class="ov_rating">
                 <p> {{movie.getRating() }} </p>
@@ -81,7 +79,6 @@ const movieField = Vue.component('movie-field', {
                 movie_id: this.movie.getId()
             }).then(resp => {
                 this.$notify({
-                    group: 'add',
                     type: 'success',
                     text: 'Added Title to ' + listname
                 });
@@ -95,7 +92,6 @@ const movieField = Vue.component('movie-field', {
                 }
             }).then(resp => {
                 this.$notify({
-                    group: 'add',
                     type: 'success',
                     text: 'Removed Title from ' + listname
                 });

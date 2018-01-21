@@ -44,7 +44,6 @@ const Watched = Vue.component('Watched', {
             this.$http.get('/api/user/watched').then(resp => {
                 for (movie of resp.body) {
                     this.movies.push(new RatedMovie(movie));
-                    console.log(this.movies.length)
                 }
                 $state.loaded();
                 $state.complete();

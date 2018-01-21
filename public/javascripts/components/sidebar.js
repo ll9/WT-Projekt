@@ -2,8 +2,6 @@ Vue.component('sidebar', {
     props: ['state'],
     template: `
         <div>
-            <notifications group="auth" position="bottom left" />
-            <notifications group="error" position="bottom left" />
             <div>
                 <h1 class="title" style="text-align:center">MyML</h1>
             </div>
@@ -33,9 +31,8 @@ Vue.component('sidebar', {
                 this.$router.push(url)
             } else {
                 this.$notify({
-                    group: 'error',
                     type: 'error',
-                    text: 'You have to be logged in to do that'
+                    text: 'You are not logged in'
                 });
             }
         }
