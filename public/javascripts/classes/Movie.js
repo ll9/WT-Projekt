@@ -30,7 +30,7 @@ function Movie (movie) {
     this.getActors = () => movie.credits.cast.slice(0, 4);
     this.getActorLink = (actor) => {
         const baseURL = "https://www.themoviedb.org/person/";
-        return baseURL + actor.id + '-' + actor.name.replace(' ', '-');
+        return baseURL + actor.id + '-' + actor.name.replace(/ /g, '-');
     }
     this.getId = () => movie.id;
 }
