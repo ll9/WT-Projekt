@@ -10,4 +10,5 @@ layout: home
   <source src="{{ site.baseurl}}/assets/webpage-demonstration.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-![website-picture]({{site.baseurl}}/assets/example-webpage-v4.PNG)
+![website-picture]({{site.baseurl}}/assets/example-webpage-v5.PNG)
+![website-picture2]({{site.baseurl}}/assets/example-webpage-v5_2.PNG)
