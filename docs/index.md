@@ -5,10 +5,14 @@
 layout: home
 ---
 
-- Testwebsite: <a href="https://radiant-tor-61008.herokuapp.com"> https://radiant-tor-61008.herokuapp.com</a>
+- <a href="https://radiant-tor-61008.herokuapp.com">Checkout Website</a>
+- Or take a look at a demo video
 <video width="700" height="500" controls>
   <source src="{{ site.baseurl}}/assets/webpage-demonstration.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+<br>
+- Or just look at some of the pictues
 ![website-picture]({{site.baseurl}}/assets/example-webpage-v5.PNG)
+<br>
 ![website-picture2]({{site.baseurl}}/assets/example-webpage-v5_2.PNG)
