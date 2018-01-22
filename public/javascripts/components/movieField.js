@@ -26,8 +26,7 @@ const movieField = Vue.component('movie-field', {
             </div>
             <div class="trailer" style="text-align:center;">
                 <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
-            </div>
-        </div>
+                   </div>
         <div v-if="!isWatched" v-on:click="changeList(watching)" v-tooltip.right="watchingMessage" class="add">
             <span class="eye">
                 <i class="fa fa-eye" aria-hidden="true" style="font-size:35px;"></i>
@@ -38,6 +37,7 @@ const movieField = Vue.component('movie-field', {
                 <i class="fa fa-check-square-o" aria-hidden="true" style="font-size:35px;"></i>
             </span>
         </div>
+            </div>
         <br>
         <br>
     </div>

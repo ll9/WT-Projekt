@@ -33,7 +33,7 @@ Vue.component('watchlist', {
                 :show-rating="false">
                 </star-rating>
             </div>
-            <div class="img" style="text-align:center;">
+            <div class="img" height="225px" width="150px">
                 <img v-bind:src="movie.getImage()" alt="movie image">
             </div>
         </div>
