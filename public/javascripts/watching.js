@@ -2,7 +2,7 @@ const Watching = Vue.component('Watching', {
     template: `
     <div>
         <h2 style="text-align:center">Watchinglist</h2>
-        <sort :options="sortOptions" v-on:sort-request="sortMovies"></sort>
+        <sort v-if="movies.length" :options="sortOptions" v-on:sort-request="sortMovies"></sort>
         <watchlist v-for="movie of sortedMovies" :movie="movie" listname="watchlist" swapname="watchedlist" :key="movie.getId()" 
         v-on:delete-movie="deleteMovie">
             <i slot="swapicon" class="fa fa-check-square-o" aria-hidden="true" style="font-size:40px; cursor:pointer; padding-top: 8px;"></i>

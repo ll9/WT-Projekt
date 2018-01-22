@@ -2,7 +2,7 @@
      template: `
     <div>
         <search v-on:search-request="loadMovies"></search>
-        <sort :options="Object.keys(dictionary)" v-on:sort-request="sortMovies"></sort>
+        <sort v-if="!noResult" :options="Object.keys(dictionary)" v-on:sort-request="sortMovies"></sort>
         <movie-field v-for="(movie, index) of movies" :movie="movie" :watching="watching" :watched="watched" :state="state" v-bind:key="index"></movie-field>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="waveDots" @infinite="infiniteHandler">
             <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
@@ -16,6 +16,7 @@
              sort: 'popularity',
              arrangement: -1,
              state: Store.state,
+             noResult: false,
              watching: [],
              watched: [],
              // convert selected text to text which the database can handle
@@ -52,6 +53,7 @@
 
      mounted: function() {
          this.$refs.infiniteLoading.debounceDuration = 5;
+         console.log(this.$refs.infiniteLoading);
      },
 
      methods: {
@@ -78,12 +80,14 @@
                      //'sort': this.sort
                  }
              }).then(resp => {
-                 if (resp.body.length === 0)
+                 if (resp.body.length === 0) {
                      $state.complete();
+                 }
                  for (movie of resp.body) {
                      this.movies.push(new Movie(movie));
                  }
                  $state.loaded();
+                 this.noResult = (this.movies.length == 0? true: false)
              })
          },
      },
