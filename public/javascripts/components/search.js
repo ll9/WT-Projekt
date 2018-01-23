@@ -30,9 +30,15 @@ Vue.component('search', {
             $(".bs-select-all").on('click', function(event) {
                 $('#genreselect').selectpicker('toggle');
                 // Don't use the regular event (select all)
-                event.stopPropagation();
+                //event.stopPropagation();
             });
-        })
+        });
+        this.$nextTick().then( () => {
+            $(".bs-deselect-all").on('click', function(event) {
+                $('#genreselect').selectpicker('deselectAll');
+                $('#genreselect').selectpicker('toggle');
+            });
+        });
         $(this.$refs.select).selectpicker('refresh');
     },
     data: function() {
