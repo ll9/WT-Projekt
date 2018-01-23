@@ -22,7 +22,7 @@ const movieField = Vue.component('movie-field', {
                 </template>
             </div>
             <div class="img" style="text-align:center;">
-                <img v-bind:src="movie.getImage()" alt="movie image">
+                <img v-bind:src="movie.getImage()" alt="movie image" height="225" width="150">
             </div>
             <div class="trailer" style="text-align:center;">
                 <a v-if="movie.getTrailer()" v-bind:href="movie.getTrailer()" target="_blank">Watch Trailer</a>
