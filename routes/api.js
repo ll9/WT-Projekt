@@ -150,7 +150,6 @@ router.get('/search/movies/:movieName?', (req, res, next) => {
     const options = {
         sort: {
             [req.get('sort')]: Number(req.get('arrangement'))
-                //'popularity': -1
         },
         skip: req.get('page') * 20,
         limit: 20

@@ -51,11 +51,6 @@
          }
      },
 
-     mounted: function() {
-         this.$refs.infiniteLoading.debounceDuration = 5;
-         console.log(this.$refs.infiniteLoading);
-     },
-
      methods: {
         // Triggers infiniteHandler to sort
         sortMovies: function(by, arrangement) {
@@ -77,7 +72,6 @@
                      'page': (this.movies.length / 20).toString(),
                      'sort': this.sort,
                      'arrangement': this.arrangement.toString()
-                     //'sort': this.sort
                  }
              }).then(resp => {
                  if (resp.body.length === 0) {
