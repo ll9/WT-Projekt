@@ -36,7 +36,7 @@
   border: 3px solid black;
   border-radius: 6px;
   padding: 10px;
-  background-color: #1b2836;
+  background-color: #253b53;
 }
 .sortbox {
   position: relative;
@@ -97,7 +97,7 @@ button.btn.dropdown-toggle.bs-placeholder.btn-info {
   margin: auto;
   width: 601px;
   height: 255px;
-  background-color: #1b2836;
+  background-color: #253b53;
 }
 .ov_rating{
   border: 1px solid black;
@@ -214,7 +214,7 @@ button.btn.dropdown-toggle.bs-placeholder.btn-info {
   margin: auto;
   width: 601px;
   height: 230px;
-  background-color:#1b2836;
+  background-color: #253b53;
 }
 .wl_actor {
   border: 1px solid black;
