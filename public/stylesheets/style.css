@@ -280,6 +280,7 @@ button.btn.dropdown-toggle.bs-placeholder.btn-info {
 
 .fa {
   color: white;
+  text-shadow: 2px 2px 2px #000;
 }
 
 .g-signin-button {
