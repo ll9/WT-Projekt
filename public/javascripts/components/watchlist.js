@@ -15,7 +15,7 @@ Vue.component('watchlist', {
             </div>
         </div>
         <div class="wl_remove">
-            <i class="fa fa-times" v-on:click="deleteMovie" aria-hidden="true" style="font-size:40px; cursor:pointer;"></i>
+            <i class="fa fa-times font-scale" v-on:click="deleteMovie" aria-hidden="true" style="font-size:40px; cursor:pointer;"></i>
         </div>
         <div class="g_main" style="text-align:center;">
             <p> {{movie.getGenres() }} </p>

@@ -281,6 +281,7 @@ button.btn.dropdown-toggle.bs-placeholder.btn-info {
 .fa {
   color: white;
   text-shadow: 2px 2px 2px #000;
+  cursor: pointer;
 }
 
 .g-signin-button {
@@ -318,4 +319,10 @@ button.btn.dropdown-toggle.bs-placeholder.btn-info {
 }
 .rotate {
   transform: rotate(180deg);
+}
+.font-scale {
+	transition: 0.1s;
+}
+.font-scale:hover {
+	transform: scale(1.1);
 }

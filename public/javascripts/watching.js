@@ -5,7 +5,7 @@ const Watching = Vue.component('Watching', {
         <sort v-if="movies.length" :options="sortOptions" v-on:sort-request="sortMovies"></sort>
         <watchlist v-for="movie of sortedMovies" :movie="movie" listname="watchlist" swapname="watchedlist" :key="movie.getId()" 
         v-on:delete-movie="deleteMovie">
-            <i slot="swapicon" class="fa fa-check-square-o" aria-hidden="true" style="font-size:40px; cursor:pointer; padding-top: 8px;"></i>
+            <i slot="swapicon" class="fa fa-check-square-o font-scale" aria-hidden="true" style="font-size:40px; cursor:pointer; padding-top: 8px;"></i>
         </watchlist>
         <infinite-loading ref="infiniteLoading" v-bind:distance="500" spinner="spiral" v-on:infinite="infiniteHandler">
             <span slot="no-more">{{movies.length? "": "Nothing Found"}}</span>
