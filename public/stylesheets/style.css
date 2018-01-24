@@ -1,9 +1,12 @@
 .title {
   position: relative;
   margin: auto;
-  width: 50%;
+  width: 12%;
   margin-top: 30px;
-  color: midnightblue;
+  color: #347ebd;
+  text-shadow: 2px 2px 2px black;
+  cursor: pointer;
+  text-align: center;
 }
 .filter{
   position: relative;

@@ -1,9 +1,9 @@
 Vue.component('sidebar', {
-    props: ['state'],
-    template: `
+    props: ['state'], //$router.push('/')
+    template: ` 
         <div>
             <div>
-                <h1 class="title" style="text-align:center">MyML</h1>
+                <h1 class="title" v-on:click="goToHome">MyML</h1>
             </div>
             <router-link to="/">
                 <div class="icon1">
@@ -35,6 +35,9 @@ Vue.component('sidebar', {
                     text: 'You are not logged in'
                 });
             }
+        },
+        goToHome: function() {
+            location = '/'
         }
     },
     computed: {
