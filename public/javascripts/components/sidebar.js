@@ -1,5 +1,5 @@
 Vue.component('sidebar', {
-    props: ['state'], //$router.push('/')
+    props: ['state'],
     template: ` 
         <div>
             <div>
