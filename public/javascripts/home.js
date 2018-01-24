@@ -28,6 +28,9 @@
             }
          }
      },
+     mounted: function() {
+         this.$refs.infiniteLoading.debounceDuration = 5;
+     },
 
      watch: {
          state: {
