@@ -26,14 +26,12 @@ passport.use(
         }).then((currentUser) => {
             if (currentUser) {
                 // already have the user
-                console.log("User is: " + currentUser);
                 done(null, currentUser);
             } else {
                 // create user in the db
                 new User({
                     user_id: profile.id,
                 }).save().then((newUser) => {
-                    console.log('new User created: ' + newUser);
                     done(null, newUser);
                 })
             }

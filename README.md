@@ -1,30 +1,32 @@
 # MyMl
 
-Simple Website to add your favorite movies and add them to your watchlist etc. The website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB. [This tool](https://github.com/ll9/tmdb2mongo/tree/master) was used to fetch the movie data from the [TMDB-API](https://www.themoviedb.org/documentation/api?language=de) and store it into mongo.
-You can check out the heroku demo webpage [here](https://radiant-tor-61008.herokuapp.com/).
+MyMl is a lightweight movie website where you can search for the most essential infromation about movies and add them to your personal watchlist. On your watchlist you can also rate and sort the films. This Website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB and was extracted by [this tool](https://github.com/ll9/tmdb2mongo/tree/master).
+You can check out the heroku webpage [here](https://radiant-tor-61008.herokuapp.com/).
+By: Bacher Michael (BacherM), Hofmann Hannes (Zuldra94), Wierer Lucas (ll9)
 
 ![webpage](docs/assets/example-webpage-v6.PNG) ![webpage2](docs/assets/example-webpage-v6_2.PNG)
 
+## Toolkits
+- Framework: Vue
+- Backend: Node + Express
+- Database: MongoDB
+- Authentication: Sign-in with Google
+- Deployment: Heroku
+
 ### Setup
-In order to run this Website locally you will ned node + mongodb which contains the appropriate data. Furthermore in your mongodb you will have to create an text index on the title attribute (see below).
+In order to run this Website locally you will ned node + mongodb which contains the appropriate data.
 
 1. Install modules (only once): `npm install`
-2. Setup Environment Variables (only once per session, (databaseURI, client secret, etc)
+2. Setup Environment Variables (only once per session, (databaseURI, client secret, etc.))
 3. Start the server: `npm start`
 4. Check out the website in your browser at http://localhost:3000/
 
-#### Optional Improvements
-- [ ] Design 404-page (See for example localhost:3000/abc, localhost:3000/nothing, etc.)
-- [ ] Add Reset all Button
-- [ ] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?)
-- [ ] Improve Notification Design (Larger, better Contrast, etc.)
-- [ ] Add prettier font to Website
-- [ ] Find better template picture
-- [ ] Make Login/Logout more distinct from each other
+
 
 #### To-do
-- [ ] Refactoring: Clean Javascript, CSS, improve structure, etc.
 ---
+- [x] Implement Loading Animation Watch(ed) List (Infinite Scrolling Animation?) (Wierer)
+- [x] Improve Notification Design (Larger, better Contrast, etc.) (Wierer)
 - [x] Implement Functionality to sort by Title, Date, Rating, etc. (Wierer)
 - [x] __On the watchlist page implement buttons to switch movies between lists, remove from lists__ (Wierer)
 - [x] __Improve Design of Watchlist__ (Bacher)
@@ -51,17 +53,16 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Provide filters for popular search (Wierer)
 - [x] Provide a Database with ~ 50.000 movies (Wierer) !
 - [x] Move Watchlist to seperate Page ! (Wierer)
-- [x] Provide a proper respone when nothing is found (Wierer)
 - [x] When you visit the home page it takes movies aren't displayed immediately => either cache movies to load immediately (?) or implement loading animation (Wierer)!
 - [x] Fix Endless Scrolling Bugs (Scrolling Animation even though there is nothing more to scroll, implement, etc.) (Wierer)
 - [x] Add Animation when you are searching for a movie (might be possible with endless scrolling Animation) (Wierer)
 - [x] Remove 'no more data' text, when endless scrolling is finished/ still loading (Wierer)
 - [x] Implement dynamic loading (endless scrolling?) (Wierer) !
 - [x] Think of a name for the Website (Hofmann)
-- [x] Implement Slider (Year, Rating)
+- [x] Implement Slider (Year, Rating) (Bacher, Wierer)
 - [x] Integrate two sliders into year slider (f.e. select 'from 1980 to 1990' with two sliders) (Bacher)
 - [x] Load some movies when you visit the page for the first time (most popular?) (Wierer)
-- [x] Implement Mulit-Genre-Selection
+- [x] Implement Mulit-Genre-Selection (Wierer)
 - [x] Implement filters (Rating, Year, Genre) (Wierer)
 - [x] Fix Sci-Fi Genre filter (doesn't filter correctly because 'Sci-Fi' is not the same as 'Science Fiction' (or was it the other way around?)) (Wierer)
 - [x] Add year next to title (Wierer)
@@ -69,12 +70,31 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Fix Error when there is no picture (template picture?) (Wierer)
 - [x] Remove Trailer Button if there is no Trailer (Wierer)
 - [x] Cast links to their tmdb page (Wierer)
-- [x] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)-
+- [x] Fix Rating of upcoming movies (rating: 0 to 'tbd') (Wierer)
+- [x] Implement backend (Wierer) 
 - [x] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) 
 
 
+###DB Schema
 
-#### Sample movie data:
+#### Users
+```
+const userSchema = new Schema({
+        user_id: String,
+        watching: [{
+                movie_id: String,
+                rating: Number
+        }],
+        watched: [{
+                movie_id: String,
+                rating: Number
+        }]
+});
+```
+
+
+#### Movies
+This one is pretty huge. Take a look at the example below.
 ```{
         "_id" : ObjectId("5a1b980d8955471028d16343"),
         "adult" : false,
@@ -240,17 +260,4 @@ In order to run this Website locally you will ned node + mongodb which contains 
 }
 ```
 
-#### Get Picture/Trailer:
-##### Picture
-Path = base_url +  file_size + file_path
-base_url = https://image.tmdb.org/t/p/
-file_size = (for example) w500/ 
-file_path = (f.e.) gZCJZOn4l0Zj5hAxsMbxoS6CL0u.jpg
-url = https://image.tmdb.org/t/p/w500/gZCJZOn4l0Zj5hAxsMbxoS6CL0u.jpg
-
-##### Trailer
-base url = https://www.youtube.com/watch?v=
-path = (f.e.) 7j8Ba9rWhUg 
-url = https://www.youtube.com/watch?v=7j8Ba9rWhUg
-Note: Example above has no trailer 
 

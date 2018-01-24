@@ -6,7 +6,7 @@ const sort = Vue.component('sort', {
     props: ['options', 'defaultOption'],
     template: `
 <div class="sortbox">
-    <select class="selectpicker" ref="sortselect" v-model="orderBy" v-on:change="sort()" data-style="btn-primary" data-width="20%">
+    <select class="selectpicker" ref="sortselect" v-model="orderBy" v-on:change="sort()" data-style="btn-primary" data-width="auto">
       <option v-for="opt in options"> {{opt}} </option>
     </select>
     <span v-on:click="sort(true)">
