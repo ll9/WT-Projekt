@@ -75,7 +75,7 @@ In order to run this Website locally you will ned node + mongodb which contains 
 - [x] Fix Movie Description (Some Descriptions are too long and overflow) (Bacher) 
 
 
-###DB Schema
+### DB Schema
 
 #### Users
 ```
