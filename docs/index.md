@@ -13,6 +13,6 @@ layout: home
 </video>
 <br>
 - Or just look at some of the pictues
-![website-picture]({{site.baseurl}}/assets/example-webpage-v5.PNG)
-<br>
-![website-picture2]({{site.baseurl}}/assets/example-webpage-v5_2.PNG)
+![website-picture]({{site.baseurl}}/assets/example-webpage-v6.PNG)
+<br><br>
+![website-picture2]({{site.baseurl}}/assets/example-webpage-v6_2.PNG)
