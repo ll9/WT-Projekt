@@ -1,7 +1,7 @@
 # MyMl
 
-MyMl is a lightweight movie website where you can search for the most essential infromation about movies and add them to your personal watchlist. On your watchlist you can also rate and sort the films. This Website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB and was extracted by [this tool](https://github.com/ll9/tmdb2mongo/tree/master).
-You can check out the heroku webpage [here](https://radiant-tor-61008.herokuapp.com/).
+MyMl is a lightweight movie website where you can search for the most essential infromation about movies and add them to your personal watchlist. On your watchlist you can also rate and sort the films. This Website is powered by data from [TMDB](https://www.themoviedb.org/?language=de). The data is stored in a mongo DB and was extracted by [this tool](https://github.com/ll9/tmdb2mongo/tree/master).<br>
+You can check out the heroku webpage [here](https://radiant-tor-61008.herokuapp.com/).<br>
 By: Bacher Michael (BacherM), Hofmann Hannes (Zuldra94), Wierer Lucas (ll9)
 
 ![webpage](docs/assets/example-webpage-v6.PNG) ![webpage2](docs/assets/example-webpage-v6_2.PNG)
