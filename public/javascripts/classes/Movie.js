@@ -16,7 +16,7 @@ function Movie(movie) {
     }
     this.getImage = () => {
         const baseURL = "https://image.tmdb.org/t/p/";
-        const picutreSize = "w150/";
+        const picutreSize = "w154/";
         if (movie.poster_path == null)
             return "http://via.placeholder.com/150x240";
         return baseURL + picutreSize + movie.poster_path;
