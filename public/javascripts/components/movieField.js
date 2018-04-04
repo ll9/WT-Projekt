@@ -61,9 +61,8 @@ const movieField = Vue.component('movie-field', {
             const listname = (list == this.watching ? 'watchlist' : 'watchedlist');
             if (!this.state.isLoggedIn) {
                 this.$notify({
-                    group: 'error',
                     type: 'error',
-                    text: 'You are not logged in!'
+                    text: 'You are not logged in'
                 });
                 return;
             }
